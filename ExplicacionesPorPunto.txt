@@ -1,0 +1,5 @@
+¡¡¡¡IMPROTANTE Buscar la aprovacion y el posible uso de reconocimiento de voz!!!!
+
+1) link donde explica reconocimiento de voz y salida de texto: https://youtu.be/oxD04qlHpjM
+    primero intalar pyaudio y SpeechRecognition mediante el comando pip install...
+    
