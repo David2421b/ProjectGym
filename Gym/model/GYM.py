@@ -3,25 +3,60 @@ import ollama
 
 class Usuario:
     
-     def __init__(self, nombre: str, edad: int, genero: str, peso: float, altura: float):
+     def __init__(self, nombre: str, edad: int, genero: str, peso: float, altura: float, PresArterial: int, frecardiac):
         self.nombre: str = nombre
         self.edad: int = edad
         self.genero: str = genero
         self.peso: float = peso
         self.altura: float = altura
+        
+        self.historial_medico = {
+            'peso': [peso],
+            'presion_arterial': [],
+            'frecuencia_cardiaca': [],
+            'glucosa_en_sangre': []
+        }
+        
+        self.preferencias = {
+            'recordatorios': True,
+            'mensajes': True
+        }
+        
+        def actualizar_historial_medico(self, peso=None, presion_arterial=None, frecuencia_cardiaca=None, glucosa=None):
+        if peso:
+            self.peso = peso
+            self.historial_medico['peso'].append(peso)
+        if presion_arterial:
+            self.historial_medico['presion_arterial'].append(presion_arterial)
+        if frecuencia_cardiaca:
+            self.historial_medico['frecuencia_cardiaca'].append(frecuencia_cardiaca)
+        if glucosa:
+            self.historial_medico['glucosa_en_sangre'].append(glucosa)
     
-
-
-
 
 
 class Ejercicios:
     
     def __init__(self, tipo: str, repeticiones: int, series: int, descanzo: int):
         self.tipo: str = tipo
-        self.repeticiones: int = repeticiones
+        self.repeticiones_por_serie: int = repeticiones
         self.series: int = series
-        self.descanzo: int = descanzo
+        self.descanzo_entre_series: int = descanzo
+
+
+
+class Rutinas:
+
+    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int):
+        self.list_ejercicios: list = list_ejercicios
+        self.nombre_rutina: str = nombre_rutina
+        self.frecuencia_semana: int = frecuencia_semana
+        self.tiempo_estimado = tiempo_estimado
+        self.estado_progreso = estado_progreso
+        
+    
+
+
 
 
 
