@@ -22,12 +22,13 @@ class Usuario:
             'mensajes': True
         }
         
+        #analizar si es necesario este metodo dentro de esta clase o si mejor lo dejamos como clase
         def actualizar_historial_medico(self, peso = None, presion_arterial = None, frecuencia_cardiaca = None, glucosa = None):
         if peso:  #Corregir el condicional If para que la linea funcione
             self.peso = peso
             self.historial_medico['peso'] = peso
         if presion_arterial:
-            self.historial_medico['presion_arterial'] = presion_arterial  #incongruencia en la linea 27 con respecto a la variable presion_arterial
+            self.historial_medico['presion_arterial'].append(presion_arterial)  #incongruencia en la linea 27 con respecto a la variable presion_arterial
         if frecuencia_cardiaca:
             self.historial_medico['frecuencia_cardiaca'].append(frecuencia_cardiaca)
         if glucosa:
@@ -47,17 +48,28 @@ class Ejercicios:
 
 class Rutinas:
 
-    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int):
+    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int, tiempo_estimado = None, estado_progreso = None):
         self.list_ejercicios: list = list_ejercicios
         self.nombre_rutina: str = nombre_rutina
         self.frecuencia_semana: int = frecuencia_semana
         self.tiempo_estimado = tiempo_estimado
         self.estado_progreso = estado_progreso
+
+
+
+class Historial_clinico:
+
+    def __init__(self, ):
+        pass
+
+
+class Recordatorios:
+
+    def __init__(self, ):
+        pass
+        
         
     
-
-
-
 
 
 
