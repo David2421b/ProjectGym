@@ -22,12 +22,12 @@ class Usuario:
             'mensajes': True
         }
         
-        def actualizar_historial_medico(self, peso=None, presion_arterial=None, frecuencia_cardiaca=None, glucosa=None):
-        if peso:
+        def actualizar_historial_medico(self, peso = None, presion_arterial = None, frecuencia_cardiaca = None, glucosa = None):
+        if peso:  #Corregir el condicional If para que la linea funcione
             self.peso = peso
-            self.historial_medico['peso'].append(peso)
+            self.historial_medico['peso'] = peso
         if presion_arterial:
-            self.historial_medico['presion_arterial'].append(presion_arterial)
+            self.historial_medico['presion_arterial'] = presion_arterial  #incongruencia en la linea 27 con respecto a la variable presion_arterial
         if frecuencia_cardiaca:
             self.historial_medico['frecuencia_cardiaca'].append(frecuencia_cardiaca)
         if glucosa:
@@ -55,17 +55,6 @@ class Rutinas:
         self.estado_progreso = estado_progreso
         
     
-
-
-
-
-
-
-
-
-
-
-
 
 
 
