@@ -1,7 +1,48 @@
 #Todo el codigo va aca
 import ollama
 from dataclasses import dataclass
-import tkinter
+import tkinter as tk
+
+class Interfaz:
+    
+    def __init__(self, ventana):
+        self.ventana = ventana
+        self.ventana.title("Chat de Meta")
+        self.ventana.attributes('-fullscreen', True)
+        self.crea_widget()
+    
+    def crea_widget(self):
+        self.bienvenida = tk.Label(self.ventana, text = "Bienvenido al chat de Meta!!!", background = "gray", font = ("Arial", 25))
+        self.bienvenida.pack(fill=tk.X)
+
+        # frame para los botones
+        self.frame_botones = tk.Frame(self.ventana)
+        self.frame_botones.pack()
+    
+        # salir de la aplicacion
+        self.btn_salir = tk.Button(self.frame_botones, text = "Salir", padx = 30, pady = 5, command = self.ventana.destroy)        
+        self.btn_salir.pack(side = tk.LEFT)
+
+        # entrada de texto
+        self.entrada = tk.Entry(self.ventana, width=50)
+        self.entrada.pack()
+
+        # boton para actvar el chat
+        self.btn_ollama = tk.Button(self.frame_botones, text = "Ollama", padx = 30, pady = 5, command = self.activar_chat)
+        self.btn_ollama.pack(side = tk.RIGHT)
+    
+    def activar_chat(self):
+        self.mensaje = self.entrada.get()
+        print(Ollama.chat(self.mensaje))
+    
+
+def main():
+    ventana = tk.Tk()
+    app = Interfaz(ventana)
+    ventana.mainloop()
+    
+
+
 
 class Usuario:
     
@@ -45,6 +86,7 @@ class Recordatorios:
     def __init__(self):
         pass
         
+
 @dataclass
 class Ollama:
 
@@ -55,9 +97,9 @@ class Ollama:
         else:
             response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
             return response['response']
-    
+
+main() #con esta linea empezamos a ejecutar la interfaz
+
 Mensaje = input("Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
 print(Ollama.chat(Mensaje))
-
-# FInaliza el uso de Ollamaa
