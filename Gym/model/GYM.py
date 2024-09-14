@@ -13,19 +13,6 @@ class Usuario:
         self.fecha_nacimiento: str = fecha_nacimiento
         self.id_persona: str = id_persona
         
-    
-
-
-class Ejercicios:
-    
-    def __init__(self, tipo: str, repeticiones: int, series: int, descanzo: int, id_ejercicio: str):
-        self.tipo: str = tipo
-        self.repeticiones_por_serie: int = repeticiones
-        self.series: int = series
-        self.descanzo_entre_series: int = descanzo
-        self.id_ejercicio: str = id_ejercicio
-
-
 
 class Rutinas:
 
@@ -36,6 +23,15 @@ class Rutinas:
         self.tiempo_estimado = tiempo_estimado
         self.estado_progreso = estado_progreso
 
+
+class Ejercicios:
+    
+    def __init__(self, tipo: str, repeticiones: int, series: int, descanzo: int, id_ejercicio: str):
+        self.tipo: str = tipo
+        self.repeticiones_por_serie: int = repeticiones
+        self.series: int = series
+        self.descanzo_entre_series: int = descanzo
+        self.id_ejercicio: str = id_ejercicio
 
 
 class Historial_clinico:
@@ -60,13 +56,6 @@ class Ollama:
             response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
             return response['response']
     
-
-
-
-
-
-
-
 Mensaje = input("Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
 print(Ollama.chat(Mensaje))
