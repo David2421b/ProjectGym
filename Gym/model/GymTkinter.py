@@ -10,4 +10,7 @@ Bienvenida.pack(fill=tkinter.X)
 
 boton1 = tkinter.Button(ventana, text="Salir", padx=30, pady=5)
 boton1.pack()
+
+entrada = tkinter.Entry(ventana, width=50)
+entrada.pack()
 ventana.mainloop()
