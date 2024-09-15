@@ -2,8 +2,9 @@
 import ollama
 from dataclasses import dataclass
 import tkinter as tk 
-    
 
+# Inicio interfaz Grafica
+""""
 class Interfaz:
     
     def __init__(self, ventana):
@@ -83,7 +84,7 @@ def main_2():           #Esta funcion inicia la ventana secundaria
     app_2 = Interfaz_2(ventana_2)
     ventana_2.mainloop()
     
-
+"""
 
 
 class Usuario:
@@ -95,7 +96,8 @@ class Usuario:
         self.email: str = email
         self.genero: str = genero
         self.fecha_nacimiento: str = fecha_nacimiento
-        
+    
+
 
 class Rutinas:
 
@@ -140,7 +142,7 @@ class Ollama:
             response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
             return response['response']
 
-main_1()#con esta linea empezamos a ejecutar la interfaz
+# main_1()      # con esta linea empezamos a ejecutar la interfaz
 
 Mensaje = input("Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
