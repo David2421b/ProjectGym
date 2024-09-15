@@ -1,14 +1,15 @@
 #Todo el codigo va aca
 import ollama
 from dataclasses import dataclass
-import tkinter as tk
+import tkinter as tk 
+    
 
 class Interfaz:
     
     def __init__(self, ventana):
         self.ventana = ventana
 
-class Interfaz_1 (Interfaz):
+class Interfaz_1(Interfaz):
 
     def __init__(self, ventana):
         super().__init__(ventana)
@@ -37,8 +38,8 @@ class Interfaz_1 (Interfaz):
         self.btn_ollama.pack(side = tk.RIGHT)
 
         # boton para cambiar de interfaz
-        self.btn_interfaz2 = tk.Button(self.frame_botones, text = "Interfaz 2", padx = 30, pady = 5, command = self.segunda_ventana)
-        self.btn_interfaz2.pack(side = tk.RIGHT)
+        self.btn_interfaz2 = tk.Button(text = "Interfaz 2", padx = 30, pady = 5, command = self.segunda_ventana)
+        self.btn_interfaz2.pack()
     
     def activar_chat(self):
         self.mensaje = self.entrada.get()
@@ -49,7 +50,7 @@ class Interfaz_1 (Interfaz):
         main_2()
 
         
-class Interfaz_2 (Interfaz):
+class Interfaz_2(Interfaz):
         
     def __init__(self, ventana):
         super().__init__(ventana)
@@ -62,20 +63,22 @@ class Interfaz_2 (Interfaz):
         self.frame_botones.pack()
 
         self.btn_salir = tk.Button(self.frame_botones, text = "Salir", padx = 30, pady = 5, command = self.ventana.destroy)
-        self.btn_salir.pack(side = tk.LEFT)
+        self.btn_salir.pack()
 
+        self.btn_interfaz1 = tk.Button(self.frame_botones, text = "Volver al Inicio", padx = 35, pady = 10, command = self.primera_ventana)
+        self.btn_interfaz1.pack()
     
-    
-    
-    
+    def primera_ventana(self):
+        self.ventana.destroy()
+        main_1()
 
-def main_1(): #Esta funcion inicia la ventana principal
+def main_1():           #Esta funcion inicia la ventana principal
     ventana_1 = tk.Tk()
     app_1 = Interfaz_1(ventana_1)
     ventana_1.mainloop()
 
 
-def main_2():
+def main_2():           #Esta funcion inicia la ventana secundaria
     ventana_2 = tk.Tk()
     app_2 = Interfaz_2(ventana_2)
     ventana_2.mainloop()

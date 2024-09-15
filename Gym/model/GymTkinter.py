@@ -1,42 +1,14 @@
 import tkinter as tk
 
-class Interfaz:
-    
-    def __init__(self, ventana):
-        self.ventana = ventana
-        self.ventana.title("Chat de Meta")
-        self.ventana.attributes('-fullscreen', True)
-        self.crea_widget()
-    
-    def crea_widget(self):
-        # Etiqueta de bienvenida
-        self.bienvenida = tk.Label(self.ventana, text="Bienvenido al chat de Meta!!!", background="gray", font=("Arial", 25))
-        self.bienvenida.pack(fill=tk.X)
-    
-        # Marco para los botones
-        self.frame_botones = tk.Frame(self.ventana)
-        self.frame_botones.pack()
+root = tk.Tk()
 
-        # Botón de salir
-        self.boton1 = tk.Button(self.frame_botones, text="Salir", padx=30, pady=5, command=self.ventana.quit)
-        self.boton1.pack(side=tk.LEFT)
+label = tk.Label(root, text="Etiqueta")
+label.grid(row=0, column=0)
 
-        # Botón para activar el chat
-        self.btn_ollama = tk.Button(self.frame_botones, text="Ollama", padx=30, pady=5, command=self.activar_chat)
-        self.btn_ollama.pack(side=tk.LEFT)
+entry = tk.Entry(root)
+entry.grid(row=0, column=1)
 
-        # Entrada de texto
-        self.entrada = tk.Entry(self.ventana, width=50)
-        self.entrada.pack()
+button = tk.Button(root, text="Botón")
+button.grid(row=1, column=0, columnspan=2, sticky="we")
 
-    def activar_chat(self):
-        texto = self.entrada.get()
-        print(f"Texto de entrada: {texto}")
-
-def main():
-    ventana = tk.Tk()
-    app = Interfaz(ventana)
-    ventana.mainloop()
-
-if __name__ == "__main__":
-    main()
+root.mainloop()
