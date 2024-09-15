@@ -2,6 +2,7 @@
 import ollama
 from dataclasses import dataclass
 import tkinter as tk
+import 
 
 class Interfaz:
     
@@ -30,12 +31,23 @@ class Interfaz:
         # boton para actvar el chat
         self.btn_ollama = tk.Button(self.frame_botones, text = "Ollama", padx = 30, pady = 5, command = self.activar_chat)
         self.btn_ollama.pack(side = tk.RIGHT)
+
+        # boton para cambiar de interfaz
+        self.btn_interfaz2 = tk.Button(self.frame_botones, text = "Interfaz 2", padx = 30, pady = 5, command = self.segunda_ventana)
+        self.btn_interfaz2.pack(side = tk.RIGHT)
         
         # ------------------------------------------------ Segunda Interfaz ------------------------------------------------
+
+        def crear_widgets2(self):
+            pass
     
     def activar_chat(self):
         self.mensaje = self.entrada.get()
         print(Ollama.chat(self.mensaje))
+    
+    def segunda_ventana(self):
+        self.ventana.destroy()
+        main_2()
     
 
 def main_1(): #Esta funcion inicia la ventana principal
