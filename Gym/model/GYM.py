@@ -1,7 +1,7 @@
 #Todo el codigo va aca
 import ollama
 from dataclasses import dataclass
-import tkinter as tk 
+# import tkinter as tk 
 
 # Inicio interfaz Grafica
 """"
