@@ -30,16 +30,24 @@ class Interfaz:
         # boton para actvar el chat
         self.btn_ollama = tk.Button(self.frame_botones, text = "Ollama", padx = 30, pady = 5, command = self.activar_chat)
         self.btn_ollama.pack(side = tk.RIGHT)
+        
+        # ------------------------------------------------ Segunda Interfaz ------------------------------------------------
     
     def activar_chat(self):
         self.mensaje = self.entrada.get()
         print(Ollama.chat(self.mensaje))
     
 
-def main():
-    ventana = tk.Tk()
-    app = Interfaz(ventana)
-    ventana.mainloop()
+def main_1(): #Esta funcion inicia la ventana principal
+    ventana_1 = tk.Tk()
+    app_1 = Interfaz(ventana_1)
+    ventana_1.mainloop()
+
+
+def main_2():
+    ventana_2 = tk.Tk()
+    app_2 = Interfaz(ventana_2)
+    ventana_2.mainloop()
     
 
 
@@ -98,7 +106,7 @@ class Ollama:
             response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
             return response['response']
 
-main() #con esta linea empezamos a ejecutar la interfaz
+main_1() #con esta linea empezamos a ejecutar la interfaz
 
 Mensaje = input("Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
