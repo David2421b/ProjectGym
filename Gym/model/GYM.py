@@ -61,7 +61,8 @@ class Notificacion:
         self.mensaje: str = mensaje
         self.fecha_hora: datetime = fecha_hora
 
-@dataclass
+
+
 class Estadistica:
 
     def obtener_datos_medicos(self, historial_medico):
@@ -84,10 +85,19 @@ class Estadistica:
     def calcular_fcm(self):
         pass        # no se a que se refiere fmc
 
+    def calcular_calorias_quemadas(self, duracion: float, intensidad: float):
+        pass
+
+    def medir_vo2_max(self):
+        pass    # no se como calcularlo
+
+
 
 
     def __str__(self) -> str:       # Revisar si es mejor un dunder para cada metodo o uno general
-        return f"Tu IMC es {self.IMC}"
+        return f"""Tu IMC es {self.IMC} \n
+                   Tu TMB es {self.tmb} \n
+                   Tu FCM es {self.fcm} \n"""
 
 
         
