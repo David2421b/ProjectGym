@@ -7,7 +7,7 @@ from datetime import datetime
 
 class Usuario:
     
-     def __init__(self, nombre: str, id_persona: str, edad: int, email: str, genero: str, fecha_nacimiento: str):
+    def __init__(self, nombre: str, id_persona: str, edad: int, email: str, genero: str, fecha_nacimiento: str):
         self.nombre: str = nombre
         self.id_persona: str = id_persona
         self.edad: int = edad
@@ -16,10 +16,10 @@ class Usuario:
         self.fecha_nacimiento: str = fecha_nacimiento
 
     
-     def guardar_informacion(self):
+    def guardar_informacion(self):
         pass
      
-     def cargar_informacion(self):
+    def cargar_informacion(self):
         pass
     
 
@@ -91,8 +91,17 @@ class Estadistica:
     def medir_vo2_max(self):
         pass    # no se como calcularlo
 
-    def calcular_presion_arterial_promedio(self, presiones: List[Tuple[float, float]]):
+    def calcular_presion_arterial_promedio(self, presiones: list[tuple[float, float]]):
         pass                # invesitgar acerca del uso de la tupla
+
+    def calcular_glucosa_promedio(self, niveles: list[float]):
+        self.niveles: list[float] = niveles     # no se como calcularlo
+    
+    def evaluar_bienestar_general(): #Metodo en proceso
+        pass
+
+
+    
 
 
 
