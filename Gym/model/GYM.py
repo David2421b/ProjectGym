@@ -97,8 +97,6 @@ class Estadistica:
 
             elif self.IMC >= 40:
                 self.bienestar = "Tienes Obesidad III, ¡Cuidado, visita un medico de confianza!"
-    
-
 
     def calcular_tmb(self):
         if Usuario.genero == 'Masculino' or Usuario.genero == 'masculino' or Usuario.genero == 'M' or Usuario.genero == 'm':
@@ -153,10 +151,13 @@ class Ollama:
 
 
 # pruebas del chat con ollama
-
+persona1 = Usuario('Juan', '123', 20, 'davidmejia0951@gmail.com', 'Masculino', '2002-09-05')
+print(persona1)
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
 print(Ollama.chat(Mensaje))
+
+
 
 # fin de pruebas del chat con ollama
 
