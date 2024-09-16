@@ -68,12 +68,28 @@ class Estadistica:
         pass
     
     def calcular_imc(self):
-        self.IMC = Historial_medico.peso / (Historial_medico.altura ** 2)
+        if Historial_medico.altura >= 0:
+            self.IMC = Historial_medico.peso / (Historial_medico.altura ** 2)
     
     def __str__(self) -> str:
         return f"Tu IMC es {self.IMC}"
+    
+    def calcular_tmb(self):
+        if Usuario.genero == 'Masculino' or Usuario.genero == 'masculino' or Usuario.genero == 'M' or Usuario.genero == 'm':
+            self.tmb = 88.362 + (13.397 * Historial_medico.peso) + (4.799 * Historial_medico.altura) - (5.677 * Usuario.edad)
         
+        elif Usuario.genero == 'Femenino' or Usuario.genero == 'femenino' or Usuario.genero == 'F' or Usuario.genero == 'f':
+            self.tmb = 447.593 + (9.247 * Historial_medico.peso) + (3.098 * Historial_medico.altura) - (4.330 * Usuario.edad)
         
+        else:
+            raise ValueError("El genero debe ser hombre o mujer")
+
+
+        
+
+
+
+
 
 @dataclass
 class Ollama:
@@ -87,6 +103,10 @@ class Ollama:
             return response['response']
 
 
+# pruebas del chat con ollama
+
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
 print(Ollama.chat(Mensaje))
+
+# fin de pruebas del chat con ollama
