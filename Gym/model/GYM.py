@@ -59,7 +59,20 @@ class Notificacion:
     def __init__(self, tipo: str, mensaje: str, fecha_hora: datetime):
         self.tipo: str = tipo
         self.mensaje: str = mensaje
-        self.fecha_hora: datetime = fecha_hora 
+        self.fecha_hora: datetime = fecha_hora
+
+@dataclass
+class Estadistica:
+
+    def obtener_datos_medicos(self, historial_medico):
+        pass
+    
+    def calcular_imc(self):
+        self.IMC = Historial_medico.peso / (Historial_medico.altura ** 2)
+    
+    def __str__(self) -> str:
+        return f"Tu IMC es {self.IMC}"
+        
         
 
 @dataclass
