@@ -24,15 +24,12 @@ class Usuario:
 
 class Rutinas:
 
-    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int, tiempo_estimado = None, estado_progreso = None):
+    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int):
         self.list_ejercicios: list = list_ejercicios
         self.nombre_rutina: str = nombre_rutina
         self.frecuencia_semana: int = frecuencia_semana
-        self.tiempo_estimado = tiempo_estimado
-        self.estado_progreso = estado_progreso
-
-
-class Ejercicios:
+       
+class Ejercicio:
     
     def __init__(self, tipo: str, repeticiones: int, series: int, descanzo: int, id_ejercicio: str):
         self.tipo: str = tipo
@@ -40,6 +37,23 @@ class Ejercicios:
         self.series: int = series
         self.descanzo_entre_series: int = descanzo
         self.id_ejercicio: str = id_ejercicio
+        
+    #def modificar_atributo(self, atributo: str, nuevo_valor):
+        #Permite modificar un atributo especifico del ejercicio"
+        #if atributo == 'tipo':
+            #self.tipo = nuevo_valor
+        #elif atributo == 'repeticiones':
+            #self.repeticiones_por_serie = nuevo_valor
+        #elif atributo == 'series':
+            #self.series = nuevo_valor
+        #elif atributo == 'descanso':
+            #self.descanso_entre_series = nuevo_valor
+        #elif atributo == 'id_ejercicio':
+            #self.id_ejercicio = nuevo_valor
+        #else:
+            #print(f"Atributo no válido: {atributo}. Los atributos válidos son: tipo, repeticiones, series, descanso, id_ejercicio.")
+
+#ejercicio = Ejercicio(tipo='Sentadillas', repeticiones_por_serie=12, series=4, descanso_entre_series=60, id_ejercicio='EJ001')
 
 
 class Historial_medico:
@@ -68,7 +82,24 @@ class Estadistica:
     def calcular_imc(self):
         if Historial_medico.altura >= 0:
             self.IMC = Historial_medico.peso / (Historial_medico.altura ** 2)
+
+            if self.IMC < 18.5:
+                self.bienestar = "Te encuentras en Infrapeso"
+            
+            elif 18.5 <= self.IMC <= 24.9:
+                self.bienestar = "Tu peso es Normal,¡Sigue asi!"
+            
+            elif 25 <= self.IMC <= 34.9:
+                self.bienestar = "Tienes Obesidad I, ¡Cuidado!"
+            
+            elif 35 <= self.IMC <= 39.9:
+                self.bienestar = "Tienes Obesidad II, ¡Cuidado!"
+
+            elif self.IMC >= 40:
+                self.bienestar = "Tienes Obesidad III, ¡Cuidado, visita un medico de confianza!"
     
+
+
     def calcular_tmb(self):
         if Usuario.genero == 'Masculino' or Usuario.genero == 'masculino' or Usuario.genero == 'M' or Usuario.genero == 'm':
             self.tmb = 88.362 + (13.397 * Historial_medico.peso) + (4.799 * Historial_medico.altura) - (5.677 * Usuario.edad)
@@ -78,9 +109,11 @@ class Estadistica:
         
         else:
             raise ValueError("El genero debe ser hombre o mujer")
+        
     
     def calcular_fcm(self):
-        pass        # no se a que se refiere fmc
+        fcm = 220 - Usuario.edad   #Consulta sobre uso de self
+        return fcm
 
     def calcular_calorias_quemadas(self, duracion: float, intensidad: float):
         pass
@@ -98,7 +131,7 @@ class Estadistica:
         pass
 
     def __str__(self) -> str:       # Revisar si es mejor un dunder para cada metodo o uno general
-        return f"""Tu IMC es {self.IMC} \n
+        return f"""Tu IMC es {self.IMC} y {self.bienestar} \n
                    Tu TMB es {self.tmb} \n
                    Tu FCM es {self.fcm} \n
                    Tus calorias quemadas son {self.calorias_quemadas} \n
@@ -106,7 +139,6 @@ class Estadistica:
                    Tu presion arterial promedio es {self.presion_arterial_promedio} \n
                    Tu glucosa promedio es {self.glucosa_promedio} \n
                    Tu bienestar general es {self.bienestar_general} \n"""
-
 
 class Ollama:
 
