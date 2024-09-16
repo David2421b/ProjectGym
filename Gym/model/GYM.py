@@ -127,3 +127,5 @@ Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu p
 print(Ollama.chat(Mensaje))
 
 # fin de pruebas del chat con ollama
+
+# Consultar la posibilidad de que el ususario elija el sexo mediante un numero y que el programa lo convierta en el nombre correspondiente
