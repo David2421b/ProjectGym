@@ -91,6 +91,9 @@ class Estadistica:
     def medir_vo2_max(self):
         pass    # no se como calcularlo
 
+    def calcular_presion_arterial_promedio(self, presiones: List[Tuple[float, float]]):
+        pass                # invesitgar acerca del uso de la tupla
+
 
 
 
