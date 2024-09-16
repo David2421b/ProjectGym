@@ -71,9 +71,6 @@ class Estadistica:
         if Historial_medico.altura >= 0:
             self.IMC = Historial_medico.peso / (Historial_medico.altura ** 2)
     
-    def __str__(self) -> str:
-        return f"Tu IMC es {self.IMC}"
-    
     def calcular_tmb(self):
         if Usuario.genero == 'Masculino' or Usuario.genero == 'masculino' or Usuario.genero == 'M' or Usuario.genero == 'm':
             self.tmb = 88.362 + (13.397 * Historial_medico.peso) + (4.799 * Historial_medico.altura) - (5.677 * Usuario.edad)
@@ -83,6 +80,14 @@ class Estadistica:
         
         else:
             raise ValueError("El genero debe ser hombre o mujer")
+    
+    def calcular_fcm(self):
+        pass        # no se a que se refiere fmc
+
+
+
+    def __str__(self) -> str:       # Revisar si es mejor un dunder para cada metodo o uno general
+        return f"Tu IMC es {self.IMC}"
 
 
         
