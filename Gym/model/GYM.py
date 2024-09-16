@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from datetime import datetime
 
 
-
 class Usuario:
     
     def __init__(self, nombre: str, id_persona: str, edad: int, email: str, genero: str, fecha_nacimiento: str):
@@ -14,14 +13,12 @@ class Usuario:
         self.email: str = email
         self.genero: str = genero
         self.fecha_nacimiento: str = fecha_nacimiento
-
     
     def guardar_informacion(self):
         pass
      
     def cargar_informacion(self):
-        pass
-    
+        pass    
 
 
 class Rutinas:
@@ -62,7 +59,6 @@ class Notificacion:
         self.fecha_hora: datetime = fecha_hora
 
 
-
 class Estadistica:
 
     def obtener_datos_medicos(self, historial_medico):
@@ -100,25 +96,17 @@ class Estadistica:
     def evaluar_bienestar_general(): #Metodo en proceso
         pass
 
-
-    
-
-
-
-
     def __str__(self) -> str:       # Revisar si es mejor un dunder para cada metodo o uno general
         return f"""Tu IMC es {self.IMC} \n
                    Tu TMB es {self.tmb} \n
-                   Tu FCM es {self.fcm} \n"""
+                   Tu FCM es {self.fcm} \n
+                   Tus calorias quemadas son {self.calorias_quemadas} \n
+                   Tu VO2 maximo es {self.vo2_max} \n
+                   Tu presion arterial promedio es {self.presion_arterial_promedio} \n
+                   Tu glucosa promedio es {self.glucosa_promedio} \n
+                   Tu bienestar general es {self.bienestar_general} \n"""
 
 
-        
-
-
-
-
-
-@dataclass
 class Ollama:
 
     def chat(mensaje):
@@ -128,6 +116,7 @@ class Ollama:
         else:
             response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)               
             return response['response']
+    
 
 
 # pruebas del chat con ollama
