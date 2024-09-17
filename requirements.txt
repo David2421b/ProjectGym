@@ -3,3 +3,4 @@ SpeechRecognition~=3.10.4
 PyAudio~=0.2.11
 tkinter~=0.1.0
 datetime~=4.3.0
+mysql-connector~=2.2.9

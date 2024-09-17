@@ -3,15 +3,18 @@
 import ollama
 from dataclasses import dataclass
 from datetime import datetime
+import mysql.connector
+from mysql.connector import Error
 
 
 class Usuario:
     
-    def __init__(self, nombre: str, id_persona: str, edad: int, email: str, genero: str, fecha_nacimiento: str):
-        self.nombre: str = nombre
+    def __init__(self, nombre: str, edad: int, email: str, contraseña: str, genero: str, fecha_nacimiento: str,  id_persona: str = None):
         self.id_persona: str = id_persona
+        self.nombre: str = nombre
         self.edad: int = edad
         self.email: str = email
+        self.contraseña: str = contraseña
         self.genero: str = genero
         self.fecha_nacimiento: str = fecha_nacimiento
     
@@ -21,10 +24,10 @@ class Usuario:
         self.datos_usuario['altura'] = float(input("Altura (cm): "))
         self.datos_usuario['temperatura_corporal'] = float(input("Temperatura Corporal (°C): "))
         
-    def guardar_informacion(self):
+    def registrarse(self):
         pass
      
-    def cargar_informacion(self):
+    def iniciar_sesion(self):
         pass
 
 class Rutinas:
@@ -124,10 +127,22 @@ class Ollama:
 
 
 # pruebas del chat con ollama
-nombre = input("Cual es tu nombre: ")
-Usuario1 = Usuario(nombre)
-Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
+inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n 
+                       si deseas iniciar sesión presiona 1 \n 
+                       si deseas registrarte presiona 2 \n 
+                       si deseas salir presiona 3 \n"""))
 
+if inicio_app == 1:
+    Usuario.iniciar_sesion()
+
+elif inicio_app == 2:
+    Usuario.registrarse()
+    
+elif inicio_app == 3:
+    print("Hasta la proxima")
+
+
+Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 print(Ollama.chat(Mensaje))
 
 
