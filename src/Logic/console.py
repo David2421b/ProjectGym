@@ -1,4 +1,4 @@
-from database import Database
+from DataBase import Database
 from DigitalHealth import Usuario
 
 def menu(db):

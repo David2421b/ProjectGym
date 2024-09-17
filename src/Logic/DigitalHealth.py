@@ -2,9 +2,6 @@
 import ollama
 from dataclasses import dataclass
 from datetime import datetime
-import mysql.connector
-import console
-
 
 class Usuario:
     
