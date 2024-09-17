@@ -1,68 +1,71 @@
-import mysql.connector
-from DigitalHealth import Usuario  # Importamos la clase Usuario desde otro archivo
+import sqlite3
+import os
+from DigitalHealth import Usuario
 
 class Database:
-    def __init__(self, host='localhost', user='root', password='', database='digital_health'):
-        self.host = host
-        self.user = user
-        self.password = password
-        self.database = database
+    def __init__(self, db_name='digitalhealth.db'):
+        # Aseguramos que la base de datos se crea en la carpeta especificada
+        self.db_name = os.path.join(os.path.dirname(__file__), 'database', db_name)
         self.conexion = None
 
     def connect(self):
         try:
-            self.conexion = mysql.connector.connect(
-                host=self.host,
-                user=self.user,
-                password=self.password,
-                database=self.database
-            )
-            print("Conexión exitosa")
-        except mysql.connector.Error as err:
+            # Conectar a la base de datos SQLite
+            self.conexion = sqlite3.connect(self.db_name)
+            print(f"Conexión exitosa a la base de datos en: {self.db_name}")
+            self.crear_tabla_usuarios()
+        except sqlite3.Error as err:
             print(f"Error de conexión: {err}")
+            self.conexion = None
+
+    def crear_tabla_usuarios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS usuarios (
+                    id_persona INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nombre TEXT NOT NULL,
+                    edad INTEGER NOT NULL,
+                    email TEXT NOT NULL UNIQUE,
+                    contraseña TEXT NOT NULL,
+                    genero TEXT NOT NULL
+                )
+            ''')
+            self.conexion.commit()
+            cursor.close()
+            print("Tabla 'usuarios' creada correctamente o ya existía.")
+        else:
+            print("No se pudo crear la tabla. No hay conexión con la base de datos.")
+
+    def registrar_usuario(self, usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO usuarios (nombre, edad, email, contraseña, genero)
+                    VALUES (?, ?, ?, ?, ?)
+                ''', (usuario.nombre, usuario.edad, usuario.email, usuario.contraseña, usuario.genero))
+                self.conexion.commit()
+                print("Usuario registrado correctamente.")
+            except sqlite3.Error as error:
+                print(f"Error al registrar usuario: {error}")
+            finally:
+                cursor.close()
+
+    def verificar_credenciales(self, email, contraseña):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM usuarios WHERE email = ? AND contraseña = ?', (email, contraseña))
+            usuario = cursor.fetchone()
+            cursor.close()
+
+            if usuario:
+                return True, usuario  # Devuelve True y el registro del usuario
+            else:
+                return False, None  # Si no se encuentra coincidencia
+        return False, None
 
     def close(self):
-        if self.conexion and self.conexion.is_connected():
-            self.conexion.close()
-            print("Conexión cerrada")
-
-    def get_cursor(self):
         if self.conexion:
-            return self.conexion.cursor()
-        return None
-
-    def registrar_usuario(self, usuario: Usuario):
-        cursor = self.get_cursor()
-        if cursor:
-            try:
-                sql = """
-                INSERT INTO usuarios (nombre, edad, email, contraseña, genero)
-                VALUES (%s, %s, %s, %s, %s)
-                """
-                valores = (usuario.nombre, usuario.edad, usuario.email, usuario.contraseña, usuario.genero)
-                cursor.execute(sql, valores)
-                self.conexion.commit()
-                print(f"Usuario {usuario.nombre} insertado correctamente en la base de datos.")
-            except mysql.connector.Error as error:
-                print(f"Error al insertar en la base de datos: {error}")
-            finally:
-                cursor.close()
-
-    def verificar_credenciales(self, email: str, contraseña: str):
-        cursor = self.get_cursor()
-        if cursor:
-            try:
-                sql = """
-                SELECT * FROM usuarios WHERE email = %s AND contraseña = %s
-                """
-                valores = (email, contraseña)
-                cursor.execute(sql, valores)
-                resultado = cursor.fetchone()
-                if resultado:
-                    print("Bienvenido!")
-                else:
-                    print("Credenciales incorrectas.")
-            except mysql.connector.Error as error:
-                print(f"Error al verificar credenciales: {error}")
-            finally:
-                cursor.close()
+            self.conexion.close()
+            print("Conexión cerrada.")

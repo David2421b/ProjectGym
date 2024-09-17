@@ -39,11 +39,11 @@ class Rutinas:
        
 class Ejercicio:
     
-    def __init__(self, tipo: str, repeticiones: int, series: int, descanzo: int, id_ejercicio: str):
+    def __init__(self, tipo: str, repeticiones: int, series: int, descanso: int, id_ejercicio: str):
         self.tipo: str = tipo
-        self.repeticiones_por_serie: int = repeticiones
+        self.repeticiones: int = repeticiones
         self.series: int = series
-        self.descanzo_entre_series: int = descanzo
+        self.descanso_entre_series: int = descanso
         self.id_ejercicio: str = id_ejercicio
     
     def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
@@ -105,17 +105,13 @@ class Estadistica:
     def calcular_fcm(self):
         self.fcm = 220 - Usuario.edad     
     
-    def evaluar_bienestar_general(): #Metodo en proceso
-        pass
 
     def __str__(self) -> str: 
         return f"""Tu IMC es {self.IMC} y {self.bienestar} \n
                    Tu TMB es {self.tmb} \n
-                   Tu FCM es {self.fcm} \n
-                   Tu bienestar general es {self.bienestar_general} \n"""
-
-class Ollama:
-
+                   Tu FCM es {self.fcm} \n"""
+@dataclass
+class Chat_Ollama:
     def chat(mensaje):
         if mensaje == 'salir':
             response = "has salido del chat, hasta la proxima"
