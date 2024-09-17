@@ -3,7 +3,6 @@ import ollama
 from dataclasses import dataclass
 from datetime import datetime
 import mysql.connector
-from mysql.connector import Error
 
 
 class Usuario:
@@ -19,11 +18,11 @@ class Usuario:
     def arranque_app(self, seleccion):
         self.seleccion = seleccion
     
-    def solicitar_datos_usuario(self):
+    def solicitar_datos_usuario(self, peso: float, altura: float, temperatura_corporal: float):
         print("Por favor, ingrese los siguientes datos generales:")
-        self.datos_usuario['peso'] = float(input("Peso (kg): "))
-        self.datos_usuario['altura'] = float(input("Altura (cm): "))
-        self.datos_usuario['temperatura_corporal'] = float(input("Temperatura Corporal (°C): "))
+        self.datos_usuario['peso'] = peso
+        self.datos_usuario['altura'] = altura
+        self.datos_usuario['temperatura_corporal'] = temperatura_corporal
         
     def registrarse(self):
         pass
