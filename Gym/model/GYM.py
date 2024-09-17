@@ -75,9 +75,6 @@ class Notificacion:
 
 
 class Estadistica:
-
-    def obtener_datos_medicos(self, historial_medico):
-        pass
     
     def calcular_imc(self):
         if Historial_medico.altura >= 0:
@@ -152,7 +149,8 @@ class Ollama:
 
 # pruebas del chat con ollama
 persona1 = Usuario('Juan', '123', 20, 'davidmejia0951@gmail.com', 'Masculino', '2002-09-05')
-print(persona1)
+print(persona1.nombre)
+
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
 print(Ollama.chat(Mensaje))
