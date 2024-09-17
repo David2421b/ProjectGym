@@ -15,12 +15,18 @@ class Usuario:
         self.genero: str = genero
         self.fecha_nacimiento: str = fecha_nacimiento
     
+    def solicitar_datos_usuario(self):
+        print("Por favor, ingrese los siguientes datos generales:")
+
+        self.datos_usuario['peso'] = float(input("Peso (kg): "))
+        self.datos_usuario['altura'] = float(input("Altura (cm): "))
+        self.datos_usuario['temperatura_corporal'] = float(input("Temperatura Corporal (°C): "))
+        
     def guardar_informacion(self):
         pass
      
     def cargar_informacion(self):
-        pass  
-
+        pass
 
 class Rutinas:
 
@@ -37,6 +43,13 @@ class Ejercicio:
         self.series: int = series
         self.descanzo_entre_series: int = descanzo
         self.id_ejercicio: str = id_ejercicio
+    
+    def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
+        pass
+
+    def eliminar_ejericio(self, nombre: str, id_ejercicio: str):
+        pass
+
 
 class Historial_medico:
 
@@ -87,14 +100,13 @@ class Estadistica:
         else:
             raise ValueError("El genero debe ser hombre o mujer")
         
-    
     def calcular_fcm(self):
         self.fcm = 220 - Usuario.edad     
     
     def evaluar_bienestar_general(): #Metodo en proceso
         pass
 
-    def __str__(self) -> str:       # Revisar si es mejor un dunder para cada metodo o uno general
+    def __str__(self) -> str: 
         return f"""Tu IMC es {self.IMC} y {self.bienestar} \n
                    Tu TMB es {self.tmb} \n
                    Tu FCM es {self.fcm} \n
@@ -113,7 +125,8 @@ class Ollama:
 
 
 # pruebas del chat con ollama
-
+nombre = input("Cual es tu nombre: ")
+Usuario1 = Usuario(nombre)
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
 print(Ollama.chat(Mensaje))
