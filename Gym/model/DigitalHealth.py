@@ -20,14 +20,6 @@ class Usuario:
     
     def arranque_app(self, seleccion):
         self.seleccion = seleccion
-        if self.seleccion == 1:
-            self.iniciar_sesion()
-
-        elif self.seleccion == 2:
-            self.registrarse()
-            
-        elif self.seleccion == 3:
-            print("Hasta la proxima")
 
     
     def solicitar_datos_usuario(self):
@@ -144,7 +136,15 @@ inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n
                        si deseas registrarte presiona 2 \n 
                        si deseas salir presiona 3 \n"""))
                        
-Usuario.arranque_app(inicio_app)
+
+if inicio_app == 1:
+    Usuario.iniciar_sesion()
+
+elif inicio_app == 2:
+    Usuario.registrarse()
+            
+elif inicio_app == 3:
+    print("Hasta la proxima")
 
 
 
