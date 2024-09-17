@@ -18,6 +18,8 @@ class Usuario:
         self.genero: str = genero
         self.fecha_nacimiento: str = fecha_nacimiento
     
+    
+    
     def solicitar_datos_usuario(self):
         print("Por favor, ingrese los siguientes datos generales:")
         self.datos_usuario['peso'] = float(input("Peso (kg): "))
