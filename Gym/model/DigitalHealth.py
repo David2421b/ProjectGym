@@ -18,7 +18,17 @@ class Usuario:
         self.genero: str = genero
         self.fecha_nacimiento: str = fecha_nacimiento
     
-    
+    def arranque_app(self, seleccion):
+        self.seleccion = seleccion
+        if self.seleccion == 1:
+            self.iniciar_sesion()
+
+        elif self.seleccion == 2:
+            self.registrarse()
+            
+        elif self.seleccion == 3:
+            print("Hasta la proxima")
+
     
     def solicitar_datos_usuario(self):
         print("Por favor, ingrese los siguientes datos generales:")
@@ -127,21 +137,16 @@ class Ollama:
             return response['response']
     
 
-
+#------------------------------------------------------Arranque de la aplicacion---------------------------------------------------------#
 # pruebas del chat con ollama
 inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n 
                        si deseas iniciar sesión presiona 1 \n 
                        si deseas registrarte presiona 2 \n 
                        si deseas salir presiona 3 \n"""))
+                       
+Usuario.arranque_app(inicio_app)
 
-if inicio_app == 1:
-    Usuario.iniciar_sesion()
 
-elif inicio_app == 2:
-    Usuario.registrarse()
-    
-elif inicio_app == 3:
-    print("Hasta la proxima")
 
 
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
