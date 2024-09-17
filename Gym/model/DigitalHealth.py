@@ -1,5 +1,4 @@
 #Todo el codigo va aca
-
 import ollama
 from dataclasses import dataclass
 from datetime import datetime
@@ -9,18 +8,16 @@ from mysql.connector import Error
 
 class Usuario:
     
-    def __init__(self, nombre: str, edad: int, email: str, contraseña: str, genero: str, fecha_nacimiento: str,  id_persona: str = None):
+    def __init__(self, nombre: str, edad: int, email: str, contraseña: str, genero: str, id_persona: str = None):
         self.id_persona: str = id_persona
         self.nombre: str = nombre
         self.edad: int = edad
         self.email: str = email
         self.contraseña: str = contraseña
         self.genero: str = genero
-        self.fecha_nacimiento: str = fecha_nacimiento
     
     def arranque_app(self, seleccion):
         self.seleccion = seleccion
-
     
     def solicitar_datos_usuario(self):
         print("Por favor, ingrese los siguientes datos generales:")
@@ -130,7 +127,13 @@ class Ollama:
     
 
 #------------------------------------------------------Arranque de la aplicacion---------------------------------------------------------#
-# pruebas del chat con ollama
+
+print("Bienvenido a nuestro Gym Virtual, para continuar proporcionanos los giuientes datos: \n")
+Usuar = Usuario(input("Nombre: "), int(input("Edad: "), input("Email: "), 
+                input("Contraseña: "), input("Genero (Masculino o Femenino): ")))
+
+
+
 inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n 
                        si deseas iniciar sesión presiona 1 \n 
                        si deseas registrarte presiona 2 \n 
@@ -147,7 +150,7 @@ elif inicio_app == 3:
     print("Hasta la proxima")
 
 
-
+# pruebas del chat con ollama
 
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 print(Ollama.chat(Mensaje))
