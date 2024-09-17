@@ -19,7 +19,7 @@ class Usuario:
         pass
      
     def cargar_informacion(self):
-        pass    
+        pass  
 
 
 class Rutinas:
