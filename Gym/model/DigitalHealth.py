@@ -128,26 +128,7 @@ class Ollama:
 
 #------------------------------------------------------Arranque de la aplicacion---------------------------------------------------------#
 
-print("Bienvenido a nuestro Gym Virtual, para continuar proporcionanos los giuientes datos: \n")
-Usuar = Usuario(input("Nombre: "), int(input("Edad: ")), input("Email: "), input("Contraseña: "), input("Genero (Masculino o Femenino): "))
-
-
-
-inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n
-                       si deseas iniciar sesión presiona 1 \n 
-                       si deseas registrarte presiona 2 \n 
-                       si deseas salir presiona 3 \n"""))
-                       
-
-if inicio_app == 1:
-    Usuario.iniciar_sesion()
-
-elif inicio_app == 2:
-    Usuario.registrarse()
-            
-elif inicio_app == 3:
-    print("Hasta la proxima")
-
+print("Bienvenido a nuestro Gym Virtual\n\n")
 
 # pruebas del chat con ollama
 
