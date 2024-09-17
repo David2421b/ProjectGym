@@ -1,4 +1,5 @@
 import tkinter as tk
+from DigitalHealth import Chat_Ollama
 
 
 class Interfaz:
@@ -40,7 +41,7 @@ class Interfaz_1(Interfaz):
 
     def activar_chat(self):
         self.mensaje = self.entrada.get()
-        print(Ollama.chat(self.mensaje))
+        print(Chat_Ollama.chat(self.mensaje))
 
     def segunda_ventana(self):
         self.ventana.destroy()
