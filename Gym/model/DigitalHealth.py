@@ -129,12 +129,11 @@ class Ollama:
 #------------------------------------------------------Arranque de la aplicacion---------------------------------------------------------#
 
 print("Bienvenido a nuestro Gym Virtual, para continuar proporcionanos los giuientes datos: \n")
-Usuar = Usuario(input("Nombre: "), int(input("Edad: "), input("Email: "), 
-                input("Contraseña: "), input("Genero (Masculino o Femenino): ")))
+Usuar = Usuario(input("Nombre: "), int(input("Edad: ")), input("Email: "), input("Contraseña: "), input("Genero (Masculino o Femenino): "))
 
 
 
-inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n 
+inicio_app = int(input("""\n Bienvenido a nuestro Gym Virtual \n
                        si deseas iniciar sesión presiona 1 \n 
                        si deseas registrarte presiona 2 \n 
                        si deseas salir presiona 3 \n"""))
