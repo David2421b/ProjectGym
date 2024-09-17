@@ -37,24 +37,6 @@ class Ejercicio:
         self.series: int = series
         self.descanzo_entre_series: int = descanzo
         self.id_ejercicio: str = id_ejercicio
-        
-    #def modificar_atributo(self, atributo: str, nuevo_valor):
-        #Permite modificar un atributo especifico del ejercicio"
-        #if atributo == 'tipo':
-            #self.tipo = nuevo_valor
-        #elif atributo == 'repeticiones':
-            #self.repeticiones_por_serie = nuevo_valor
-        #elif atributo == 'series':
-            #self.series = nuevo_valor
-        #elif atributo == 'descanso':
-            #self.descanso_entre_series = nuevo_valor
-        #elif atributo == 'id_ejercicio':
-            #self.id_ejercicio = nuevo_valor
-        #else:
-            #print(f"Atributo no válido: {atributo}. Los atributos válidos son: tipo, repeticiones, series, descanso, id_ejercicio.")
-
-#ejercicio = Ejercicio(tipo='Sentadillas', repeticiones_por_serie=12, series=4, descanso_entre_series=60, id_ejercicio='EJ001')
-
 
 class Historial_medico:
 
@@ -107,20 +89,7 @@ class Estadistica:
         
     
     def calcular_fcm(self):
-        fcm = 220 - Usuario.edad   #Consulta sobre uso de self
-        return fcm
-
-    def calcular_calorias_quemadas(self, duracion: float, intensidad: float):
-        pass
-
-    def medir_vo2_max(self):
-        pass    # no se como calcularlo
-
-    def calcular_presion_arterial_promedio(self, presiones: list[tuple[float, float]]):
-        pass                # invesitgar acerca del uso de la tupla
-
-    def calcular_glucosa_promedio(self, niveles: list[float]):
-        self.niveles: list[float] = niveles     # no se como calcularlo
+        self.fcm = 220 - Usuario.edad     
     
     def evaluar_bienestar_general(): #Metodo en proceso
         pass
@@ -129,10 +98,6 @@ class Estadistica:
         return f"""Tu IMC es {self.IMC} y {self.bienestar} \n
                    Tu TMB es {self.tmb} \n
                    Tu FCM es {self.fcm} \n
-                   Tus calorias quemadas son {self.calorias_quemadas} \n
-                   Tu VO2 maximo es {self.vo2_max} \n
-                   Tu presion arterial promedio es {self.presion_arterial_promedio} \n
-                   Tu glucosa promedio es {self.glucosa_promedio} \n
                    Tu bienestar general es {self.bienestar_general} \n"""
 
 class Ollama:
@@ -148,8 +113,6 @@ class Ollama:
 
 
 # pruebas del chat con ollama
-persona1 = Usuario('Juan', '123', 20, 'davidmejia0951@gmail.com', 'Masculino', '2002-09-05')
-print(persona1.nombre)
 
 Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
 
