@@ -17,7 +17,6 @@ class Usuario:
     
     def solicitar_datos_usuario(self):
         print("Por favor, ingrese los siguientes datos generales:")
-
         self.datos_usuario['peso'] = float(input("Peso (kg): "))
         self.datos_usuario['altura'] = float(input("Altura (cm): "))
         self.datos_usuario['temperatura_corporal'] = float(input("Temperatura Corporal (°C): "))
