@@ -1,12 +1,5 @@
 import mysql.connector
-
-class Usuario:
-    def __init__(self, nombre: str, edad: int, email: str, contraseña: str, genero: str):
-        self.nombre = nombre
-        self.edad = edad
-        self.email = email
-        self.contraseña = contraseña
-        self.genero = genero
+from DigitalHealth import Usuario  # Importamos la clase Usuario desde otro archivo
 
 class Database:
     def __init__(self, host='localhost', user='root', password='', database='digital_health'):
@@ -73,45 +66,3 @@ class Database:
                 print(f"Error al verificar credenciales: {error}")
             finally:
                 cursor.close()
-
-# Funciones fuera de las clases
-def registrar_usuario(db: Database):
-    nombre = input("Ingrese su nombre: ")
-    edad = int(input("Ingrese su edad: "))
-    email = input("Ingrese su email: ")
-    contraseña = input("Ingrese su contraseña: ")
-    genero = input("Ingrese su género: ")
-    
-    usuario = Usuario(nombre, edad, email, contraseña, genero)
-    db.registrar_usuario(usuario)
-
-def iniciar_sesion(db: Database):
-    email = input("Ingrese su email: ")
-    contraseña = input("Ingrese su contraseña: ")
-    db.verificar_credenciales(email, contraseña)
-
-def menu(db: Database):
-    while True:
-        print("\nMenú:")
-        print("1. Registrar usuario")
-        print("2. Iniciar sesión")
-        print("3. Salir")
-        
-        opcion = input("Seleccione una opción: ")
-        
-        if opcion == "1":
-            registrar_usuario(db)
-        elif opcion == "2":
-            iniciar_sesion(db)
-        elif opcion == "3":
-            print("Saliendo...")
-            db.close()
-            break
-        else:
-            print("Opción no válida. Intente nuevamente.")
-
-# Configuración de la base de datos y ejecución del menú
-db = Database()
-db.connect()
-menu(db)
-

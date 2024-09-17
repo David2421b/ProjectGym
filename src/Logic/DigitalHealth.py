@@ -3,6 +3,7 @@ import ollama
 from dataclasses import dataclass
 from datetime import datetime
 import mysql.connector
+import console
 
 
 class Usuario:
@@ -19,7 +20,6 @@ class Usuario:
         self.seleccion = seleccion
     
     def solicitar_datos_usuario(self, peso: float, altura: float, temperatura_corporal: float):
-        print("Por favor, ingrese los siguientes datos generales:")
         self.datos_usuario['peso'] = peso
         self.datos_usuario['altura'] = altura
         self.datos_usuario['temperatura_corporal'] = temperatura_corporal
@@ -127,12 +127,8 @@ class Ollama:
 
 #------------------------------------------------------Arranque de la aplicacion---------------------------------------------------------#
 
-print("Bienvenido a nuestro Gym Virtual\n\n")
-
 # pruebas del chat con ollama
 
-Mensaje = input("\n Si desea salir del chat solo escriba 'Salir' \n Cual es tu pregunta: ")
-print(Ollama.chat(Mensaje))
 
 
 
