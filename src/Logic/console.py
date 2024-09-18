@@ -1,12 +1,12 @@
 from DataBase import Database
-from DigitalHealth import Usuario
 import time
-from DigitalHealth import Chat_Ollama
+from DigitalHealth import Usuario, Chat_Ollama, Estadistica 
+
 
 def menu(db):
 
     print("\n Bienvenido a la aplicación de DigitalHealth!")
-    time.sleep(2.5)
+    time.sleep(2)
 
     while True:
         print("\n--- MENÚ ---")
@@ -36,27 +36,35 @@ def registrar_usuario(db):
     usuario = Usuario(nombre, edad, email, contraseña, genero)
     db.registrar_usuario(usuario)
 
+
+
 def iniciar_sesion(db):
     email = input("Email: ")
     contraseña = input("Contraseña: ")
+
+    exito, usuario = db.verificar_credenciales(email, contraseña)
     
-    if iniciar_sesion:
-        consul_Chat = input("¿Desea chatear con un META IA? (S/N): ")
-        
-        if consul_Chat == 'S' or consul_Chat == 's':
+    if exito:
+        print(f"Bienvenido/a, {usuario[1]}!")
+        consul_Chat = input("""Bienvenido a la aplicacion de DigitalHealth \n
+                                si deseas chatear con un META IA escribe "1"
+                                si deseas conocer tu IMC, TMB y FCM escribe "2": """)
+
+        if consul_Chat == '1':
             print("Chat iniciado")
             time.sleep(1)
             mensaje = input("Cual es tu pregunta: ")
             print(Chat_Ollama.chat(mensaje))
         
-        else:
-            print("Chat no iniciado")
+        elif consul_Chat == '2':
+            peso = float(input("Ingresa tu peso en Kg: "))
+            altura = float(input("Ingresa tu altura en Mts: "))
+            
+            print("Calculando...\n")
             time.sleep(1)
-
-    
-    exito, usuario = db.verificar_credenciales(email, contraseña)
-    if exito:
-        print(f"Bienvenido/a, {usuario[1]}!")
+            print(f"{Estadistica.calcular_imc(peso, altura)} \n")
+            print(f"{Estadistica.calcular_tmb(usuario.genero, usuario.edad, peso, altura)} \n")
+            print(f"{Estadistica.calcular_fcm(usuario.edad)} \n")
     else:
         print("Error: credenciales incorrectas.")
 

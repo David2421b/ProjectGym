@@ -47,51 +47,47 @@ class Notificacion:
 
 
 class Estadistica:
-
-    def __init__(self, peso: float, altura: float):
-        self.peso:float = peso
-        self.altura: float = altura
-        self.IMC: float = 0
-        self.bienestar: str = ""
-        self.tmb: float = 0
     
-    def calcular_imc(self):
-        if self.altura >= 0:
-            self.IMC = self.peso / (self.altura ** 2)
+    def calcular_imc(peso: float, altura: float):
 
-            if self.IMC < 18.5:
-                self.bienestar = "Te encuentras en Infrapeso"
-            
-            elif 18.5 <= self.IMC <= 24.9:
-                self.bienestar = "Tu peso es Normal,¡Sigue asi!"
-            
-            elif 25 <= self.IMC <= 34.9:
-                self.bienestar = "Tienes Obesidad I, ¡Cuidado!"
-            
-            elif 35 <= self.IMC <= 39.9:
-                self.bienestar = "Tienes Obesidad II, ¡Cuidado!"
+        if altura >= 0:
+            IMC = peso / (altura ** 2)
 
-            elif self.IMC >= 40:
-                self.bienestar = "Tienes Obesidad III, ¡Cuidado, visita un medico de confianza!"
+            if IMC < 18.5:
+                bienestar = "Te encuentras en Infrapeso"
+            
+            elif 18.5 <= IMC <= 24.9:
+                bienestar = "Tu peso es Normal,¡Sigue asi!"
+            
+            elif 25 <= IMC <= 34.9:
+                bienestar = "Tienes Obesidad I, ¡Cuidado!"
+            
+            elif 35 <= IMC <= 39.9:
+                bienestar = "Tienes Obesidad II, ¡Cuidado!"
 
-    def calcular_tmb(self):
-        if Usuario.genero == 'Masculino' or Usuario.genero == 'masculino' or Usuario.genero == 'M' or Usuario.genero == 'm':
-            self.tmb = 88.362 + (13.397 * self.peso) + (4.799 * self.altura) - (5.677 * Usuario.edad)
+            elif IMC >= 40:
+                bienestar = "Tienes Obesidad III, ¡Cuidado, visita un medico de confianza!"
+
+        return f"Tu IMC es {IMC} y {bienestar}"
+
+    def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
+        if genero == 'Masculino' or genero == 'masculino' or genero == 'M' or genero == 'm':
+            tmb = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * edad)
         
-        elif Usuario.genero == 'Femenino' or Usuario.genero == 'femenino' or Usuario.genero == 'F' or Usuario.genero == 'f':
-            self.tmb = 447.593 + (9.247 * self.peso) + (3.098 * self.altura) - (4.330 * Usuario.edad)
+        elif genero == 'Femenino' or genero == 'femenino' or genero == 'F' or genero == 'f':
+            tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad)
         
         else:
             raise ValueError("El genero debe ser hombre o mujer")
         
-    def calcular_fcm(self):
-        self.fcm = 220 - Usuario.edad     
+        return f"Tu TMB es {tmb}"
+        
+    def calcular_fcm(edad: int):
+        fcm = 220 - edad     
+        return f"Tu FCM es {fcm}"
     
 
-    def __str__(self) -> str: 
-        return f"""Tu IMC es {self.IMC} y {self.bienestar} \n
-                   Tu TMB es {self.tmb} \n
-                   Tu FCM es {self.fcm} \n"""
+
 @dataclass
 class Chat_Ollama:
     def chat(mensaje):
