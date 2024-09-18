@@ -71,7 +71,7 @@ class Estadistica:
             elif imc >= 40:
                 bienestar = "Tienes Obesidad III, ¡Cuidado, deberias visitar a tu medico de confianza!"
 
-        return f"Tu IMC es {imc} y {bienestar}"
+        return f"Tu IMC es: {imc} y {bienestar}"
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
         if genero == 'Masculino' or genero == 'masculino' or genero == 'M' or genero == 'm':
@@ -83,11 +83,11 @@ class Estadistica:
         else:
             raise ValueError("El genero debe ser hombre o mujer")
         
-        return f"Tu TMB es {tmb}"
+        return f"Tu TMB es: {tmb}"
         
     def calcular_fcm(edad: int):
         fcm = 220 - edad     
-        return f"Tu FCM es {fcm}"
+        return f"Tu FCM es: {fcm}"
     
 
 @dataclass

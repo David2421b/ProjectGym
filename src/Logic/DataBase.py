@@ -13,6 +13,7 @@ class Database:
             self.conexion = sqlite3.connect(self.db_name)
             print(f"Conexión exitosa a la base de datos en: {self.db_name}")
             self.crear_tabla_usuarios()
+
         except sqlite3.Error as err:
             print(f"\n Error de conexión: {err}")
             self.conexion = None
@@ -45,8 +46,10 @@ class Database:
                 ''', (usuario.nombre, usuario.edad, usuario.email, usuario.contraseña, usuario.genero))
                 self.conexion.commit()
                 print("Usuario registrado correctamente.")
+
             except sqlite3.Error as error:
                 print(f"Error al registrar usuario: {error}")
+                
             finally:
                 cursor.close()
 
