@@ -26,7 +26,7 @@ class Ejercicio:
     
     def __init__(self, tipo: str, repeticiones: int, series: int, descanso: int, id_ejercicio: str):
         self.tipo: str = tipo
-        self.repeticiones: int = repeticiones
+        self.repeticiones_por_serie: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
         self.id_ejercicio: str = id_ejercicio
@@ -47,28 +47,31 @@ class Notificacion:
 
 
 class Estadistica:
+    imc: int = 0
+    tmb: int = 0    
+    fcm: int = 0
     
     def calcular_imc(peso: float, altura: float):
 
         if altura >= 0:
-            IMC = peso / (altura ** 2)
+            imc = peso / (altura ** 2)
 
-            if IMC < 18.5:
+            if imc < 18.5:
                 bienestar = "Te encuentras en Infrapeso"
             
-            elif 18.5 <= IMC <= 24.9:
+            elif 18.5 <= imc <= 24.9:
                 bienestar = "Tu peso es Normal, ¡Sigue asi!"
             
-            elif 25 <= IMC <= 34.9:
+            elif 25 <= imc <= 34.9:
                 bienestar = "Tienes Obesidad I, ¡Cuidado!"
             
-            elif 35 <= IMC <= 39.9:
+            elif 35 <= imc <= 39.9:
                 bienestar = "Tienes Obesidad II, ¡Cuidado!"
 
-            elif IMC >= 40:
+            elif imc >= 40:
                 bienestar = "Tienes Obesidad III, ¡Cuidado, deberias visitar a tu medico de confianza!"
 
-        return f"Tu IMC es {IMC} y {bienestar}"
+        return f"Tu IMC es {imc} y {bienestar}"
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
         if genero == 'Masculino' or genero == 'masculino' or genero == 'M' or genero == 'm':
