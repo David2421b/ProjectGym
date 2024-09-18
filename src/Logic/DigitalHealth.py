@@ -57,7 +57,7 @@ class Estadistica:
                 bienestar = "Te encuentras en Infrapeso"
             
             elif 18.5 <= IMC <= 24.9:
-                bienestar = "Tu peso es Normal,¡Sigue asi!"
+                bienestar = "Tu peso es Normal, ¡Sigue asi!"
             
             elif 25 <= IMC <= 34.9:
                 bienestar = "Tienes Obesidad I, ¡Cuidado!"
@@ -66,7 +66,7 @@ class Estadistica:
                 bienestar = "Tienes Obesidad II, ¡Cuidado!"
 
             elif IMC >= 40:
-                bienestar = "Tienes Obesidad III, ¡Cuidado, visita un medico de confianza!"
+                bienestar = "Tienes Obesidad III, ¡Cuidado, deberias visitar a tu medico de confianza!"
 
         return f"Tu IMC es {IMC} y {bienestar}"
 

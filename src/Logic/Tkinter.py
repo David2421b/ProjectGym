@@ -1,5 +1,4 @@
 import tkinter as tk
-from DigitalHealth import Chat_Ollama
 
 
 class Interfaz:
@@ -17,23 +16,23 @@ class Interfaz_1(Interfaz):
 
     def crea_widget_1(self):
         self.bienvenida = tk.Label(self.ventana, text = "Bienvenido al chat de Meta!!!", background = "gray", font = ("Arial", 25))
-        self.bienvenida.grid()
+        self.bienvenida.pack(fill=tk.X)
 
         # frame para los botones
         self.frame_botones = tk.Frame(self.ventana)
-        self.frame_botones.grid()
+        self.frame_botones.pack()
 
         # salir de la aplicacion
         self.btn_salir = tk.Button(self.frame_botones, text = "Salir", padx = 30, pady = 5, command = self.ventana.destroy)
-        self.btn_salir.grid()
+        self.btn_salir.pack(side = tk.LEFT)
 
         # entrada de texto
         self.entrada = tk.Entry(self.ventana, width = 50)
-        self.entrada.grid()
+        self.entrada.pack()
 
         # boton para actvar el chat
         self.btn_ollama = tk.Button(self.frame_botones, text = "Ollama", padx = 30, pady = 5, command = self.activar_chat)
-        self.btn_ollama.grid()
+        self.btn_ollama.pack(side = tk.RIGHT)
 
         # boton para cambiar de interfaz
         self.btn_interfaz2 = tk.Button(text = "Interfaz 2", padx = 30, pady = 5, command = self.segunda_ventana)
@@ -41,7 +40,7 @@ class Interfaz_1(Interfaz):
 
     def activar_chat(self):
         self.mensaje = self.entrada.get()
-        print(Chat_Ollama.chat(self.mensaje))
+        print(Ollama.chat(self.mensaje))
 
     def segunda_ventana(self):
         self.ventana.destroy()
@@ -57,12 +56,14 @@ class Interfaz_2(Interfaz):
         self.crear_widgets_2()
 
     def crear_widgets_2(self):
+        self.frame_botones = tk.Frame(self.ventana)
+        self.frame_botones.pack()
 
-        self.btn_salir = tk.Button(text = "Salir", padx = 30, pady = 5, command = self.ventana.destroy)
-        self.btn_salir.grid(row = 90, column = 0)
+        self.btn_salir = tk.Button(self.frame_botones, text = "Salir", padx = 30, pady = 5, command = self.ventana.destroy)
+        self.btn_salir.pack()
 
-        self.btn_interfaz1 = tk.Button(text = "Volver al Inicio", padx = 30, pady = 5, command = self.primera_ventana)
-        self.btn_interfaz1.grid(row = 0, column = 1)
+        self.btn_interfaz1 = tk.Button(self.frame_botones, text = "Volver al Inicio", padx = 35, pady = 10, command = self.primera_ventana)
+        self.btn_interfaz1.pack()
 
     def primera_ventana(self):
         self.ventana.destroy()
@@ -70,7 +71,6 @@ class Interfaz_2(Interfaz):
 
 def main_1():           #Esta funcion inicia la ventana principal
     ventana_1 = tk.Tk()
-    ventana_1.configure(background = "blue")
     app_1 = Interfaz_1(ventana_1)
     ventana_1.mainloop()
 

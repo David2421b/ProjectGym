@@ -6,7 +6,7 @@ from DigitalHealth import Usuario, Chat_Ollama, Estadistica
 def menu(db):
 
     print("\n Bienvenido a la aplicación de DigitalHealth!")
-    time.sleep(2)
+    time.sleep(0.8)
 
     while True:
         print("\n-------------- MENÚ -------------- \n")
@@ -52,7 +52,7 @@ def iniciar_sesion(db):
 
         if consul_Chat == '1':
             print("Chat iniciado")
-            time.sleep(1)
+            time.sleep(0.8)
             mensaje = input("Cual es tu pregunta: ")        
             print(Chat_Ollama.chat(mensaje))
         
