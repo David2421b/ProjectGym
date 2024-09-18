@@ -9,10 +9,10 @@ def menu(db):
     time.sleep(2)
 
     while True:
-        print("\n--- MENÚ ---")
+        print("\n-------------- MENÚ -------------- \n")
         print("1. Registrar nuevo usuario")
         print("2. Iniciar sesión")
-        print("3. Salir")
+        print("3. Salir \n")
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":

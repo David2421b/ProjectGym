@@ -87,7 +87,6 @@ class Estadistica:
         return f"Tu FCM es {fcm}"
     
 
-
 @dataclass
 class Chat_Ollama:
     def chat(mensaje):
@@ -98,14 +97,3 @@ class Chat_Ollama:
             response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)               
             return response['response']
     
-
-#------------------------------------------------------Arranque de la aplicacion---------------------------------------------------------#
-
-# pruebas del chat con ollama
-
-
-
-
-# fin de pruebas del chat con ollama
-
-# Consultar la posibilidad de que el ususario elija el sexo mediante un numero y que el programa lo convierta en el nombre correspondiente

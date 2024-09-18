@@ -1,6 +1,5 @@
 import sqlite3
 import os
-from DigitalHealth import Usuario
 
 class Database:
     def __init__(self, db_name='digitalhealth.db'):
