@@ -1,7 +1,12 @@
 from DataBase import Database
 from DigitalHealth import Usuario
+import time
 
 def menu(db):
+
+    print("\n Bienvenido a la aplicación de DigitalHealth!")
+    time.sleep(2.5)
+
     while True:
         print("\n--- MENÚ ---")
         print("1. Registrar nuevo usuario")
