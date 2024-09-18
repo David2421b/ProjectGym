@@ -92,7 +92,8 @@ class Estadistica:
 
 @dataclass
 class Chat_Ollama:
-    def chat(mensaje):
+    
+    def chat(mensaje: str):
         if mensaje == 'salir':
             response = "has salido del chat, hasta la proxima"
             return response
