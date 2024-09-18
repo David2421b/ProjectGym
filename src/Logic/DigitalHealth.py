@@ -12,20 +12,7 @@ class Usuario:
         self.email: str = email
         self.contraseña: str = contraseña
         self.genero: str = genero
-    
-    def arranque_app(self, seleccion):
-        self.seleccion = seleccion
-    
-    def solicitar_datos_usuario(self, peso: float, altura: float, temperatura_corporal: float):
-        self.datos_usuario['peso'] = peso
-        self.datos_usuario['altura'] = altura
-        self.datos_usuario['temperatura_corporal'] = temperatura_corporal
-        
-    def registrarse(self):
-        pass
-     
-    def iniciar_sesion(self):
-        pass
+
 
 class Rutinas:
 
@@ -33,7 +20,8 @@ class Rutinas:
         self.list_ejercicios: list = list_ejercicios
         self.nombre_rutina: str = nombre_rutina
         self.frecuencia_semana: int = frecuencia_semana
-       
+
+
 class Ejercicio:
     
     def __init__(self, tipo: str, repeticiones: int, series: int, descanso: int, id_ejercicio: str):
@@ -48,17 +36,7 @@ class Ejercicio:
 
     def eliminar_ejericio(self, nombre: str, id_ejercicio: str):
         pass
-
-
-class Historial_medico:
-
-    def __init__(self, fecha: datetime, peso: float, altura: float, presion_arterial: float, frecuencia_cardiaca: float):
-        self.fecha: datetime = fecha
-        self.peso:float = peso
-        self.altura: float = altura
-        self.presion_arterial: float = presion_arterial
-        self.frecuencia_cardiaca: float = frecuencia_cardiaca
-
+   
 
 class Notificacion:
 
@@ -69,6 +47,13 @@ class Notificacion:
 
 
 class Estadistica:
+
+    def __init__(self, peso: float, altura: float):
+        self.peso:float = peso
+        self.altura: float = altura
+        self.IMC: float = 0
+        self.bienestar: str = ""
+        self.tmb: float = 0
     
     def calcular_imc(self):
         if Historial_medico.altura >= 0:

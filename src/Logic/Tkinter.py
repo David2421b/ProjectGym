@@ -82,12 +82,3 @@ def main_2():           #Esta funcion inicia la ventana secundaria
 
 
 main_1()
-
-
-def chat(mens_usuario):
-        if mens_usuario == 'salir':
-            respuesta = "has salido del chat, hasta la proxima"
-            return respuesta
-        else:
-            respuesta = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)               
-            return respuesta['response']

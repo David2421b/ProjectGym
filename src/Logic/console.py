@@ -39,6 +39,7 @@ def registrar_usuario(db):
 def iniciar_sesion(db):
     email = input("Email: ")
     contraseña = input("Contraseña: ")
+    
     if iniciar_sesion:
         consul_Chat = input("¿Desea chatear con un META IA? (S/N): ")
         
