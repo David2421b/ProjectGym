@@ -1,6 +1,7 @@
 from DataBase import Database
 from DigitalHealth import Usuario
 import time
+from DigitalHealth import Chat_Ollama
 
 def menu(db):
 
@@ -38,6 +39,19 @@ def registrar_usuario(db):
 def iniciar_sesion(db):
     email = input("Email: ")
     contraseña = input("Contraseña: ")
+    if iniciar_sesion:
+        consul_Chat = input("¿Desea chatear con un META IA? (S/N): ")
+        
+        if consul_Chat == 'S' or consul_Chat == 's':
+            print("Chat iniciado")
+            time.sleep(1)
+            mensaje = input("Cual es tu pregunta: ")
+            print(Chat_Ollama.chat(mensaje))
+        
+        else:
+            print("Chat no iniciado")
+            time.sleep(1)
+
     
     exito, usuario = db.verificar_credenciales(email, contraseña)
     if exito:

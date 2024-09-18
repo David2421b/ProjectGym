@@ -15,7 +15,7 @@ class Database:
             print(f"Conexión exitosa a la base de datos en: {self.db_name}")
             self.crear_tabla_usuarios()
         except sqlite3.Error as err:
-            print(f"Error de conexión: {err}")
+            print(f"\n Error de conexión: {err}")
             self.conexion = None
 
     def crear_tabla_usuarios(self):
@@ -33,9 +33,8 @@ class Database:
             ''')
             self.conexion.commit()
             cursor.close()
-            print("Tabla 'usuarios' creada correctamente o ya existía.")
         else:
-            print("No se pudo crear la tabla. No hay conexión con la base de datos.")
+            print("\n No se pudo crear la tabla. No hay conexión con la base de datos.")
 
     def registrar_usuario(self, usuario):
         if self.conexion:
