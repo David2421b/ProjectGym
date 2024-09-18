@@ -56,8 +56,8 @@ class Estadistica:
         self.tmb: float = 0
     
     def calcular_imc(self):
-        if Historial_medico.altura >= 0:
-            self.IMC = Historial_medico.peso / (Historial_medico.altura ** 2)
+        if self.altura >= 0:
+            self.IMC = self.peso / (self.altura ** 2)
 
             if self.IMC < 18.5:
                 self.bienestar = "Te encuentras en Infrapeso"
@@ -76,10 +76,10 @@ class Estadistica:
 
     def calcular_tmb(self):
         if Usuario.genero == 'Masculino' or Usuario.genero == 'masculino' or Usuario.genero == 'M' or Usuario.genero == 'm':
-            self.tmb = 88.362 + (13.397 * Historial_medico.peso) + (4.799 * Historial_medico.altura) - (5.677 * Usuario.edad)
+            self.tmb = 88.362 + (13.397 * self.peso) + (4.799 * self.altura) - (5.677 * Usuario.edad)
         
         elif Usuario.genero == 'Femenino' or Usuario.genero == 'femenino' or Usuario.genero == 'F' or Usuario.genero == 'f':
-            self.tmb = 447.593 + (9.247 * Historial_medico.peso) + (3.098 * Historial_medico.altura) - (4.330 * Usuario.edad)
+            self.tmb = 447.593 + (9.247 * self.peso) + (3.098 * self.altura) - (4.330 * Usuario.edad)
         
         else:
             raise ValueError("El genero debe ser hombre o mujer")
