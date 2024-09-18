@@ -59,6 +59,8 @@ def iniciar_sesion(db):
         elif consul_Chat == '2':
             peso = float(input("Ingresa tu peso en Kg: "))
             altura = float(input("Ingresa tu altura en Mts: "))
+            genero = usuario[5]
+            edad = usuario[2]
             
             print("Calculando...\n")
             time.sleep(1)
