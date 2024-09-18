@@ -43,7 +43,7 @@ def iniciar_sesion(db):
     contraseña = input("Contraseña: ")
 
     exito, usuario = db.verificar_credenciales(email, contraseña)
-    
+
     if exito:
         print(f"Bienvenido/a, {usuario[1]}!")
         consul_Chat = input("""Bienvenido a la aplicacion de DigitalHealth \n
@@ -53,7 +53,7 @@ def iniciar_sesion(db):
         if consul_Chat == '1':
             print("Chat iniciado")
             time.sleep(1)
-            mensaje = input("Cual es tu pregunta: ")
+            mensaje = input("Cual es tu pregunta: ")        
             print(Chat_Ollama.chat(mensaje))
         
         elif consul_Chat == '2':
@@ -63,8 +63,8 @@ def iniciar_sesion(db):
             print("Calculando...\n")
             time.sleep(1)
             print(f"{Estadistica.calcular_imc(peso, altura)} \n")
-            print(f"{Estadistica.calcular_tmb(usuario.genero, usuario.edad, peso, altura)} \n")
-            print(f"{Estadistica.calcular_fcm(usuario.edad)} \n")
+            print(f"{Estadistica.calcular_tmb(genero, edad, peso, altura)} \n")
+            print(f"{Estadistica.calcular_fcm(edad)} \n")
     else:
         print("Error: credenciales incorrectas.")
 
