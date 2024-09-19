@@ -71,6 +71,7 @@ La implementación de la base de datos en el sistema de gestión de un gimnasio 
 
 ### Modelo de clases
 ![texto alternativo](sources/UML.jpg)
+
 [Link de draw.io](https://acortar.link/HoLAOe)
 
 ### Casos de uso
