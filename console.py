@@ -53,8 +53,10 @@ def iniciar_sesion(db):
         if consul_Chat == '1':
             print("Chat iniciado")
             time.sleep(0.8)
-            mensaje = input("Cual es tu pregunta: ")        
-            print(Chat_Ollama.chat(mensaje))
+            mensaje = input("Cual es tu pregunta: ")
+            while mensaje != "salir" or "Salir":
+                print(Chat_Ollama.chat(mensaje))
+                mensaje = input("Cual es tu pregunta: ")
         
         elif consul_Chat == '2':
             peso = float(input("Ingresa tu peso en Kg: "))
