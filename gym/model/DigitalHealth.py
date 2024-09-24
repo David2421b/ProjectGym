@@ -2,6 +2,7 @@
 import ollama
 from dataclasses import dataclass
 from datetime import datetime
+from typing import ClassVar
 
 class Usuario:
     
@@ -45,11 +46,11 @@ class Notificacion:
         self.mensaje: str = mensaje
         self.fecha_hora: datetime = fecha_hora
 
-
+@dataclass
 class Estadistica:
-    imc: int = 0
-    tmb: int = 0    
-    fcm: int = 0
+    imc: ClassVar[int] = 0
+    tmb: ClassVar[int] = 0    
+    fcm: ClassVar[int] = 0
     
     def calcular_imc(peso: float, altura: float):
 
