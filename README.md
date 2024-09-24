@@ -70,7 +70,7 @@ La implementación de la base de datos en el sistema de gestión de un gimnasio 
 - **mensaje:** Almacena la pregunta para la IA.
 
 ### Modelo de clases
-![texto alternativo](sources/UML.jpg)
+![texto alternativo](sources/Interfaz//UML.jpg)
 
 [Link de draw.io](https://acortar.link/HoLAOe)
 
@@ -111,7 +111,7 @@ La implementación de la base de datos en el sistema de gestión de un gimnasio 
   - **Solicitar datos de sesión al usuario:** `def iniciar_sesion(db)` - **Usuario**
   - **Verificar que las credenciales sean iguales a las del registro:** `def verificar_credenciales(self, email, contraseña)` - **Database**
 
-  ![textalternative](sources/Interfaz1.png)
+  ![textalternative](sources//Interfaz/Interfaz1.png)
   ---
 
 #### Nombre: Crear rutina y editar rutina
@@ -133,7 +133,7 @@ La implementación de la base de datos en el sistema de gestión de un gimnasio 
   - **Editar rutina:** `editar_rutina()` - **Rutinas**
   - **Eliminar rutina:** `eliminar_rutina()` - **Rutinas**
 
-  ![textalternative](sources/Interfaz2.png)
+  ![textalternative](sources//Interfaz/Interfaz2.png)
   ---
 
 #### Nombre: Agregar y editar ejercicios
@@ -154,7 +154,7 @@ La implementación de la base de datos en el sistema de gestión de un gimnasio 
   - **Crear ejercicio:** `__init__(self, tipo: str, repeticiones_por_serie: int, series: int, descanso_entre_series: int, id_ejercicio: int)` - **Ejercicio**
   - **Editar ejercicio:** `editar_ejercicio()` - **Ejercicio**
 
-  ![textalternative](sources/Interfaz3.png)
+  ![textalternative](sources//Interfaz/Interfaz3.png)
 ---
   ### Enviar notificaciones al usuario
 - **Resumen**: El sistema enviará notificaciones al usuario de forma programada sobre la realización de diversas tareas.
@@ -174,7 +174,7 @@ La implementación de la base de datos en el sistema de gestión de un gimnasio 
   - **Almacenar la notificación en la lista de notificaciones del usuario:** `agregar_notificacion_a_lista(notificacion: Notificacion)` - **Usuario**
   - **Enviar la notificación según la programación:** `enviar_notificacion(notificacion: Notificacion)` - **Notificación**
 
-![textalternative](sources/Interfaz4.png)
+![textalternative](sources//Interfaz/Interfaz4.png)
 ---
 
 Nombre: Calcular estadísticas del usuario
@@ -197,7 +197,7 @@ Nombre: Calcular estadísticas del usuario
   - **Calcular el FCM:** `calcular_fcm(edad: int)` - **Estadística**
   - **Guardar estadísticas:** `guardar_estadisticas()` - **Estadística**
 
-  ![textalternative](sources/Interfaz5.png)
+  ![textalternative](sources//Interfaz/Interfaz5.png)
 
 ---
 
@@ -214,7 +214,7 @@ Nombre: Hablar con Meta IA
   - Pasos: Métodos: Responsable
   - **Ingresar pregunta a la IA:** `chat()` - **Usuario**
 
-  ![textalternative](sources/Interfaz6.png)
+  ![textalternative](sources//Interfaz/Interfaz6.png)
 
 
 ## Conclusión
