@@ -19,8 +19,11 @@ class Interfaz_inicio:
                 ui.label("opción '1' para Registrar nuevo usuario")
                 ui.label("opción '2' para Iniciar sesión")
                 ui.label("opción '3' para Salir \n")
-                opcion = ui.input("Selecciona una opción: ")
+                self.inp_opcion = ui.input("Selecciona una opción: ")
+                ui.button("Enviar", on_click = self.procesar_opcion)
 
+    def procesar_opcion(self):
+        opcion = self.inp_opcion.value
         if opcion == "1":
                 self.registrar_usuario() #habia un db en los parentesis
         elif opcion == "2":
@@ -31,7 +34,7 @@ class Interfaz_inicio:
         else:
             print("Opción no válida, intenta de nuevo.")
     
-    def registrar_usuario(d):  #habia un db en los parentesis
+    def registrar_usuario():  #habia un db en los parentesis
         pass
 
     def iniciar_sesion():  #habia un db en los parentesis
