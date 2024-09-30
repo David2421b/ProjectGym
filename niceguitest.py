@@ -54,14 +54,15 @@ class Interfaz_registro:
 
 @dataclass
 class Interfaz_chat:
-
-    def chat(self):
-        mensaje = ui.input("Cual es tu pregunta: ")
-        ui.button("Enviar", on_click = lambda: self.enviar(mensaje.value))
+    with ui.row():
+        def chat(self):
+            mensaje = ui.input("Cual es tu pregunta: ")
+            ui.button("Enviar", on_click = lambda: self.enviar(mensaje.value))
     
     def enviar(self, mensaje):
         respuesta = Chat_Ollama.chat(mensaje)
         ui.label(respuesta)
+        
 
 
 
