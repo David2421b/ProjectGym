@@ -10,8 +10,7 @@ class Myapp:
     @ui.page('/')
     def home():
         Interfaz_inicio().menu()
-            
-            
+                   
     @ui.page('/registro')
     def registro():
         Interfaz_registro().registrar_usuario()
@@ -29,14 +28,15 @@ class Interfaz_inicio:
     inp_opcion: ui.input = None
 
     def menu(self):
-        with ui.column().style("display:flex; flex-direction: column; align-items: center;"):
-                ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: green; text-align: center;")
-                ui.label("------------------------------------------- MENÚ -------------------------------------------"). style("font-size: 20px; text-align: center; margin-top: 20px; margin-bottom: 20px;")
-                with ui.row():
-                    ui.button("Registrar nuevo usuario", on_click = lambda: ui.navigate.to(Myapp.registro)).style("margin-right: 20px;")
-                    ui.button("Iniciar Sesion", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
-                    ui.button("Chat", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
-                    ui.button("Salir", on_click = lambda: print("Saliendo del programa...")).style("margin-right: 20px;")
+        with ui.column().style("margin-left: 24%; margin-top: 2%"):
+            with ui.column().style("display:flex; flex-direction: column; align-items: center;"):
+                    ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: green; text-align: center;")
+                    ui.label("------------------------------------------- MENÚ -------------------------------------------"). style("font-size: 20px; text-align: center; margin-top: 20px; margin-bottom: 20px;")
+                    with ui.row():
+                        ui.button("Registrar nuevo usuario", on_click = lambda: ui.navigate.to(Myapp.registro)).style("margin-right: 20px;")
+                        ui.button("Iniciar Sesion", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
+                        ui.button("Chat", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
+                        ui.button("Salir", on_click = lambda: print("Saliendo del programa...")).style("margin-right: 20px;")
 
 
 @dataclass
@@ -63,8 +63,6 @@ class Interfaz_chat:
         respuesta = Chat_Ollama.chat(mensaje)
         ui.label(respuesta)
         
-
-
 
 app = Myapp()
 
