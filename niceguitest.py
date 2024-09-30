@@ -1,7 +1,25 @@
-from nicegui import ui
+from nicegui import *
 from GYM.model.DigitalHealth import *
 from dataclasses import dataclass
 from GYM.Logic.DataBase import Database
+
+@dataclass
+class Myapp:
+     
+     def create_routes(self):
+          
+        @ui.page('/')
+        def home(self):
+            Interfaz_inicio.menu()
+            
+            
+        @ui.page('/registro')
+        def registro(self):
+            Interfaz_registro.registrar_usuario()
+            
+        @ui.page('/chat')
+        def chat(self):
+            pass
 
 
 @dataclass
@@ -26,23 +44,23 @@ class Interfaz_inicio:
 
     def procesar_opcion(self):
         opcion = self.inp_opcion.value
+
         if opcion == "1":
-            interfaz_registro()
+            lambda: ui.open("/registro")
+
         elif opcion == "2":
-                #Interfaz_inicio.iniciar_sesion()   #habia un db en los parentesis
                 pass
+        
         elif opcion == "3":
             print("Saliendo del programa...")
             #db.close()
+
         else:
             print("Opción no válida, intenta de nuevo.")
 
 @dataclass
 class Interfaz_registro:
 
-    def __post_init__(self):
-        self.registrar_usuario()
-        
     def registrar_usuario(self):  #habia un db en los parentesis
         inp_name = ui.input("Nombre: ")
         inp_age = ui.input("Edad: ")
