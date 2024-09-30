@@ -31,7 +31,7 @@ class Interfaz_inicio:
         with ui.column().style("margin-left: 24%; margin-top: 2%"):
             with ui.column().style("display:flex; flex-direction: column; align-items: center;"):
                     ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: green; text-align: center;")
-                    ui.label("------------------------------------------- MENÚ -------------------------------------------"). style("font-size: 20px; text-align: center; margin-top: 20px; margin-bottom: 20px;")
+                    ui.label("------------------------------------------- MENÚ -------------------------------------------"). style("font-size: 20px; text-align: center;margin-top: 10px; margin-bottom: 20px;")
                     with ui.row():
                         ui.button("Registrar nuevo usuario", on_click = lambda: ui.navigate.to(Myapp.registro)).style("margin-right: 20px;")
                         ui.button("Iniciar Sesion", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
