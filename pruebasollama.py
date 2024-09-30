@@ -1,11 +1,10 @@
-from GYM.model.DigitalHealth import Usuario, Chat_Ollama, Estadistica
-import time
+from nicegui import ui
 
-print("Chat iniciado \n")
-time.sleep(0.8)
-print("Hola, soy Ollama, tu asistente de salud personal, cuando desees salir solo escribe 'salir' \n")
-time.sleep(0.4)
-mensaje = input("Cual es tu pregunta: ")
-while mensaje != "salir" or "Salir":
-    print(Chat_Ollama.chat(mensaje))
-    mensaje = input("Cual es tu pregunta: ")
+
+@ui.page('/redirect')
+def redirect():
+    ui.label("Redirecting...").style("font-size: 40px; color: green; text-align: center;")
+
+
+ui.button('REDIRECT', on_click=lambda: ui.open(redirect))
+ui.run()
