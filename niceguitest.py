@@ -3,11 +3,13 @@ from GYM.model.DigitalHealth import *
 from dataclasses import dataclass
 from GYM.Logic.DataBase import Database
 
+
 @dataclass
 class Interfaz_inicio:
     #db: ClassVar[Database] = Database()
     #db.conectar()
     #menu(db)
+    inp_opcion: ui.input = None
 
     def __post_init__(self):
          self.menu()
@@ -25,21 +27,33 @@ class Interfaz_inicio:
     def procesar_opcion(self):
         opcion = self.inp_opcion.value
         if opcion == "1":
-                self.registrar_usuario() #habia un db en los parentesis
+            interfaz_registro()
         elif opcion == "2":
-                self.iniciar_sesion() #habia un db en los parentesis
+                #Interfaz_inicio.iniciar_sesion()   #habia un db en los parentesis
+                pass
         elif opcion == "3":
             print("Saliendo del programa...")
             #db.close()
         else:
             print("Opción no válida, intenta de nuevo.")
-    
-    def registrar_usuario():  #habia un db en los parentesis
-        pass
 
-    def iniciar_sesion():  #habia un db en los parentesis
-        pass
+@dataclass
+class Interfaz_registro:
+
+    def __post_init__(self):
+        self.registrar_usuario()
+        
+    def registrar_usuario(self):  #habia un db en los parentesis
+        inp_name = ui.input("Nombre: ")
+        inp_age = ui.input("Edad: ")
+        inp_email = ui.input("Email: ")
+        inp_password = ui.input("Contraseña: ")
+        inp_gender = ui.input("Género: ")
 
 
-interfaz = Interfaz_inicio()
+def interfaz_registro():
+    interfaz_2 = Interfaz_registro()
+    ui.run()
+
+interfaz_1 = Interfaz_inicio()
 ui.run()
