@@ -1,10 +1,22 @@
-from nicegui import ui
+import sys
+import os
+
+from nicegui import *
+from dataclasses import dataclass
 
 
-@ui.page('/redirect')
-def redirect():
-    ui.label("Redirecting...").style("font-size: 40px; color: green; text-align: center;")
+from GYM.model.DigitalHealth import *
+from GYM.Logic.DataBase import Database
 
 
-ui.button('REDIRECT', on_click=lambda: ui.open(redirect))
+
+    
+mensaje = ui.input("Cual es tu pregunta: ").style("margin-bottom: 10px; width: 100%;")
+ui.button("Enviar", on_click = lambda: enviar(mensaje.value)).style("margin-bottom: 10px; width: 100%;")
+    
+def enviar(mensaje):
+    respuesta = Chat_Ollama.chat(mensaje)
+    ui.label(respuesta)
+
+
 ui.run()

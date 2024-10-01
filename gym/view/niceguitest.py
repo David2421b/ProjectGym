@@ -4,9 +4,10 @@ import os
 from nicegui import *
 from dataclasses import dataclass
 
+
 sys.path.append("GYM")
-from model.DigitalHealth import *
-from Logic.DataBase import Database
+from GYM.model.DigitalHealth import *
+from GYM.Logic.DataBase import Database
 
 
 @dataclass
@@ -23,6 +24,10 @@ class Myapp:
     @ui.page('/registro')
     def registro():
         Interfaz_registro().registrar_usuario()
+    
+    @ui.page('/funciones')
+    def funciones():
+        Interfaz_funciones().funciones()
             
     @ui.page('/chat')
     def chat():
@@ -34,7 +39,6 @@ class Interfaz_inicio:
     #db: ClassVar[Database] = Database()
     #db.conectar()
     #menu(db)
-    inp_opcion: ui.input = None
 
     def menu(self):
         ui.add_head_html("""
@@ -45,7 +49,7 @@ class Interfaz_inicio:
                          </style>""")
                       
         
-        with ui.column().style("margin-left: 24%; margin-top: 2%"):
+        with ui.column().style("margin: 0 auto; margin-top: 2%"):
             with ui.column().style("display:flex; flex-direction: column; align-items: center;"):
                     ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: #FF0000; text-align: center; margin-bottom: 20px;")
                     ui.button("Registrar nuevo usuario", color = '#FF6F20', on_click = lambda: ui.navigate.to(Myapp.registro)).style("margin-right: 20px;")
@@ -56,13 +60,14 @@ class Interfaz_inicio:
 class Interfaz_registro:
 
     def registrar_usuario(self):  #habia un db en los parentesis
-        inp_name = ui.input("Nombre: ")
-        inp_age = ui.input("Edad: ")
-        inp_email = ui.input("Email: ")
-        inp_password = ui.input("Contraseña: ")
-        inp_gender = ui.input("Género: ")
-        ui.button("Registrar", on_click = lambda: Database().registrar_usuario(Usuario(inp_name.value, inp_age.value, inp_email.value, inp_password.value, inp_gender.value)))
-        ui.button("Volver", on_click = lambda: ui.navigate.back())
+        with ui.card().style("width: 300px; margin: 0 auto; margin-top: 5%;"):
+            inp_name = ui.input("Nombre: ").style("margin-bottom: 10px; width: 100%;")
+            inp_age = ui.input("Edad: ").style("margin-bottom: 10px; width: 100%;")
+            inp_email = ui.input("Email: ").style("margin-bottom: 10px; width: 100%;")
+            inp_password = ui.input("Contraseña: ").style("margin-bottom: 10px; width: 100%;")
+            inp_gender = ui.input("Género: ").style("margin-bottom: 10px; width: 100%;")
+            ui.button("Registrar", on_click = lambda: Database().registrar_usuario(Usuario(inp_name.value, inp_age.value, inp_email.value, inp_password.value, inp_gender.value))).style("margin-bottom: 10px; width: 100%;")
+            ui.button("Volver", on_click = lambda: ui.navigate.back()).style("margin-bottom: 10px; width: 100%;")
 
 
 @dataclass
@@ -73,41 +78,45 @@ class Interfaz_inicio_sesion:
         ui.add_head_html("""
                     <style> 
                         body{
-                            background-image: url('https://mrwallpaper.com/images/hd/download-fitness-wallpaper-idil3ryz1gr63bcl.jpg');
+                            background-image: url("https://mrwallpaper.com/images/hd/download-fitness-wallpaper-idil3ryz1gr63bcl.jpg");
                             background-size: cover;
                             background-repeat: no-repeat;
                     </style>""")
 
         with ui.card().style("width: 300px; margin: 0 auto; margin-top: 10%;"):
-            ui.input("Email: ").style("margin-bottom: 10px; width: 100%;")
-            ui.input("Contraseña: ").style("margin-bottom: 10px; width: 100%;")
+            email_inp = ui.input("Email: ").style("margin-bottom: 10px; width: 100%;")
+            password_inp = ui.input("Contraseña: ").style("margin-bottom: 10px; width: 100%;")
             ui.button("Iniciar Sesion", on_click = self.submit).style("width: 100%; margin-bottom: 10px;")
     
     def submit(self):
-        print("Iniciando sesion...")
+        if True:
+            ui.navigate.to("/funciones")
 
 
 @dataclass
 class Interfaz_chat:
-    with ui.row():
-        def chat(self):
-            mensaje = ui.input("Cual es tu pregunta: ")
-            ui.button("Enviar", on_click = lambda: self.enviar(mensaje.value))
+    
+    def chat(self):
+        mensaje = ui.input("Cual es tu pregunta: ").style("margin-bottom: 10px; width: 100%;")
+        ui.button("Enviar", on_click = lambda: self.enviar(mensaje.value)).style("margin-bottom: 10px; width: 100%;")
     
     def enviar(self, mensaje):
         respuesta = Chat_Ollama.chat(mensaje)
         ui.label(respuesta)
 
 
+
 @dataclass
 class Interfaz_funciones:
         
     def funciones(self):
-        ui.button("Chat", color = '#FF6F20', on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
+        with ui.row().style("margin: 0 auto; margin-top: 2%;"): 
+            ui.button("Chat", color = '#FF6F20', on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
+            ui.button("Medidas", color = '#FF6F20', on_click = lambda: print("IMC")).style("margin-right: 20px;")
+        
         ui.button("Salir", color = '#FF6F20', on_click = lambda: print("Saliendo del programa...")).style("margin-right: 20px;")
 
         
 
 app = Myapp()
-
 ui.run()

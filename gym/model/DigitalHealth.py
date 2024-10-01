@@ -95,10 +95,5 @@ class Estadistica:
 class Chat_Ollama:
     
     def chat(mensaje: str):
-                
-        if mensaje == 'salir':
-            response = "has salido del chat, hasta la proxima"
-            return response
-        else:
-            response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
-            return response['response']
+        response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
+        return response['response']
