@@ -15,6 +15,10 @@ class Myapp:
     @ui.page('/')
     def home():
         Interfaz_inicio().menu()
+    
+    @ui.page('/inicio_sesion')
+    def inicio_sesion():
+        Interfaz_inicio_sesion().iniciar_sesion()
                    
     @ui.page('/registro')
     def registro():
@@ -36,20 +40,16 @@ class Interfaz_inicio:
         ui.add_head_html("""
                         <style> 
                             body{
-                                background-color: #B0B0B0;
+                                background-color: #2E2E2E;
                                 font-family: Arial, sans-serif;}
                          </style>""")
-                        
+                      
         
         with ui.column().style("margin-left: 24%; margin-top: 2%"):
             with ui.column().style("display:flex; flex-direction: column; align-items: center;"):
-                    ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: green; text-align: center;")
-                    ui.label("------------------------------------------- MENÚ -------------------------------------------"). style("font-size: 20px; text-align: center;margin-top: 10px; margin-bottom: 20px;")
-                    with ui.row():
-                        ui.button("Registrar nuevo usuario", on_click = lambda: ui.navigate.to(Myapp.registro)).style("margin-right: 20px;")
-                        ui.button("Iniciar Sesion", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
-                        ui.button("Chat", on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
-                        ui.button("Salir", on_click = lambda: print("Saliendo del programa...")).style("margin-right: 20px;")
+                    ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: #FF0000; text-align: center; margin-bottom: 20px;")
+                    ui.button("Registrar nuevo usuario", color = '#FF6F20', on_click = lambda: ui.navigate.to(Myapp.registro)).style("margin-right: 20px;")
+                    ui.button("Iniciar Sesion", color = '#FF6F20', on_click = lambda: ui.navigate.to("/inicio_sesion")).style("margin-right: 20px;")
 
 
 @dataclass
@@ -66,6 +66,28 @@ class Interfaz_registro:
 
 
 @dataclass
+class Interfaz_inicio_sesion:
+    
+    def iniciar_sesion(self):
+
+        ui.add_head_html("""
+                    <style> 
+                        body{
+                            background-image: url('https://mrwallpaper.com/images/hd/download-fitness-wallpaper-idil3ryz1gr63bcl.jpg');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                    </style>""")
+
+        with ui.card().style("width: 300px; margin: 0 auto; margin-top: 10%;"):
+            ui.input("Email: ").style("margin-bottom: 10px; width: 100%;")
+            ui.input("Contraseña: ").style("margin-bottom: 10px; width: 100%;")
+            ui.button("Iniciar Sesion", on_click = self.submit).style("width: 100%; margin-bottom: 10px;")
+    
+    def submit(self):
+        print("Iniciando sesion...")
+
+
+@dataclass
 class Interfaz_chat:
     with ui.row():
         def chat(self):
@@ -75,6 +97,15 @@ class Interfaz_chat:
     def enviar(self, mensaje):
         respuesta = Chat_Ollama.chat(mensaje)
         ui.label(respuesta)
+
+
+@dataclass
+class Interfaz_funciones:
+        
+    def funciones(self):
+        ui.button("Chat", color = '#FF6F20', on_click = lambda: ui.navigate.to("/chat")).style("margin-right: 20px;")
+        ui.button("Salir", color = '#FF6F20', on_click = lambda: print("Saliendo del programa...")).style("margin-right: 20px;")
+
         
 
 app = Myapp()
