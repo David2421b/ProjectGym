@@ -1,6 +1,9 @@
 import time
-from GYM.model.DigitalHealth import Usuario, Chat_Ollama, Estadistica
-from GYM.Logic.DataBase import Database
+import sys
+import os
+sys.path.append("GYM")
+from model.DigitalHealth import Usuario, Chat_Ollama, Estadistica
+from Logic.DataBase import Database
 
 
 def menu(db):

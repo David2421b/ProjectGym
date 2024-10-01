@@ -1,7 +1,12 @@
+import sys
+import os
+
 from nicegui import *
-from GYM.model.DigitalHealth import *
 from dataclasses import dataclass
-from GYM.Logic.DataBase import Database
+
+sys.path.append("GYM")
+from model.DigitalHealth import *
+from Logic.DataBase import Database
 
 
 @dataclass
@@ -28,6 +33,14 @@ class Interfaz_inicio:
     inp_opcion: ui.input = None
 
     def menu(self):
+        ui.add_head_html("""
+                        <style> 
+                            body{
+                                background-color: #B0B0B0;
+                                font-family: Arial, sans-serif;}
+                         </style>""")
+                        
+        
         with ui.column().style("margin-left: 24%; margin-top: 2%"):
             with ui.column().style("display:flex; flex-direction: column; align-items: center;"):
                     ui.label("Bienvenido a la aplicación de DigitalHealth").style("font-size: 40px; color: green; text-align: center;")
