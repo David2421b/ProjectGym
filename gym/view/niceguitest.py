@@ -2,12 +2,12 @@ import sys
 import os
 
 from nicegui import *
-from dataclasses import dataclass
+from dataclasses import *
 
 
 sys.path.append("GYM")
-from GYM.model.DigitalHealth import *
-from GYM.Logic.DataBase import Database
+from model.DigitalHealth import *
+from Logic.DataBase import *
 
 
 @dataclass
