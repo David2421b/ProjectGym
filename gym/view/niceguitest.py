@@ -4,10 +4,10 @@ import os
 from nicegui import *
 from dataclasses import *
 
-
 sys.path.append("GYM")
 from model.DigitalHealth import *
 from Logic.DataBase import *
+
 
 
 @dataclass
@@ -60,6 +60,16 @@ class Interfaz_inicio:
 class Interfaz_registro:
 
     def registrar_usuario(self):  #habia un db en los parentesis
+
+        ui.add_head_html("""
+                    <style>
+                        body{
+                            background-image: url("https://mrwallpaper.com/images/hd/download-fitness-wallpaper-idil3ryz1gr63bcl.jpg");
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                         
+                    </style>""")
+
         with ui.card().style("width: 300px; margin: 0 auto; margin-top: 5%;"):
             inp_name = ui.input("Nombre: ").style("margin-bottom: 10px; width: 100%;")
             inp_age = ui.input("Edad: ").style("margin-bottom: 10px; width: 100%;")
