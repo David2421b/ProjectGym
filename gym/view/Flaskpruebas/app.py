@@ -27,6 +27,12 @@ def login():
 
     return render_template('login.html')  # Si no es un POST, muestra el formulario
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        name = request.form['name']
+
 
 
 if __name__ == '__main__':

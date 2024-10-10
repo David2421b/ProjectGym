@@ -7,12 +7,12 @@ from typing import ClassVar
 class Usuario:
     
     def __init__(self, nombre: str, edad: int, email: str, contraseña: str, genero: str, id_persona: str = None):
-        self.id_persona: str = id_persona
         self.nombre: str = nombre
         self.edad: int = edad
         self.email: str = email
         self.contraseña: str = contraseña
         self.genero: str = genero
+        self.id_persona: str = id_persona
 
 
 class Rutinas:
