@@ -19,6 +19,10 @@ def home():
 def menu():
     return render_template("menu.html")
 
+@app.route('/singup')
+def signup():
+    return render_template("Registrarse.html")
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
