@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrarse</title>
 </head>
 <body>
-    
+    <h1>Registrate en el mejor GYM</h1>
+    <form method="post" action="/register">
+        <div class="SingUp">
+            <input type="text" name="Name" id="Name" placeholder="Nombre" required>
+            <input type="text" name="Age" id="Age" placeholder="Nombre" required>
+            <input type="email" name="Email" id="Email" placeholder="Email" required>
+            <input type="password" name="Password" id="Password" placeholder="Contraseña" required>
+            <select name="Gender" id="Gender">
+                <option value="">Seleccionar</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+            </select>
+        </div>        
+    </form>
 </body>
 </html>
