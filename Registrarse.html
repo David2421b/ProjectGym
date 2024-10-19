@@ -4,20 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
+
+    <style>
+        body{
+            background-image: url("https://www.shutterstock.com/image-photo/crossfit-equipment-on-floor-gym-600nw-756989800.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1{
+            text-align: center;
+            color: black;
+            color: white;
+        }
+
+        #Block{
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            margin: 3% 35% 0% 35%;
+        }
+
+        .SingUp{
+            margin: 5% 0% 5% 0%;
+            }
+
+        .SingUp input{
+            margin: 4% 0% 4% 0%;
+            font-size: 20px;
+            border-radius: 10px;
+            height: 40px;
+            width: 300px;
+        }
+
+        .SingUp select{
+            margin: 4% 0% 4% 0%;
+            font-size: 20px;
+            border-radius: 10px;
+            height: 40px;
+            width: 308px;
+            display: block;
+        }
+
+        .SingUp button{
+            margin: 1% 0% 4% 0%;
+            font-size: 30px;
+            border-radius: 10px;
+            height: 40px;
+            width: 308px;
+            background-color: #007BFF;
+            color: white;
+            display: block;
+        }
+    </style>
+
+
+    <script>
+
+    </script>
 </head>
 <body>
     <h1>Registrate en el mejor GYM</h1>
-    <form method="post" action="/register">
+    <form id="Block" method="post" action="/register">
         <div class="SingUp">
-            <input type="text" name="Name" id="Name" placeholder="Nombre" required>
-            <input type="text" name="Age" id="Age" placeholder="Nombre" required>
-            <input type="email" name="Email" id="Email" placeholder="Email" required>
-            <input type="password" name="Password" id="Password" placeholder="Contraseña" required>
-            <select name="Gender" id="Gender">
+            <input type="text" name="Name" id="Name" placeholder="Nombre" required><br>
+            <input type="number" name="Age" id="Age" placeholder="Edad" required><br>
+            <input type="email" name="Email" id="Email" placeholder="Email" required><br>
+            <input type="password" name="Password" id="Password" placeholder="Contraseña" required minlength="8" maxlength="15"><br>
+            <input type="text" name="Id" id="Id" placeholder="DNI" required><br>
+            <select name="Gender" id="Gender" required>
                 <option value="">Seleccionar</option>
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
-            </select>
+            </select><br>
+            <button type="submit">Registrarse</button>
         </div>        
     </form>
 </body>
