@@ -10,7 +10,8 @@
             background-image: url('GYm/view/Flaskpruebas/static/Fondo3.jpg');
             background-size: cover;
             background-attachment: fixed;
-            margin: 0; /* Elimina el margen predeterminado del body */
+            margin: 0;
+            overflow: hidden; /* Evita el desplazamiento de la barra de desplazamiento */
         }
 
         .navigate {
@@ -27,8 +28,54 @@
         .navigate a {
             color: white;
             text-decoration: none;
-            font-size: 20px;
-            margin-left: 150px; 
+            font-size: 25px;
+            margin-left: 100px; 
+        }
+
+        .container {
+            position: relative;
+            margin: 0;
+            width: 100%; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .marquee {
+            margin: 0% 10% 0% 10%;
+            position: absolute;
+            top: 100px; 
+            width: 80%; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            box-sizing: border-box; 
+            animation: marquee 25s linear infinite; 
+        }
+
+        .marquee:hover {
+            animation-play-state: paused; 
+        }
+
+        .marquee img {
+            width: 150px; 
+            height: 150px; 
+            margin: 0 50px; 
+            border-radius: 50%; 
+        }
+        
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+
+        .marquee h1, .marquee h3 {
+            display: inline;
+            margin: 0; 
+            padding: 0 50px; 
+            color: white; 
         }
     </style>
 
@@ -40,6 +87,19 @@
         <a href="">Conocete</a>
         <a href="">Couach IA</a>
         <a href="">Rutinas</a>
-    </nav>    
+        <a href="" style="color: red;">Contacto</a>
+    </nav>
+
+    <center>
+        <div class="container">
+            <div class="marquee">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToCexyECyWLNNgW3J9gOpmKSV1hPxPfqrUSQ&s">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXvG3-iXf5MntteIR_V39UfYUsQ8G8i-yxYvJ055LOS-GY7QBV415voCT_Y1mxvrtEN-M&usqp=CAU">
+                <img src="https://wl-genial.cf.tsp.li/resize/728x/jpg/48f/dc6/6c0ac051169eea77ffd506450b.jpg">
+                <img src="https://www.entrenamientos.com/media/cache/exercise_375/uploads/exercise/tijeras-o-saltos-abriendo-y-cerrando-piernas-simultaneamente--init-pos-2074.png">
+                <img src="https://www.entrenamientos.com/media/cache/exercise_750/uploads/exercise/prensa-horizontal-en-maquina-init-pos-5520.png">       
+            </div>
+        </div>
+    </center>
 </body>
 </html>
