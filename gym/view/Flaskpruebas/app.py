@@ -59,7 +59,7 @@ class Routelogic:
 
             usuario = Usuario(nombre, edad, email, contraseña, genero, Dni)
             db.registrar_usuario(usuario)
-            return render_template('menu.html')
+            return render_template('index.html')
 
 
 
