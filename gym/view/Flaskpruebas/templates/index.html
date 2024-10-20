@@ -5,20 +5,15 @@
     <title>Digital Health</title>
     <style>
         body{
-            background-image: url("https://www.shutterstock.com/image-photo/crossfit-equipment-on-floor-gym-600nw-756989800.jpg");
+            background-image: url('{{url_for("static", filename= "Fondo1.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
         }
 
-        h1{
-            text-align: center;
-            color: white;
-            margin-top: 5%;
-        }
-
         .back_login{
-            backdrop-filter: blur(5px);
-            margin: -2% 35% 0% 35%;
+            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.704));
+            margin: 10% 60% 0% 10%;
+            border-radius: 15%;
 
         }
 
@@ -31,6 +26,8 @@
         }
 
         .Log_in input{
+            background-color: black;
+            color: white;
             font-size: 20px;
             width: 300px;
             height: 50px;
@@ -43,7 +40,7 @@
             display: block; 
             font-size: 30px;
             border-radius: 8px;
-            background-color: #007BFF;
+            background-color: #cb0000;
             color: white;
             width: 300px;
             height: 50px;
@@ -55,9 +52,10 @@
         }
 
         .Log_in a{
+            border-radius: 10px;
             color: white;
             font-size: 30px;
-            text-decoration: none;
+            text-decoration: overline;
             margin-left: 100px;
             
         }
@@ -70,16 +68,15 @@
     </script>
 
     <body>
-        <h1>Bienvenidos a DigitalHealth</h1>
         <div class="back_login">
             <div class="Log_in">
                 <form method="POST" action="/login"> <!-- Asegúrate de que la acción apunte a la ruta correcta -->
-                    <input type="text" name="username" placeholder="Usuario" required><br>
+                    <input type="text" name="email" Id="email" placeholder="Email" required><br>
                     <input type="password" name="password" id="password" placeholder="Contraseña" required><br>
                     <button type="submit">Iniciar Sesión</button>
-                    <a href="Registrarse.html">Regsitrarse</a>
+                    <a href="/singup">Registrarse</a>
                 </form>
-            </div>
+            </div>  
         </div>
     </body>
 </html>
