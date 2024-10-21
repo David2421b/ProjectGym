@@ -28,6 +28,10 @@ class Routeapp:
     def signup():
         return render_template("Registrarse.html")
 
+    @app.route('/contact')
+    def contact():
+        return render_template("Contact.html")
+
 
 class Routelogic:
 
