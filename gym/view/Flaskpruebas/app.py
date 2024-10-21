@@ -43,8 +43,12 @@ class Routelogic:
             if exito:
                 return render_template('menu.html')
             
+            else:
+                error_message = 'Usuario o contraseña incorrectos'
+                return render_template('index.html', error = error_message)
+            
 
-        return render_template('login.html')  # Si no es un POST, muestra el formulario
+        return render_template('index.html')  # Si no es un POST, muestra el formulario
 
 
     @app.route('/register', methods=['GET', 'POST'])

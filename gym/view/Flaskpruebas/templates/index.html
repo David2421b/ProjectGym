@@ -64,10 +64,17 @@
     </style>
 
     <script>
-
+        function alerta(){
+            alert("Usuario o contraseña incorrectos");
+        }
     </script>
 
     <body>
+
+        {% if error %}
+           <script> alerta();</script>
+        {% endif %}
+
         <div class="back_login">
             <div class="Log_in">
                 <form method="POST" action="/login"> <!-- Asegúrate de que la acción apunte a la ruta correcta -->
