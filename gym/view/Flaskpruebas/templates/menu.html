@@ -11,7 +11,6 @@
             background-size: cover;
             background-attachment: fixed;
             margin: 0;
-            overflow: hidden
         }
 
         .navigate {
@@ -23,6 +22,8 @@
             right: 40px; 
             padding: 10px; 
             z-index: 1000; 
+            background-color: rgba(80, 80, 80, 0.508);
+            border-radius: 10px;
         }
 
         .navigate a {
@@ -33,17 +34,17 @@
         }
 
         .ContainerMarquee {
-                height: 100vh; 
-                display: flex; 
-                justify-content: center; 
-                align-items: flex-start;
-                padding-top: 150px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            padding-top: 100px;
+            margin-bottom: 2%;
         }
 
         .MarqueeBox {
             backdrop-filter: blur(5px);
             width: 80%; 
-            height: 200px; 
+            height: 150px; 
             border: 3px solid white; 
             display: flex;
             justify-content: center;
@@ -63,25 +64,99 @@
             animation-play-state: paused; 
         }
 
+        .marquee img {
+            width: 100px; 
+            height: 100px; 
+            margin: 0 50px; 
+            border-radius: 50%; 
+        }
+
         .marquee img:hover{
             transform: scale(1.2);
             transition: 0.5s;
         }
-
-        .marquee img {
-            width: 150px; 
-            height: 150px; 
-            margin: 0 50px; 
-            border-radius: 50%; 
-        }
-        
         
         @keyframes marquee {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
 
+        .ContainerChat{
+            position: absolute;
+            width: 1000px;
+            height: 350px;
+            background-color: rgba(0, 0, 0, 0.558);
+            justify-content: center;
+            align-items: center;
+            left: 17%;
+            padding: 2%;
+        }
 
+        .Chat{
+            padding: 10px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(60, 60, 60);
+            border-radius: 20px;
+            margin-bottom: 3%;
+        }
+
+        .Chat input{
+            color: white;
+            background-color: rgb(60, 60, 60);
+            font-size: 25px;
+            width: 900px;
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+        }
+
+        .Chat button{
+            font-size: 35px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(60, 60, 60);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .MesaggeContainer{
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
+        #ContP1{
+            background-color: rgb(60, 60, 60);
+            height: auto;
+            border-radius: 20px;
+            margin: 2% 0 2% 55%;
+        }
+
+        #p1{
+            color: white;
+            right: 0;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        #ContP2{
+            background-color: rgb(60, 60, 60);
+            height: auto;
+            border-radius: 20px;
+            margin: 2% 55% 2% 0;
+        }
+
+        #p2{
+            color: white;
+            left: 0;
+            text-align: center;
+            font-size: 35px;
+        }
     </style>
 
     <script>
@@ -111,16 +186,30 @@
     </center>
 
     <div class="ContainerChat">
-        <form method = "POST" action="/chat">
-            <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
-            <button>⇧</button>
-        </form>
+        
+        <div class="Chat">
+            <form method = "POST" action="/chat">
+                <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
+                <button>⇧</button>
+            </form>
+        </div>
 
-        {% if user_message %}
-                <div>
-                    <p><strong>Tu pregunta:</strong> {{ user_message }}</p>
-                    <p><strong>Respuesta:</strong> {{ bot_response }}</p>
+        {% if mensaje %}
+
+            <div class="MesaggeContainer">
+                <div id="ContP1">
+                    <div id="p1">
+                        <p>Hola soy la perra mas perra de todas</p>
+                    </div>
                 </div>
+
+                <div id="ContP2">
+                    <div id="p2">
+                        <p>Y yo soy la otra barata de todas las demas</p>
+                    </div>
+                </div>
+            </div>        
+
         {% endif %}
     </div>
 
