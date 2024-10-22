@@ -84,7 +84,7 @@
         .ContainerChat{
             position: absolute;
             width: 1000px;
-            height: 300px;
+            height: 350px;
             background-color: rgba(0, 0, 0, 0.558);
             justify-content: center;
             align-items: center;
@@ -100,6 +100,7 @@
             align-items: center;
             background-color: rgb(60, 60, 60);
             border-radius: 20px;
+            margin-bottom: 3%;
         }
 
         .Chat input{
@@ -122,6 +123,11 @@
             color: white;
             border: none;
             cursor: pointer;
+        }
+
+        #MesaggeContainer{
+            overflow-y: auto;
+            max-height: 200px;
         }
 
         #ContP1{
@@ -189,7 +195,7 @@
             </form>
         </div>
 
-        <div>
+        <div id="MesaggeContainer">
             <div id="ContP1">
                 <div id="p1">
                     <p>Hola soy la perra</p>
@@ -201,10 +207,7 @@
                     <p>Y yo soy la otra</p>
                 </div>
             </div>
-        </div>
-
-      
-        
+        </div>        
     </div>
 </body>
 </html>
