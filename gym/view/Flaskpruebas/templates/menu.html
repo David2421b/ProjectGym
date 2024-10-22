@@ -10,7 +10,8 @@
             background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
-            margin: 0; /* Elimina el margen predeterminado del body */
+            margin: 0;
+            overflow: hidden
         }
 
         .navigate {
@@ -31,27 +32,12 @@
             margin-left: 100px; 
         }
 
-        .marquee {
-            white-space: nowrap;
-            display: flex;
-            animation: marquee 20s linear infinite; 
-        }
-
-        .marquee:hover {
-            animation-play-state: paused; 
-        }
-
-        .marquee img:hover{
-            transform: scale(1.2);
-            transition: 0.5s;
-        }
-
         .ContainerMarquee {
-            height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: flex-start;
-            padding-top: 150px; 
+                height: 100vh; 
+                display: flex; 
+                justify-content: center; 
+                align-items: flex-start;
+                padding-top: 150px; 
         }
 
         .MarqueeBox {
@@ -96,12 +82,6 @@
         }
 
 
-        .marquee h1, .marquee h3 {
-            display: inline;
-            margin: 0; 
-            padding: 0 50px; 
-            color: white; 
-        }
     </style>
 
     <script>
@@ -129,6 +109,20 @@
             </div>
         </div>
     </center>
+
+    <div class="ContainerChat">
+        <form method = "POST" action="/chat">
+            <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
+            <button>⇧</button>
+        </form>
+
+        {% if user_message %}
+                <div>
+                    <p><strong>Tu pregunta:</strong> {{ user_message }}</p>
+                    <p><strong>Respuesta:</strong> {{ bot_response }}</p>
+                </div>
+        {% endif %}
+    </div>
 
 </body>
 </html>

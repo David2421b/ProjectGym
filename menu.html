@@ -11,7 +11,6 @@
             background-size: cover;
             background-attachment: fixed;
             margin: 0;
-            overflow: hidden; /* Evita el desplazamiento de la barra de desplazamiento */
         }
 
         .navigate {
@@ -23,6 +22,8 @@
             right: 40px; 
             padding: 10px; 
             z-index: 1000; 
+            background-color: rgba(80, 80, 80, 0.508);
+            border-radius: 10px;
         }
 
         .navigate a {
@@ -33,11 +34,11 @@
         }
 
         .ContainerMarquee {
-                height: 100vh; 
-                display: flex; 
-                justify-content: center; 
-                align-items: flex-start;
-                padding-top: 150px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            padding-top: 150px;
+            margin-bottom: 3%;
         }
 
         .MarqueeBox {
@@ -81,13 +82,46 @@
             100% { transform: translateX(-100%); }
         }
 
-
-        .marquee h1, .marquee h3 {
-            display: inline;
-            margin: 0; 
-            padding: 0 50px; 
-            color: white; 
+        .ContainerChat{
+            position: absolute;
+            width: 1000px;
+            height: 300px;
+            background-color: red;
+            justify-content: center;
+            align-items: center;
+            left: 17%;
         }
+
+        .Chat{
+            padding: 10px;
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .Chat input{
+            font-size: 25px;
+            width: 900px;
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+        }
+
+        .Chat button{
+            font-size: 35px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
     </style>
 
     <script>
@@ -116,8 +150,23 @@
         </div>
     </center>
 
-    <div class>
+    <div class="ContainerChat">
+
+        <div class="Chat">
+            <form method = "POST" action="/chat">
+                <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
+                <button>⇧</button>
+            </form>
+        </div>
+
+        <div>
+            <p>Hola soy la perra</p>
+            <p>Y yo soy la otra</p>
+        </div>
+
+      
         
     </div>
 </body>
 </html>
+
