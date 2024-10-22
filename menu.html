@@ -33,23 +33,27 @@
         }
 
         .container {
+                height: 100vh; 
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+        }
+
+        .MarqueeBox {
+            width: 80%; /* Ajusta el ancho del recuadro */
+            height: 200px; /* Ajusta la altura del recuadro */
+            border: 3px solid white; /* Borde del recuadro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            margin: 0;
-            width: 100%; 
-            height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            overflow: hidden;
+            box-sizing: border-box;
         }
 
         .marquee {
-            margin: 0% 10% 0% 10%;
-            position: absolute;
-            top: 100px; 
-            width: 80%; 
-            white-space: nowrap; 
-            overflow: hidden; 
-            box-sizing: border-box; 
+            white-space: nowrap;
+            display: flex;
             animation: marquee 25s linear infinite; 
         }
 
@@ -93,12 +97,14 @@
 
     <center>
         <div class="container">
-            <div class="marquee">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToCexyECyWLNNgW3J9gOpmKSV1hPxPfqrUSQ&s">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXvG3-iXf5MntteIR_V39UfYUsQ8G8i-yxYvJ055LOS-GY7QBV415voCT_Y1mxvrtEN-M&usqp=CAU">
-                <img src="https://wl-genial.cf.tsp.li/resize/728x/jpg/48f/dc6/6c0ac051169eea77ffd506450b.jpg">
-                <img src="https://www.entrenamientos.com/media/cache/exercise_375/uploads/exercise/tijeras-o-saltos-abriendo-y-cerrando-piernas-simultaneamente--init-pos-2074.png">
-                <img src="https://www.entrenamientos.com/media/cache/exercise_750/uploads/exercise/prensa-horizontal-en-maquina-init-pos-5520.png">       
+            <div class="MarqueeBox">
+                <div class="marquee">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToCexyECyWLNNgW3J9gOpmKSV1hPxPfqrUSQ&s">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXvG3-iXf5MntteIR_V39UfYUsQ8G8i-yxYvJ055LOS-GY7QBV415voCT_Y1mxvrtEN-M&usqp=CAU">
+                    <img src="https://wl-genial.cf.tsp.li/resize/728x/jpg/48f/dc6/6c0ac051169eea77ffd506450b.jpg">
+                    <img src="https://www.entrenamientos.com/media/cache/exercise_375/uploads/exercise/tijeras-o-saltos-abriendo-y-cerrando-piernas-simultaneamente--init-pos-2074.png">
+                    <img src="https://www.entrenamientos.com/media/cache/exercise_750/uploads/exercise/prensa-horizontal-en-maquina-init-pos-5520.png">       
+                </div>
             </div>
         </div>
     </center>
