@@ -33,6 +33,12 @@
             margin-left: 100px; 
         }
 
+        .navigate a:hover{
+            scale: 1.2;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
         .ContainerMarquee {
             display: flex; 
             justify-content: center; 
@@ -188,7 +194,7 @@
     <div class="ContainerChat">
         
         <div class="Chat">
-            <form method = "POST" action="/chat">
+            <form method = "POST" action="/OllamaChat">
                 <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
                 <button type"submit">⇧</button>
             </form>

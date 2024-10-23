@@ -31,6 +31,10 @@ class Routeapp:
     @app.route('/contact')
     def contact():
         return render_template("Contact.html")
+    
+    @app.route('/chat')
+    def Chat():
+        return render_template("Chat.html")
 
 
 class Routelogic:
@@ -70,7 +74,7 @@ class Routelogic:
             return render_template('index.html')
 
 
-    @app.route('/chat', methods=['GET', 'POST'])
+    @app.route('/OllamaChat', methods=['GET', 'POST'])
     def chat():
         if request.method == 'POST':
             mensaje = request.form['message']
