@@ -57,6 +57,18 @@
             cursor: pointer;
         }
 
+        .Chat a{
+            font-size: 40px;
+            width: 60px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgb(60, 60, 60);
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
         .MesaggeContainer{
             overflow-y: auto;
             max-height: 520px;
@@ -93,11 +105,11 @@
             font-weight: bold;
         }
     </style>
-    </style>
+    
 </head>
 
 
-<body onload="alert('¡Bienvenido!, ten en cuenta que las respuestas no se generan en tiempo real, por ende deberas esperar a que la pagina cargue completamente');">
+<body>
 
     <div class="ContainerChat">
         <div class="MesaggeContainer">
@@ -116,8 +128,9 @@
 
         <div class="Chat">
             <form method = "POST" action="/OllamaChat">
+                <a href="/menu">⇐</a>
                 <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
-                <button>⇧</button>
+                <button type = "sumbit">⇧</button>
             </form>
         </div>
     </div>

@@ -39,7 +39,7 @@
             color: white;
             background-color: rgb(60, 60, 60);
             font-size: 35px;
-            width: 1300px;
+            width: 1250px;
             height: 30px;
             border-radius: 10px;
             border: none;
@@ -55,6 +55,18 @@
             color: white;
             border: none;
             cursor: pointer;
+        }
+
+        .Chat a{
+            font-size: 40px;
+            width: 60px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgb(60, 60, 60);
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .MesaggeContainer{
@@ -115,8 +127,9 @@
         
         <div class="Chat">
             <form method = "POST" action="/chat">
+                <a href="menu.html">⇐</a>
                 <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
-                <button>⇧</button>
+                <button type="">⇧</button>
             </form>
         </div>
     </div>
