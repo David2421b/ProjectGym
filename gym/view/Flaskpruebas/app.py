@@ -79,7 +79,7 @@ class Routelogic:
         if request.method == 'POST':
             mensaje = request.form['message']
             respuesta = Chat_Ollama.chat(mensaje)
-            return render_template('menu.html', mensaje = mensaje, respuesta = respuesta)
+            return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
     
 
 

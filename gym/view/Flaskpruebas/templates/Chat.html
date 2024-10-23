@@ -15,31 +15,31 @@
 
         .ContainerChat{
             position: absolute;
-            width: 1000px;
-            height: 350px;
-            background-color: rgba(0, 0, 0, 0.558);
-            justify-content: center;
-            align-items: center;
-            left: 17%;
+            top: 5%;
+            width: 1420px;
+            height: 600px;
+            left: 2%;
+            background-color: rgba(0, 0, 0, 0.782);
             padding: 2%;
         }
 
         .Chat{
+            position: fixed;
+            height: 55px;
             padding: 10px;
-            margin-top: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgb(60, 60, 60);
+            background-color: rgb(86, 86, 86);
             border-radius: 20px;
-            margin-bottom: 3%;
+            margin-top: 0%;
         }
 
         .Chat input{
             color: white;
             background-color: rgb(60, 60, 60);
-            font-size: 25px;
-            width: 900px;
+            font-size: 35px;
+            width: 1300px;
             height: 30px;
             border-radius: 10px;
             border: none;
@@ -47,7 +47,7 @@
         }
 
         .Chat button{
-            font-size: 35px;
+            font-size: 40px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -59,36 +59,40 @@
 
         .MesaggeContainer{
             overflow-y: auto;
-            max-height: 200px;
+            max-height: 520px;
         }
 
         #ContP1{
             background-color: rgb(60, 60, 60);
             height: auto;
             border-radius: 20px;
-            margin: 2% 0 2% 55%;
+            margin: 2% 1% 2% 40%;
         }
 
         #p1{
+            margin: 0 2% 0 0;
             color: white;
             right: 0;
-            text-align: center;
-            font-size: 35px;
+            text-align: right;
+            font-size: 40px;
         }
 
         #ContP2{
-            background-color: rgb(60, 60, 60);
+            background-color: rgba(60, 60, 60, 0.559);
             height: auto;
             border-radius: 20px;
-            margin: 2% 55% 2% 0;
+            margin: 2% 35% 2% 0;
         }
 
         #p2{
+            margin: 0 0 0 2%;
             color: white;
             left: 0;
-            text-align: center;
-            font-size: 35px;
+            text-align: left;
+            font-size: 40px;
+            font-weight: bold;
         }
+    </style>
     </style>
 </head>
 
@@ -96,27 +100,26 @@
 <body>
 
     <div class="ContainerChat">
-
-        <div class="Chat">
-            <form method = "POST" action="/chat">
-                <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
-                <button>⇧</button>
-            </form>
-        </div>
-
         <div class="MesaggeContainer">
             <div id="ContP1">
                 <div id="p1">
-                    <p>Hola soy la perra mas perra de todas</p>
+                    <p>{{mensaje}}</p>
                 </div>
             </div>
 
             <div id="ContP2">
                 <div id="p2">
-                    <p>Y yo soy la otra barata de todas las demas</p>
+                    <p>{{respuesta}}</p>
                 </div>
             </div>
-        </div>        
+        </div>
+
+        <div class="Chat">
+            <form method = "POST" action="/OllamaChat">
+                <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
+                <button>⇧</button>
+            </form>
+        </div>
     </div>
     
 </body>
