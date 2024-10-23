@@ -73,9 +73,9 @@ class Routelogic:
     @app.route('/chat', methods=['GET', 'POST'])
     def chat():
         if request.method == 'POST':
-            mensaje = request.form['mensaje']
-            Chat_Ollama.chat(mensaje)
-            return render_template('menu.html', mensaje = mensaje)
+            mensaje = request.form['message']
+            respuesta = Chat_Ollama.chat(mensaje)
+            return render_template('menu.html', mensaje = mensaje, respuesta = respuesta)
     
 
 
