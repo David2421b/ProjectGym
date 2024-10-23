@@ -17,12 +17,18 @@
 
         }
 
+        img{
+            width: 250px;
+            height: 250px;
+            margin-left: 22%;
+        }
+
         .Log_in{
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 100px;
-            padding: 120px;
+            margin-top: -55px;
+            padding: 20px;
         }
 
         .Log_in input{
@@ -76,8 +82,13 @@
         {% endif %}
 
         <div class="back_login">
+            
+            <div>
+                <img src="{{url_for('static', filename = "logo.png")}}">
+            </div>
+
             <div class="Log_in">
-                <form method="POST" action="/login"> <!-- Asegúrate de que la acción apunte a la ruta correcta -->
+                <form method="POST" action="/login"> 
                     <input type="text" name="email" Id="email" placeholder="Email" required><br>
                     <input type="password" name="password" id="password" placeholder="Contraseña" required><br>
                     <button type="submit">Iniciar Sesión</button>
