@@ -83,10 +83,5 @@ class Routelogic:
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
     
 
-
-class Logic:
-    def Sing_up(self):
-        pass
-
 if __name__ == '__main__':
     app.run(debug=True)
