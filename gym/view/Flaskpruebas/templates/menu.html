@@ -86,83 +86,6 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
-        .ContainerChat{
-            position: absolute;
-            width: 1000px;
-            height: 350px;
-            background-color: rgba(0, 0, 0, 0.558);
-            justify-content: center;
-            align-items: center;
-            left: 17%;
-            padding: 2%;
-        }
-
-        .Chat{
-            padding: 10px;
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(60, 60, 60);
-            border-radius: 20px;
-            margin-bottom: 3%;
-        }
-
-        .Chat input{
-            color: white;
-            background-color: rgb(60, 60, 60);
-            font-size: 25px;
-            width: 900px;
-            height: 30px;
-            border-radius: 10px;
-            border: none;
-            padding: 10px;
-        }
-
-        .Chat button{
-            font-size: 35px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgb(60, 60, 60);
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .MesaggeContainer{
-            overflow-y: auto;
-            max-height: 200px;
-        }
-
-        #ContP1{
-            background-color: rgb(60, 60, 60);
-            height: auto;
-            border-radius: 20px;
-            margin: 2% 0 2% 55%;
-        }
-
-        #p1{
-            color: white;
-            right: 0;
-            text-align: center;
-            font-size: 35px;
-        }
-
-        #ContP2{
-            background-color: rgb(60, 60, 60);
-            height: auto;
-            border-radius: 20px;
-            margin: 2% 55% 2% 0;
-        }
-
-        #p2{
-            color: white;
-            left: 0;
-            text-align: center;
-            font-size: 35px;
-        }
     </style>
 
     <script>
@@ -190,34 +113,5 @@
             </div>
         </div>
     </center>
-
-    <div class="ContainerChat">
-        
-        <div class="Chat">
-            <form method = "POST" action="/OllamaChat">
-                <input type="text" name="message" placeholder="Envia un mensaje a Ollama">
-                <button type"submit">⇧</button>
-            </form>
-        </div>
-
-        {% if mensaje %}
-
-            <div class="MesaggeContainer">
-                <div id="ContP1">
-                    <div id="p1">
-                        <p>{{mensaje}}</p>
-                    </div>
-                </div>
-
-                <div id="ContP2">
-                    <div id="p2">
-                        <p>{{respuesta}}</p>
-                    </div>
-                </div>
-            </div>        
-
-        {% endif %}
-    </div>
-
 </body>
 </html>
