@@ -6,6 +6,7 @@ sys.path.append("GYM")
 from model.DigitalHealth import *
 from Logic.DataBase import Database
 
+# Importatante
 
 #   ANTES DE USAR LA APP RECUERDA QUE DEBES INICIARLA DESDE FLASK Y NO DESDE EL PUERTO 5500 QUE ES CON LIVE SERVER
 #   PARA INICIARLA DESDE FLASK DEBES CORRER EL ARCHIVO "app.py" QUE SE ENCUENTRA EN LA RUTA G
