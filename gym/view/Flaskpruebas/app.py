@@ -46,18 +46,20 @@ class Routeapp:
 
 
 class Routelogic:
+    Nombre = ""
 
     @app.route('/login', methods=['GET', 'POST'])
-    def login(self):
+    def login():
         if request.method == 'POST':
             # Obtener los datos del formulario
             email = request.form['email']  # Obtiene el nombre de usuario
             contraseña = request.form['password']  # Obtiene la contraseña
 
             exito, usuario = db.verificar_credenciales(email, contraseña)
-            self.Nombre = usuario[1]
+            global Nombre 
+            Nombre = usuario[1]
             if exito:
-                self.NameUsr()
+                return render_template('menu.html', name = Nombre)
             
             else:
                 error_message = 'Usuario o contraseña incorrectos'
@@ -66,9 +68,10 @@ class Routelogic:
 
         return render_template('index.html')  # Si no es un POST, muestra el formulario
     
-
-    def NameUsr(self):
-        return render_template('menu.html', name = self.Nombre)
+    @app.route('/MenuName')
+    def MenuName():
+        global Nombre
+        return render_template('menu.html', name = Nombre)
 
 
     @app.route('/register', methods=['GET', 'POST'])
