@@ -39,6 +39,10 @@ class Routeapp:
     @app.route('/chat')
     def Chat():
         return render_template("Chat.html")
+    
+    @app.route('/Usr')
+    def Usr():
+        return render_template("Usuario.html")
 
 
 class Routelogic:

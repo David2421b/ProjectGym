@@ -7,7 +7,7 @@
 
     <style>
         body{
-            background-image: url("GYM/view/Flaskpruebas/static/Fondo2.jpg");
+            background-image: url('{{url_for("static", filename= "Fondo2.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
         }
@@ -64,13 +64,13 @@
 <body>
     <div class = "Block">
         <div class="Usr">
-            <img src="GYM/view/Flaskpruebas/static/Logo.png"><br>
+            <img src="{{url_for('static', filename = "logo.png")}}">
             <p>David</p><br>
             <p>Edad</p><br>
             <p>Email</p><br>
             <p>Contraseña</p><br>
             <p>DNI</p><br>
-            <a href="Index.html">Dashboard</a>
+            <a href="/menu">Dashboard</a>
         </div>        
     </div>
 </body>
