@@ -51,7 +51,7 @@ class Routelogic:
             exito, usuario = db.verificar_credenciales(email, contraseña)
             
             if exito:
-                return render_template('menu.html')
+                return render_template('menu.html', name = usuario[1])
             
             else:
                 error_message = 'Usuario o contraseña incorrectos'

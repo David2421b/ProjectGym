@@ -14,6 +14,9 @@ class Usuario:
         self.genero: str = genero
         self.id_persona: str = id_persona
 
+    def name(self):
+        return self.nombre
+
 
 class Rutinas:
 
