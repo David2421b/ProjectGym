@@ -6,3 +6,5 @@ datetime~=4.3.0
 mysql-connector~=2.2.9
 kivy~=2.0.0
 time~=0.1.0
+Flask~=3.0.3
+nicegui~=2.2.0
