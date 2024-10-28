@@ -12,7 +12,7 @@
             background-attachment: fixed;
         }
 
-        h1{
+        label{
             font-size: 30px;
             text-align: center;
             color: white;
@@ -23,7 +23,7 @@
             border-radius: 30px;
             display: flex;
             justify-content: center;
-            margin: 1% 5% 0% 55%;
+            margin: 3% 5% 0% 55%;
         }
 
         .Usr{
@@ -50,9 +50,9 @@
         }
 
         .Usr img{
-            width: 150px;
-            height: 150px;
-            margin: 0% 0% 0% 77px;
+            width: 190px;
+            height: 190px;
+            margin: 0% 0% 0% 52px;
         }
     </style>
 
@@ -64,14 +64,14 @@
 <body>
     <div class = "Block">
         <div class="Usr">
-            <img src="{{url_for('static', filename = "logo.png")}}">
-            <h1>Usuario</h1>
+            <img src="{{url_for('static', filename = "logo.png")}}"><br>
+            <label>Nombre:</label>
             <p>{{Name}}</p><br>
-            <h1>Edad</h1>
+            <label>Edad:</label>
             <p>{{Age}}</p><br>
-            <h1>Email</h1>
+            <label>Email:</label>
             <p>{{Email}}</p><br>
-            <h1>Clave</h1>
+            <label>Contraseña:</label>
             <p>{{Password}}</p><br>
             <a href="/MenuName">Dashboard</a>
         </div>        
