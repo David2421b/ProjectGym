@@ -44,7 +44,7 @@ class Routeapp:
     def Usr():
         return render_template("Usuario.html")
 
-
+@dataclass
 class Routelogic:
     Nombre = ""
     Edad = 0
