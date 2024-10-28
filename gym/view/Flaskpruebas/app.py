@@ -47,6 +47,10 @@ class Routeapp:
 
 class Routelogic:
     Nombre = ""
+    Edad = 0
+    Email = ""
+    Contraseña = ""
+    Genero = ""
 
     @app.route('/login', methods=['GET', 'POST'])
     def login():
@@ -56,8 +60,20 @@ class Routelogic:
             contraseña = request.form['password']  # Obtiene la contraseña
 
             exito, usuario = db.verificar_credenciales(email, contraseña)
+
             global Nombre 
+            global Edad
+            global Email
+            global Contraseña
+            global Genero
+
             Nombre = usuario[1]
+            Edad = usuario[2]
+            Email = usuario[3]
+            Contraseña = usuario[4]
+            Genero = usuario[5]
+ 
+            
             if exito:
                 return render_template('menu.html', name = Nombre)
             
@@ -87,6 +103,16 @@ class Routelogic:
             usuario = Usuario(nombre, edad, email, contraseña, genero, Dni)
             db.registrar_usuario(usuario)
             return render_template('index.html')
+    
+    @app.route('/UsrData')
+    def UsrData():
+        global Nombre
+        global Edad
+        global Email
+        global Contraseña
+        global Genero
+
+        return render_template('Usuario.html', Name = Nombre, Age = Edad, Email = Email, Password = Contraseña)
 
 
     @app.route('/OllamaChat', methods=['GET', 'POST'])
