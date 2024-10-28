@@ -121,6 +121,11 @@ class Routelogic:
             mensaje = request.form['message']
             respuesta = Chat_Ollama.chat(mensaje)
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
+        
+
+    @app.route('/BodyData')
+    def BodyData():
+        return render_template('BodyData.html')
     
 
 if __name__ == '__main__':
