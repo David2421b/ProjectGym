@@ -57,22 +57,7 @@ class Estadistica:
         if altura >= 0:
             imc = peso / (altura ** 2)
 
-            if imc < 18.5:
-                bienestar = "Te encuentras en Infrapeso"
-            
-            elif 18.5 <= imc <= 24.9:
-                bienestar = "Tu peso es Normal, ¡Sigue asi!"
-            
-            elif 25 <= imc <= 34.9:
-                bienestar = "Tienes Obesidad I, ¡Cuidado!"
-            
-            elif 35 <= imc <= 39.9:
-                bienestar = "Tienes Obesidad II, ¡Cuidado!"
-
-            elif imc >= 40:
-                bienestar = "Tienes Obesidad III, ¡Cuidado, deberias visitar a tu medico de confianza!"
-
-        return f"Tu IMC es: {imc} y {bienestar}"
+        return imc
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
         if genero == 'Masculino' or genero == 'masculino' or genero == 'M' or genero == 'm':
