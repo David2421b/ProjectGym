@@ -67,7 +67,7 @@ class Estadistica:
         
     def calcular_fcm(edad: int):
         fcm = 220 - edad     
-        return f"Tu FCM es: {fcm}"
+        return fcm
     
 
 @dataclass
