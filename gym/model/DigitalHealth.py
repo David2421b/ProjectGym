@@ -53,10 +53,8 @@ class Estadistica:
     fcm: ClassVar[int] = 0
     
     def calcular_imc(peso: float, altura: float):
-
         if altura >= 0:
             imc = peso / (altura ** 2)
-
         return imc
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
@@ -65,11 +63,7 @@ class Estadistica:
         
         elif genero == 'Femenino' or genero == 'femenino' or genero == 'F' or genero == 'f':
             tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad)
-        
-        else:
-            raise ValueError("El genero debe ser hombre o mujer")
-        
-        return f"Tu TMB es: {tmb}"
+        return tmb
         
     def calcular_fcm(edad: int):
         fcm = 220 - edad     
