@@ -62,10 +62,9 @@ class Database:
                     VALUES (?, ?, ?, ?, ?)
                 ''', (usuario.nombre, usuario.edad, usuario.email, usuario.contraseña, usuario.genero))
                 self.conexion.commit()
-                print("Usuario registrado correctamente.")
 
             except sqlite3.Error as error:
-                print(f"Error al registrar usuario: {error}")
+                error
                 
             finally:
                 cursor.close()
