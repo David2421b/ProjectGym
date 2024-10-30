@@ -33,6 +33,22 @@ class Database:
             self.conexion.commit()
             cursor.close()
 
+    def crear_tabla_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS ejercicios (
+                    id_ejercicio INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nombre TEXT NOT NULL,
+                    tipo TEXT NOT NULL,
+                    repeticiones INTEGER NOT NULL,
+                    series INTEGER NOT NULL,
+                    descanso_series INTEGER NOT NULL
+                )
+            ''')
+            self.conexion.commit()
+            cursor.close()
+
     def registrar_usuario(self, usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
