@@ -24,14 +24,14 @@ class Rutinas:
 
 class Ejercicio:
     
-    def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int):
+    def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int, id_persona: str):
         self.id_ejercicio: str = None
-        self.id_persona: str = None
         self.nombre: str = nombre
         self.tipo: str = tipo
         self.repeticiones_por_serie: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
+        self.id_persona: str = id_persona
     
     def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
         pass

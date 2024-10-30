@@ -115,7 +115,7 @@ class Routelogic:
             series = request.form['Series']
             descanso = request.form['Rest']
 
-            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso)
+            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso, Id_Usr)
             db.registrar_ejercicio(ejercicio)
             return render_template('menu.html')
     
