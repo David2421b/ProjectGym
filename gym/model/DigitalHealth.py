@@ -24,9 +24,10 @@ class Rutinas:
 
 class Ejercicio:
     
-    def __init__(self, Nombre: str, tipo: str, repeticiones: int, series: int, descanso: int):
+    def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int):
         self.id_ejercicio: str = None
-        self.Nombre: str = Nombre
+        self.id_persona: str = None
+        self.nombre: str = nombre
         self.tipo: str = tipo
         self.repeticiones_por_serie: int = repeticiones
         self.series: int = series

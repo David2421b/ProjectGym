@@ -22,7 +22,7 @@ db.connect()
 class Routeapp:
     @app.route('/')
     def home():
-        return render_template("index.html")
+        return render_template("Index.html")
 
     @app.route('/menu')
     def menu():
@@ -65,24 +65,24 @@ class Routelogic:
 
             exito, usuario = db.verificar_credenciales(email, contraseña)
 
-            global Nombre, Edad, Email, Contraseña, Genero
+            global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
 
             Nombre = usuario[1]
             Edad = usuario[2]
             Email = usuario[3]
             Contraseña = usuario[4]
             Genero = usuario[5]
- 
+            Id_Usr = usuario[0]
             
             if exito:
                 return render_template('menu.html', name = Nombre)
             
             else:
                 error_message = 'Usuario o contraseña incorrectos'
-                return render_template('index.html', error = error_message)
+                return render_template('Index.html', error = error_message)
             
 
-        return render_template('index.html')  # Si no es un POST, muestra el formulario
+        return render_template('Index.html')  # Si no es un POST, muestra el formulario
     
     @app.route('/MenuName')
     def MenuName():
@@ -102,21 +102,21 @@ class Routelogic:
 
             usuario = Usuario(nombre, edad, email, contraseña, genero, Dni)
             db.registrar_usuario(usuario)
-            return render_template('index.html')
+            return render_template('Index.html')
     
         return render_template('Registrarse.html')
     
     @app.route('/EjercicioRegister', methods=['GET', 'POST'])
     def EjercicioRegister():
+        global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
         if request.method == 'POST':
             nombre = request.form['Name']
             tipo = request.form['Type']
             repeticiones = request.form['Reps']
             series = request.form['Series']
             descanso = request.form['Rest']
-            id_persona = request.form['Id']
 
-            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso, id_persona)
+            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso)
             db.registrar_ejercicio(ejercicio)
             return render_template('menu.html')
     
