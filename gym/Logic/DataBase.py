@@ -1,6 +1,7 @@
 import sqlite3
 import os
   
+
 class Database:
     def __init__(self, db_name='digitalhealth.db'):
         # Aseguramos que la base de datos se crea en la carpeta especificada
@@ -14,7 +15,6 @@ class Database:
             self.crear_tabla_usuarios()
 
         except sqlite3.Error as err:
-            print(f"\n Error de conexión: {err}")
             self.conexion = None
 
     def crear_tabla_usuarios(self):
