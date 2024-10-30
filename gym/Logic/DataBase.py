@@ -68,6 +68,22 @@ class Database:
                 
             finally:
                 cursor.close()
+    
+    def registrar_ejercicio(self, ejercicio):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO ejercicios (id_persona, nombre, tipo, repeticiones, series, descanso_series)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                ''', (ejercicio.id_persona, ejercicio.nombre, ejercicio.tipo, ejercicio.repeticiones_por_serie, ejercicio.series, ejercicio.descanso_entre_series))
+                self.conexion.commit()
+
+            except sqlite3.Error as error:
+                error
+                
+            finally:
+                cursor.close()
 
     def verificar_credenciales(self, email, contraseña):
         if self.conexion:

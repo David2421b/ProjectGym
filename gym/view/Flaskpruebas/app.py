@@ -61,11 +61,7 @@ class Routelogic:
 
             exito, usuario = db.verificar_credenciales(email, contraseña)
 
-            global Nombre 
-            global Edad
-            global Email
-            global Contraseña
-            global Genero
+            global Nombre, Edad, Email, Contraseña, Genero
 
             Nombre = usuario[1]
             Edad = usuario[2]
@@ -104,13 +100,27 @@ class Routelogic:
             db.registrar_usuario(usuario)
             return render_template('index.html')
     
+        return render_template('Registrarse.html')
+    
+    @app.route('/EjercicioRegister', methods=['GET', 'POST'])
+    def EjercicioRegister():
+        if request.method == 'POST':
+            nombre = request.form['Name']
+            tipo = request.form['Type']
+            repeticiones = request.form['Reps']
+            series = request.form['Series']
+            descanso = request.form['Rest']
+            id_persona = request.form['Id']
+
+            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso, id_persona)
+            db.registrar_ejercicio(ejercicio)
+            return render_template('menu.html')
+    
+        return render_template('Ejercicio.html')
+
     @app.route('/UsrData')
     def UsrData():
-        global Nombre
-        global Edad
-        global Email
-        global Contraseña
-        global Genero
+        global Nombre, Edad, Email, Contraseña, Genero
 
         return render_template('Usuario.html', Name = Nombre, Age = Edad, Email = Email, Password = Contraseña)
 
