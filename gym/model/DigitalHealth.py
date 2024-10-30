@@ -24,12 +24,13 @@ class Rutinas:
 
 class Ejercicio:
     
-    def __init__(self, tipo: str, repeticiones: int, series: int, descanso: int, id_ejercicio: str):
+    def __init__(self, Nombre: str, tipo: str, repeticiones: int, series: int, descanso: int):
+        self.Nombre: str = Nombre
         self.tipo: str = tipo
         self.repeticiones_por_serie: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
-        self.id_ejercicio: str = id_ejercicio
+        self.id_ejercicio: str = None
     
     def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
         pass
@@ -50,7 +51,7 @@ class Notificacion:
 
 @dataclass
 class Estadistica:
-    
+
     imc: ClassVar[int] = 0
     tmb: ClassVar[int] = 0    
     fcm: ClassVar[int] = 0
