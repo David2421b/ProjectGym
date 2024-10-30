@@ -66,15 +66,14 @@ class Routelogic:
             exito, usuario = db.verificar_credenciales(email, contraseña)
 
             global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
-
-            Nombre = usuario[1]
-            Edad = usuario[2]
-            Email = usuario[3]
-            Contraseña = usuario[4]
-            Genero = usuario[5]
-            Id_Usr = usuario[0]
             
             if exito:
+                Nombre = usuario[1]
+                Edad = usuario[2]
+                Email = usuario[3]
+                Contraseña = usuario[4]
+                Genero = usuario[5]
+                Id_Usr = usuario[0]
                 return render_template('menu.html', name = Nombre)
             
             else:
