@@ -11,8 +11,9 @@ class Database:
     def connect(self):
         try:
             # Conectar a la base de datos SQLite
-            self.conexion = sqlite3.connect(self.db_name, check_same_thread=False)
+            self.conexion = sqlite3.connect(self.db_name, check_same_thread = False)
             self.crear_tabla_usuarios()
+            self.crear_tabla_ejercicios()
 
         except sqlite3.Error as err:
             self.conexion = None
@@ -39,12 +40,12 @@ class Database:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS ejercicios (
                     id_ejercicio INTEGER PRIMARY KEY AUTOINCREMENT,
-                    id_persona INT,
+                    id_persona INTEGER NOT NULL,
                     nombre TEXT NOT NULL,
                     tipo TEXT NOT NULL,
                     repeticiones INTEGER NOT NULL,
                     series INTEGER NOT NULL,
-                    descanso_series INTEGER NOT NULL
+                    descanso_series INTEGER NOT NULL,
 
                     FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
                 )
