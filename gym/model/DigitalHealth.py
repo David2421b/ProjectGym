@@ -46,6 +46,9 @@ class Notificacion:
         self.mensaje: str = mensaje
         self.fecha_hora: datetime = fecha_hora
 
+    def __str__(self) -> str:
+        return f'{self.tipo}: {self.mensaje} - {self.fecha_hora}'
+
 @dataclass
 class Estadistica:
     imc: ClassVar[int] = 0
