@@ -11,7 +11,6 @@ class Database:
         try:
             # Conectar a la base de datos SQLite
             self.conexion = sqlite3.connect(self.db_name, check_same_thread=False)
-            print(f"Conexión exitosa a la base de datos en: {self.db_name}")
             self.crear_tabla_usuarios()
 
         except sqlite3.Error as err:
