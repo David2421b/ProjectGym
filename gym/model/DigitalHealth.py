@@ -50,6 +50,7 @@ class Notificacion:
 
 @dataclass
 class Estadistica:
+    
     imc: ClassVar[int] = 0
     tmb: ClassVar[int] = 0    
     fcm: ClassVar[int] = 0
