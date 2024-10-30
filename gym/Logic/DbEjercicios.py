@@ -16,4 +16,18 @@ class DbEjercicios:
         except sqlite3.Error as err:
             self.conexion = None
 
+    def crear_tabla_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS ejercicios (
+                    id_ejercicio INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nombre TEXT NOT NULL,
+                    descripcion TEXT NOT NULL,
+                    categoria TEXT NOT NULL
+                )
+            ''')
+            self.conexion.commit()
+            cursor.close()
+
 

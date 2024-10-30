@@ -32,8 +32,6 @@ class Database:
             ''')
             self.conexion.commit()
             cursor.close()
-        else:
-            print("\n No se pudo crear la tabla. No hay conexión con la base de datos.")
 
     def registrar_usuario(self, usuario):
         if self.conexion:
