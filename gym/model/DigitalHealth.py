@@ -1,4 +1,3 @@
-#Todo el codigo va aca
 import ollama
 from dataclasses import dataclass
 from datetime import datetime
