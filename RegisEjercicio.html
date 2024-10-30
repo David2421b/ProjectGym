@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+
+    <style>
+        body{
+            background-image: url("GYM/view/Flaskpruebas/static/Fondo2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1{
+            font-size: 40px;
+            margin: 1% 5% 0% 59%;
+            color: white;
+        }
+
+        #Block{
+            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            margin: 4% 5% 0% 55%;
+        }
+
+        .SingUp{
+            margin: 5% 0% 5% 0%;
+            }
+
+        .SingUp input{
+            background-color: black;
+            color: white;
+            margin: 4% 0% 4% 0%;
+            font-size: 20px;
+            border-radius: 10px;
+            height: 40px;
+            width: 300px;
+        }
+
+        .SingUp select{
+            background-color: black;
+            color: white;
+            margin: 4% 0% 4% 0%;
+            font-size: 20px;
+            border-radius: 10px;
+            height: 40px;
+            width: 308px;
+            display: block;
+        }
+
+        .SingUp button{
+            margin: 1% 0% 2% 0%;
+            font-size: 30px;
+            border-radius: 10px;
+            height: 45px;
+            width: 308px;
+            background-color: #cb0000;
+            color: white;
+            display: block;
+            cursor: pointer;
+        }
+
+        .SingUp a{  
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            margin-left: 70px;
+            text-decoration: overline;
+        }
+    </style>
+
+
+    <script>
+
+    </script>
+</head>
+<body>
+    <form id="Block" method="post" action="/register">
+        <div class="SingUp">
+            <input type="text" name="Name" id="Name" placeholder="Nombre" required><br>
+            <input type="number" name="Age" id="Age" placeholder="Edad" required><br>
+            <input type="email" name="Email" id="Email" placeholder="Email" required><br>
+            <input type="password" name="Password" id="Password" placeholder="Contraseña" required minlength="8" maxlength="15"><br>
+            <input type="text" name="Id" id="Id" placeholder="DNI" required><br>
+            <select name="Gender" id="Gender" required>
+                <option value="">Seleccionar</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+            </select><br>
+            <button type="submit">Registrarse</button><br>
+            <a href="Index.html">Iniciar Sesion</a>
+        </div>        
+    </form>
+</body>
+</html>

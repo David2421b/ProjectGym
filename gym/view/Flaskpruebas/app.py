@@ -44,6 +44,10 @@ class Routeapp:
     def Usr():
         return render_template("Usuario.html")
 
+    @app.route('/Ejercicio')
+    def Ejercicio():
+        return render_template("RegisEjercicio.html")
+
 @dataclass
 class Routelogic:
     Nombre = ""
@@ -116,7 +120,7 @@ class Routelogic:
             db.registrar_ejercicio(ejercicio)
             return render_template('menu.html')
     
-        return render_template('Ejercicio.html')
+        return render_template('RegisEjercicio.html')
 
     @app.route('/UsrData')
     def UsrData():
