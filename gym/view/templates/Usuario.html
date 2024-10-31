@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
-    <link rel="icon" href="GYM/view/static/Logo.png" type="image/png">
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
         body{
-            background-image: url("GYM/view/static/Fondo2.jpg");
+            background-image: url('{{url_for("static", filename= "Fondo2.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
         }
 
-        h1{
-            font-size: 40px;
-            margin: 1% 5% 0% 59%;
+        label{
+            font-size: 30px;
+            text-align: center;
             color: white;
         }
 
@@ -24,19 +24,19 @@
             border-radius: 30px;
             display: flex;
             justify-content: center;
-            margin: 2% 5% 0% 55%;
+            margin: 3% 5% 0% 55%;
         }
 
         .Usr{
-            margin: 1% 0% 3% 0%;
+            margin: 1% 0% 1% 0%;
             }
 
         .Usr p{
             background-color: black;
             color: white;
-            margin: 2% 0% 4% 0%;
+                margin: 0% 0% 0% 0%;
             text-align: center;
-            font-size: 35px;
+            font-size: 30px;
             border-radius: 10px;
             height: 45px;
             width: 300px;
@@ -46,14 +46,14 @@
             color: white;
             text-decoration: none;
             font-size: 30px;
-            margin-left: 93px;
+            margin-left: 92px;
             text-decoration: overline;
         }
 
         .Usr img{
-            width: 180px;
-            height: 180px;
-            margin: 0% 0% 0% 60px;
+            width: 190px;
+            height: 190px;
+            margin: 0% 0% 0% 52px;
         }
     </style>
 
@@ -65,13 +65,16 @@
 <body>
     <div class = "Block">
         <div class="Usr">
-            <img src="GYM/view/static/Logo.png"><br>
-            <p>David</p><br>
-            <p>Edad</p><br>
-            <p>Email</p><br>
-            <p>Contraseña</p><br>
-            <p>DNI</p><br>
-            <a href="Index.html">Dashboard</a>
+            <img src="{{url_for('static', filename = "logo.png")}}"><br>
+            <label>Nombre:</label>
+            <p>{{Name}}</p><br>
+            <label>Edad:</label>
+            <p>{{Age}}</p><br>
+            <label>Email:</label>
+            <p>{{Email}}</p><br>
+            <label>Contraseña:</label>
+            <p>{{Password}}</p><br>
+            <a href="/MenuName">Dashboard</a>
         </div>        
     </div>
 </body>

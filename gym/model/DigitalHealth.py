@@ -1,4 +1,3 @@
-#Todo el codigo va aca
 import ollama
 from dataclasses import dataclass
 from datetime import datetime
@@ -14,9 +13,6 @@ class Usuario:
         self.genero: str = genero
         self.id_persona: str = id_persona
 
-    def name(self):
-        return self.nombre
-
 
 class Rutinas:
 
@@ -28,12 +24,14 @@ class Rutinas:
 
 class Ejercicio:
     
-    def __init__(self, tipo: str, repeticiones: int, series: int, descanso: int, id_ejercicio: str):
+    def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int, id_persona: str):
+        self.id_ejercicio: str = None
+        self.nombre: str = nombre
         self.tipo: str = tipo
         self.repeticiones_por_serie: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
-        self.id_ejercicio: str = id_ejercicio
+        self.id_persona: str = id_persona
     
     def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
         pass
@@ -49,33 +47,20 @@ class Notificacion:
         self.mensaje: str = mensaje
         self.fecha_hora: datetime = fecha_hora
 
+    def __str__(self) -> str:
+        return f'{self.tipo}: {self.mensaje} - {self.fecha_hora}'
+
 @dataclass
 class Estadistica:
+
     imc: ClassVar[int] = 0
     tmb: ClassVar[int] = 0    
     fcm: ClassVar[int] = 0
     
     def calcular_imc(peso: float, altura: float):
-
         if altura >= 0:
             imc = peso / (altura ** 2)
-
-            if imc < 18.5:
-                bienestar = "Te encuentras en Infrapeso"
-            
-            elif 18.5 <= imc <= 24.9:
-                bienestar = "Tu peso es Normal, ¡Sigue asi!"
-            
-            elif 25 <= imc <= 34.9:
-                bienestar = "Tienes Obesidad I, ¡Cuidado!"
-            
-            elif 35 <= imc <= 39.9:
-                bienestar = "Tienes Obesidad II, ¡Cuidado!"
-
-            elif imc >= 40:
-                bienestar = "Tienes Obesidad III, ¡Cuidado, deberias visitar a tu medico de confianza!"
-
-        return f"Tu IMC es: {imc} y {bienestar}"
+        return imc
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
         if genero == 'Masculino' or genero == 'masculino' or genero == 'M' or genero == 'm':
@@ -83,20 +68,16 @@ class Estadistica:
         
         elif genero == 'Femenino' or genero == 'femenino' or genero == 'F' or genero == 'f':
             tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad)
-        
-        else:
-            raise ValueError("El genero debe ser hombre o mujer")
-        
-        return f"Tu TMB es: {tmb}"
+        return tmb
         
     def calcular_fcm(edad: int):
         fcm = 220 - edad     
-        return f"Tu FCM es: {fcm}"
+        return fcm
     
 
 @dataclass
 class Chat_Ollama:
     
     def chat(mensaje: str):
-        response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
-        return response['response']
+        response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje) #generate devuelve un diccionario y el metodo extrae el valor asociado a response
+        return response['response']  #retorna la respuesta

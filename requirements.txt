@@ -1,8 +1,5 @@
 ollama~=0.3.2
-SpeechRecognition~=3.10.4
-PyAudio~=0.2.11
 datetime~=4.3.0
 mysql-connector~=2.2.9
 time~=0.1.0
 Flask~=3.0.3
-nicegui~=2.2.0

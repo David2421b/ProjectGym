@@ -1,3 +1,17 @@
+# Instrucciones
+
+**1)**
+Antes de comenzar debemos instalar el ejecutable de "Ollama" desde la pagina oficial: [Instalar Ollama](https://ollama.com/download).
+
+**2)**
+Una vez finalizada la instalacion procedemos a abrir el Simbolo del Sistema con el siguiente comando: `Win + R`, escribe `CMD` y presiona `Enter`.
+
+**3)**
+En la terminal escribe el siguiente comando `ollama run llama3.1:latest`. Esto creará el modelo que requiere el programa. Luego, corremos el ejecutable que instalamos previamente, si tienes dudas cual es, ten en cuenta que su icono es una llama.
+
+**4)**
+Por ultimo, abrimos y corremos el modulo app.py que se encuentra en `GYM/view/app.py`. Luego accede al enlace mostrado en la consola --> [Programa Ejecutado](http://127.0.0.1:5000)
+
 # Definición del problema
 
 En la actualidad, la necesidad de llevar un control preciso de las actividades físicas, rutinas de ejercicio y el monitoreo de la salud personal ha aumentado considerablemente entre quienes buscan mejorar su bienestar. No obstante, gestionar manualmente estos datos o tenerlos dispersos puede resultar ineficiente y confuso. Asimismo, la ausencia de recordatorios y un seguimiento continuo puede provocar inconsistencias en las rutinas y descuidar aspectos clave de la salud.

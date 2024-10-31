@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Health</title>
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
         body {
@@ -113,11 +114,11 @@
 <body>
 
     <div class="CountainerNavigate">
-        <a id = "Usr" href = "">{{name}}</a>
+        <a id = "Usr" href = "/UsrData">{{name}}</a>
         <nav class="navigate">
             <a href="">Conocete</a>
             <a href="/chat">Couach IA</a>
-            <a href="">Rutinas</a>
+            <a href="/Ejercicio">Rutinas</a>
             <a href="/contact" style="color: red;">Contacto</a>
             <a href="/" style="color: red;">Log out</a>
         </nav>

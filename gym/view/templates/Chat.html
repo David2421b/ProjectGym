@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
         body {
@@ -128,7 +129,7 @@
 
         <div class="Chat">
             <form method = "POST" action="/OllamaChat">
-                <a href="/menu">⇐</a>
+                <a href="/MenuName">⇐</a>
                 <input type="text" name="message" placeholder="Envia un mensaje a tu Coach IA">
                 <button type = "sumbit">⇧</button>
             </form>
