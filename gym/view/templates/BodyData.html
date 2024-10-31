@@ -13,12 +13,28 @@
             background-attachment: fixed;
         }
 
+        .Body{
+            display: flex;
+        }
+
         .Container{
             background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
             border-radius: 30px;
             display: flex;
             justify-content: center;
-            margin: 10% 55% 0% 5%;
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3%;
+        }
+
+        .Container2{
+            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
+            border-radius: 30px;
+            justify-content: center;
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
             padding: 3%;
         }
 
@@ -40,7 +56,7 @@
 
         .Labels p{
             color: white;
-            font-size: 30px;
+            font-size: 25px;
         }
 
         button{
@@ -61,7 +77,6 @@
         }
 
         a{
-            margin-top: 5px;
             color: white;
             text-decoration: none;
             font-size: 30px;
@@ -69,21 +84,53 @@
             text-decoration: overline;
         }
 
+        .IMC, .TMB{
+            background-color: black;
+            padding: 5px;
+            text-align: center;
+            color: white;
+            font-size: 25px;
+            margin-bottom: 20%;
+        }
+
+        .FCM{
+            background-color: black;
+            padding: 5px;
+            text-align: center;
+            color: white;
+            font-size: 25px;
+        }
+
     </style> 
 </head>
 <body>
-    <div class="Container">
-        <form id = "Form" method="POST" action="/CalcularData">
-            <input type="number" name="Weight" id="Weight" placeholder="Peso (Kg)"><br>
-            <input type="floatformat" name="Height" id="Height" placeholder="Altura (Mts)"><br>
-            <div class="Labels">
-                <p>Tu edad es: {{Age}}</p>
-                <p>{{Gender}}</p>
-            </div>
-            <button type="submit">Calcular</button>
-            <a href="/MenuName">DashBoard</a>
+    <div class="Body">
+        <div class="Container">
+            <form id = "Form" method="POST" action="/CalcularData">
+                <input type="number" name="Weight" id="Weight" placeholder="Peso (Kg)"><br>
+                <input type="floatformat" name="Height" id="Height" placeholder="Altura (Mts)"><br>
+                <div class="Labels">
+                    <p>Tu edad es: {{Age}}</p>
+                    <p>{{Gender}}</p>
+                </div>
+                <button type="submit">Calcular</button>
+                <a href="/MenuName">DashBoard</a>
+            </form>
+        </div>
 
-        </form>
+        <div class="Container2">
+            <div class="IMC">
+                <p>Tu IMC es: {{Imc}}</p>
+            </div>
+
+            <div class="TMB">
+                <p>Tu Tmb es: {{Tmb}}</p>
+            </div>
+
+            <div class="FCM">
+                <p>Tu Fcm es: {{Fcm}}</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>

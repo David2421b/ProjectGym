@@ -144,17 +144,12 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def CalcularDatas():
         if request.method == 'POST':
             global Edad, Genero
-            peso = request.form['Weight']
-            altura = request.form['Height']
+            peso = int(request.form['Weight'])
+            altura = float(request.form['Height'])
             IMC = Estadistica.calcular_imc(peso, altura)
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
-            return render_template('BodyData.html')
-
-
-        
-
-
+            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
     
     
 
