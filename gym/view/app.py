@@ -90,6 +90,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/MenuName')
     def MenuName():
         global Nombre
+        if Nombre == "":
+            return render_template('Index.html')
         return render_template('menu.html', name = Nombre)
 
 
@@ -128,7 +130,6 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/UsrData')
     def UsrData():
         global Nombre, Edad, Email, Contraseña, Genero
-
         return render_template('Usuario.html', Name = Nombre, Age = Edad, Email = Email, Password = Contraseña)
 
 
