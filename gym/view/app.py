@@ -140,11 +140,16 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
         
     
-    @app.route('/CalcularData')
-    def CalcularData():
-        global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
-        peso = request.form['Weight']
-        altura = request.form['Height']
+    @app.route('/CalcularData', methods=['GET', 'POST'])
+    def CalcularDatas():
+        if request.method == 'POST':
+            global Edad, Genero
+            peso = request.form['Weight']
+            altura = request.form['Height']
+            IMC = Estadistica.calcular_imc(peso, altura)
+            TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
+            FCM = Estadistica.calcular_fcm(Edad)
+            return render_template('BodyData.html')
 
 
         
