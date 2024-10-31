@@ -147,10 +147,11 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             global Edad, Genero
             peso = int(request.form['Weight'])
             altura = float(request.form['Height'])
-            IMC = Estadistica.calcular_imc(peso, altura)
-            TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
-            FCM = Estadistica.calcular_fcm(Edad)
-            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
+            if peso and altura >= 0:
+                IMC = Estadistica.calcular_imc(peso, altura)
+                TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
+                FCM = Estadistica.calcular_fcm(Edad)
+                return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
     
     
 
