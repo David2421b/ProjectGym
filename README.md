@@ -10,7 +10,7 @@ Una vez finalizada la instalacion procedemos a abrir la consola de PowerShell co
 En la terminal escribe el siguiente comando `ollama run llama3.1:latest` y asi crearemos el modelo que requiere el programa. Luego corremos el ejecutable que instalamos previamente, si tienes dudas cual es, ten en cuenta que su icono es una llama.
 
 **4)**
-Ahora abrimos el modulo app.py que se encuentra 
+Por ultimo, abrimos y corremos el modulo app.py que se encuentra en `GYM/view/app.py` y entramos al link mostrado por consola --> [Programa Ejecutado](http://127.0.0.1:5000)
 
 # Definición del problema
 
