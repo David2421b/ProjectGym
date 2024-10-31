@@ -47,6 +47,9 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
     def Ejercicio():
         return render_template("RegisEjercicio.html")
     
+    @app.route('/BodyData') 
+    def BodyData():
+        return render_template('BodyData.html')
 
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
@@ -136,9 +139,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
         
 
-    @app.route('/BodyData')  #renderiza y nos redirige a la pagina html
-    def BodyData():
-        return render_template('BodyData.html')
+
     
     
 
