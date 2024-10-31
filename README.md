@@ -1,14 +1,16 @@
 # Instrucciones
 
 **1)**
-Antes de comenzar debemos instalar el ejecutable de "Ollama" desde la pagina oficial: [Instalar Ollama](https://ollama.com/download)
+Antes de comenzar debemos instalar el ejecutable de "Ollama" desde la pagina oficial: [Instalar Ollama](https://ollama.com/download).
 
 **2)**
-Una vez finalizada la instalacion procederemos a abrir la consola de PowerShell con el siguiente comando: `Win + R` luego escribe `CMD`
+Una vez finalizada la instalacion procedemos a abrir la consola de PowerShell con el siguiente comando: `Win + R` y luego escribe `CMD`.
 
 **3)**
-En la terminal escribiremos el siguiente comando `ollama run llama3.1:latest` y asi crearemos el modelo que requiere el programa
+En la terminal escribe el siguiente comando `ollama run llama3.1:latest` y asi crearemos el modelo que requiere el programa. Luego corremos el ejecutable que instalamos previamente, si tienes dudas cual es, ten en cuenta que su icono es una llama.
 
+**4)**
+Ahora abrimos el modulo app.py que se encuentra 
 
 # Definición del problema
 
