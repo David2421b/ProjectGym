@@ -19,10 +19,10 @@ db = Database()
 db.connect()
 
 @dataclass
-class Routeapp:
-    @app.route('/')
+class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que manejan las diferentes vistas de la aplicacion
+    @app.route('/')   #(@app) Define una ruta o URL específica para acceder a una función.
     def home():
-        return render_template("Index.html")
+        return render_template("Index.html")  
 
     @app.route('/menu')
     def menu():
@@ -49,14 +49,14 @@ class Routeapp:
         return render_template("RegisEjercicio.html")
 
 @dataclass
-class Routelogic:
+class Routelogic:  #define las rutas para registrar y autenticar usuarios 
     Nombre = ""
     Edad = 0
     Email = ""
     Contraseña = ""
     Genero = ""
 
-    @app.route('/login', methods=['GET', 'POST'])
+    @app.route('/login', methods=['GET', 'POST']) #GET obtiene datos del servidor y POST envia datos al servidor 
     def login():
         if request.method == 'POST':
             # Obtener los datos del formulario
@@ -67,8 +67,8 @@ class Routelogic:
 
             global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
             
-            if exito:
-                Nombre = usuario[1]
+            if exito:  #Autenticacion de informacion de usuario 
+                Nombre = usuario[1]  #Se extraen datos del objeto y se asignan a variables globales 
                 Edad = usuario[2]
                 Email = usuario[3]
                 Contraseña = usuario[4]
@@ -91,7 +91,7 @@ class Routelogic:
 
     @app.route('/register', methods=['GET', 'POST'])
     def register():
-        if request.method == 'POST':
+        if request.method == 'POST':   #Capturan los datos del usuario 
             nombre = request.form['Name']
             edad = request.form['Age']
             email = request.form['Email']
@@ -99,8 +99,8 @@ class Routelogic:
             genero = request.form['Gender']
             Dni = request.form['Id']
 
-            usuario = Usuario(nombre, edad, email, contraseña, genero, Dni)
-            db.registrar_usuario(usuario)
+            usuario = Usuario(nombre, edad, email, contraseña, genero, Dni)  #se crea la instancia usuario 
+            db.registrar_usuario(usuario)    #Guardamos informacion en base de datos 
             return render_template('Index.html')
     
         return render_template('Registrarse.html')
@@ -108,7 +108,7 @@ class Routelogic:
     @app.route('/EjercicioRegister', methods=['GET', 'POST'])
     def EjercicioRegister():
         global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
-        if request.method == 'POST':
+        if request.method == 'POST':        #Captura informacion de los ejercicios 
             nombre = request.form['Name']
             tipo = request.form['Type']
             repeticiones = request.form['Reps']
@@ -116,7 +116,7 @@ class Routelogic:
             descanso = request.form['Rest']
 
             ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso, Id_Usr)
-            db.registrar_ejercicio(ejercicio)
+            db.registrar_ejercicio(ejercicio)  #crea instancia y guarda en base de datos 
             return render_template('menu.html')
     
         return render_template('RegisEjercicio.html')
@@ -130,13 +130,13 @@ class Routelogic:
 
     @app.route('/OllamaChat', methods=['GET', 'POST'])
     def chat():
-        if request.method == 'POST':
+        if request.method == 'POST':  #propiedad de Flask que indica el método HTTP utilizado para acceder a la ruta 
             mensaje = request.form['message']
             respuesta = Chat_Ollama.chat(mensaje)
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
         
 
-    @app.route('/BodyData')
+    @app.route('/BodyData')  #renderiza y nos redirige a la pagina html
     def BodyData():
         return render_template('BodyData.html')
     

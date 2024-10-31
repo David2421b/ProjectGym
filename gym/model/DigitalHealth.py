@@ -79,5 +79,5 @@ class Estadistica:
 class Chat_Ollama:
     
     def chat(mensaje: str):
-        response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje)
-        return response['response']
+        response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje) #generate devuelve un diccionario y el metodo extrae el valor asociado a response
+        return response['response']  #retorna la respuesta
