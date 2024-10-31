@@ -60,6 +60,19 @@ class Estadistica:
     def calcular_imc(peso: float, altura: float):
         if altura >= 0:
             imc = peso / (altura ** 2)
+
+            if imc < 18.5:
+                return f"Tu IMC es: {imc:.1f} y te encuentras en infrapeso"
+            elif imc >= 18.5 and imc < 24.9:
+                return f"Tu IMC es: {imc:.1f} y te encuentras en un peso normal"
+            elif imc >= 25 and imc < 29.9:
+                return f"Tu IMC es: {imc:.1f} y te encuentras en sobrepeso"
+            elif imc >= 30 and imc < 34.9:
+                return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado I"
+            elif imc >= 35 and imc < 39.9:
+                return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado II"
+            elif imc >= 40:
+                return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado III"
         return imc
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
@@ -68,11 +81,11 @@ class Estadistica:
         
         elif genero == "Mujer":
             tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad)
-        return tmb
+        return f"Tu TMB es: {tmb:.1f}"
         
     def calcular_fcm(edad: int):
         fcm = 220 - edad     
-        return fcm
+        return f"Tu FCM es: {fcm:.1f}"
     
 
 @dataclass

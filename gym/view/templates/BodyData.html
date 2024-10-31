@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Body</title>
-    <link rel="icon" href="GYM/view/static/Logo.png" type="image/png">
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
         body{
@@ -22,7 +22,7 @@
             border-radius: 30px;
             display: flex;
             justify-content: center;
-            margin-top: 10%;
+            margin-top: 5%;
             margin-left: auto;
             margin-right: auto;
             padding: 3%;
@@ -32,7 +32,7 @@
             background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
             border-radius: 30px;
             justify-content: center;
-            margin-top: 10%;
+            margin-top: 5%;
             margin-left: auto;
             margin-right: auto;
             padding: 3%;
@@ -120,15 +120,15 @@
 
         <div class="Container2">
             <div class="IMC">
-                <p>Tu IMC es: {{Imc}}</p>
+                <p>{{Imc}}</p>
             </div>
 
             <div class="TMB">
-                <p>Tu Tmb es: {{Tmb}}</p>
+                <p>{{Tmb}}</p>
             </div>
 
             <div class="FCM">
-                <p>Tu Fcm es: {{Fcm}}</p>
+                <p>{{Fcm}}</p>
             </div>
         </div>
     </div>
