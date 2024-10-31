@@ -12,7 +12,6 @@ from Logic.DataBase import Database
 #   PARA INICIARLA DESDE FLASK DEBES CORRER EL ARCHIVO "app.py" QUE SE ENCUENTRA EN LA RUTA G
 #   RECUERDA QUE DEBES INICIAR EL PROGRAMA DE "OLLAMA" PARA QUE EL CHAT FUNCIONE CORRECTAMENTE
 
-#   Hola zungita barata de simon
 
 app = Flask(__name__)
 db = Database()
