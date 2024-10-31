@@ -49,7 +49,8 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
     
     @app.route('/BodyData') 
     def BodyData():
-        return render_template('BodyData.html')
+        global Edad, Genero
+        return render_template('BodyData.html' , Age = Edad, Gender = Genero)
 
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
@@ -137,6 +138,15 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             mensaje = request.form['message']
             respuesta = Chat_Ollama.chat(mensaje)
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
+        
+    
+    @app.route('/CalcularData')
+    def CalcularData():
+        global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
+        peso = request.form['Weight']
+        altura = request.form['Height']
+
+
         
 
 
