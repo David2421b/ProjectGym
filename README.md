@@ -1,3 +1,15 @@
+# Instrucciones
+
+**1)**
+Antes de comenzar debemos instalar el ejecutable de "Ollama" desde la pagina oficial: [Instalar Ollama](https://ollama.com/download)
+
+**2)**
+Una vez finalizada la instalacion procederemos a abrir la consola de PowerShell con el siguiente comando: `Win + R` luego escribe `CMD`
+
+**3)**
+En la terminal escribiremos el siguiente comando `ollama run llama3.1:latest` y asi crearemos el modelo que requiere el programa
+
+
 # Definición del problema
 
 En la actualidad, la necesidad de llevar un control preciso de las actividades físicas, rutinas de ejercicio y el monitoreo de la salud personal ha aumentado considerablemente entre quienes buscan mejorar su bienestar. No obstante, gestionar manualmente estos datos o tenerlos dispersos puede resultar ineficiente y confuso. Asimismo, la ausencia de recordatorios y un seguimiento continuo puede provocar inconsistencias en las rutinas y descuidar aspectos clave de la salud.
