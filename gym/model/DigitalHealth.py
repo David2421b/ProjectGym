@@ -16,12 +16,12 @@ class Usuario:
 
 class Rutinas:
 
-    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int):
-        self.list_ejercicios: list = list_ejercicios
-        self.nombre_rutina: str = nombre_rutina
-        self.frecuencia_semana: int = frecuencia_semana
-
-
+    def __init__(self, nombre: str, descripcion: str, duracion: int, ejercicios: list):
+        self.nombre: str = nombre
+        self.descripcion: str = descripcion
+        self.duracion: int = duracion
+        self.ejercicios: list = ejercicios
+        
 class Ejercicio:
     
     def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int, id_persona: str):

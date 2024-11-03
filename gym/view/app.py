@@ -51,7 +51,7 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
     def BodyData():
         global Edad, Genero
         return render_template('BodyData.html' , Age = Edad, Gender = Genero)
-
+    
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
     Nombre = ""
@@ -164,6 +164,6 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                 return redirect(request.url)
 
         return render_template('BodyData.html')
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
