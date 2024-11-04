@@ -52,6 +52,10 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
         global Edad, Genero
         return render_template('BodyData.html' , Age = Edad, Gender = Genero)  
 
+    @app.route('/Vicios')
+    def Vicios():
+        return render_template('ManejoVicios.html')
+
 
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
