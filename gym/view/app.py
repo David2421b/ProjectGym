@@ -115,6 +115,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/EjercicioRegister', methods=['GET', 'POST'])
     def EjercicioRegister():
         global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
+
         if request.method == 'POST':        #Captura informacion de los ejercicios 
             nombre = request.form['Name']
             tipo = request.form['Type']
@@ -128,6 +129,13 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             return render_template('menu.html')
     
         return render_template('RegisEjercicio.html')
+    
+    @app.route('/ver_ejercicios')
+    def ver_ejercicios():
+        db.connect() 
+        ejercicios = db.obtener_todos_ejercicios()  
+        return render_template('DashBoardData.html', Ejer1 = ejercicios[0])
+
 
     @app.route('/UsrData')
     def UsrData():

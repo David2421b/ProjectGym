@@ -89,6 +89,16 @@ class Database:
                 
             finally:
                 cursor.close()
+    
+    def obtener_todos_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM ejercicios')  # Selecciona todos los registros
+            ejercicios = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            return ejercicios
+        return []
+
 
     def verificar_credenciales(self, email, contraseña):
         if self.conexion:
