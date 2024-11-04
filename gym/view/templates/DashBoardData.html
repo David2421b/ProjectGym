@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body</title>
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+
+    <style>
+        body{
+            background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .Body{
+            display: flex;
+        }
+
+        .Container{
+            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            margin-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3%;
+        }
+
+        #Form input{
+            margin: 1% 0% 5% 0%;
+            font-size: 25px;
+            height: 45px;
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .Labels{
+            background-color: black;
+            text-align: center;
+
+        }
+
+        .Labels p{
+            color: white;
+            font-size: 25px;
+        }
+
+        button{
+            margin: 1% 0% 8% 0%;
+            font-size: 30px;
+            border-radius: 10px;
+            height: 45px;
+            width: 308px;
+            background-color: #cb0000;
+            color: white;
+            display: block;
+            cursor: pointer;
+        }
+
+        button:hover{
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            text-align: center;
+            text-decoration: overline;
+        }
+
+        .IMC, .TMB{
+            background-color: black;
+            padding: 5px;
+            text-align: center;
+            color: white;
+            font-size: 25px;
+            margin-bottom: 20%;
+        }
+
+        .FCM{
+            background-color: black;
+            padding: 5px;
+            text-align: center;
+            color: white;
+            font-size: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="Body">
+        <div class="Container">
+            <div class="Form">
+                <div class="Labels">
+                    <p>{{Ejer1}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer2}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer3}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer4}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer5}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer6}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer7}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer8}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer9}}</p>
+                </div>
+
+                <div class="Labels">
+                    <p>{{Ejer10}}</p>
+                </div>
+                
+                <a href="menu.html">DashBoard</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
