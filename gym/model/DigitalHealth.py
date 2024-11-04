@@ -18,10 +18,9 @@ class Usuario:
 
 class Rutinas:
 
-    def __init__(self, list_ejercicios: list, nombre_rutina: str, frecuencia_semana: int):
-        self.list_ejercicios: list = list_ejercicios
+    def __init__(self, nombre_rutina: str, list_ejercicios: list):
         self.nombre_rutina: str = nombre_rutina
-        self.frecuencia_semana: int = frecuencia_semana
+        self.list_ejercicios: list = list_ejercicios
 
 
 class Ejercicio:
@@ -32,13 +31,6 @@ class Ejercicio:
         self.repeticiones: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
-    
-    def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
-        pass
-
-    def eliminar_ejericio(self, nombre: str, id_ejercicio: str):
-        pass
-   
 
 class Notificacion:
 
