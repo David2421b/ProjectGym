@@ -1,7 +1,9 @@
 import ollama
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import ClassVar
+import time
+import random
 
 class Usuario:
     
@@ -92,3 +94,17 @@ class Chat_Ollama:
     def chat(mensaje: str):
         response = ollama.generate(model = 'llama3.1:latest', prompt = mensaje) #generate devuelve un diccionario y el metodo extrae el valor asociado a response
         return response['response']  #retorna la respuesta
+
+
+class Vicios(Usuario):
+    def __init__(self, nombre, correo, nombre_vicio, compromiso, tracking_duration_days, message_interval_hours, support_messages):
+        super().__init__(nombre, correo)  # Heredamos atributos de Usuario
+        self.nombre_vicio = nombre_vicio  # Nombre del vicio
+        self.compromiso = compromiso  # Compromiso del usuario (ej: "No recaer por 30 días")
+        self.start_time = datetime.now()  # Hora de inicio del seguimiento
+        self.tracking_duration = timedelta(days=tracking_duration_days)  # Duración del seguimiento
+        self.message_interval = timedelta(hours=message_interval_hours)  # Intervalo entre mensajes de apoyo
+        self.support_messages = support_messages  # Lista de mensajes de apoyo
+        self.relapse_count = 0  # Contador de recaídas
+        self.last_relapse_date = None  # Fecha de última recaída
+        self.ultimo_mensaje = datetime.now()  # Marca de tiempo del último mensaje        

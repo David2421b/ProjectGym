@@ -14,6 +14,14 @@
             margin: 0;
         }
 
+        .imgvicios {
+            width: 300px;      /* Ajusta el ancho de la imagen */
+            height: auto;      /* Mantiene la relación de aspecto */
+            position: absolute; /* Posicionamiento absoluto */
+            left: 1200px;       /* Distancia desde el lado izquierdo */
+            top: 400px;        /* Distancia desde la parte superior */
+        }
+
         .CountainerNavigate{
             margin: 1.5% 3% 0% 4%;
         }
@@ -123,6 +131,8 @@
             <a href="/" style="color: red;">Log out</a>
         </nav>
     </div>
+
+
     
     <center>
         <div class="ContainerMarquee">
@@ -137,5 +147,9 @@
             </div>
         </div>
     </center>
+        <div class="imgvicios">
+            <a href="/Vicios" target="_blank">
+            <img src="{{ url_for('static', filename='VICIO.png') }}" alt="Imagen de Vicio" style="width: 100%; height: auto;">
+        </div>
 </body>
 </html>
