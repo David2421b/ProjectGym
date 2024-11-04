@@ -13,16 +13,23 @@
         }
  
         .back_login{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.704));
+            background: linear-gradient(to right, rgba(246, 245, 245, 0.704), rgba(0, 0, 0, 0.704));
             margin: 7% 60% 0% 10%;
             border-radius: 15%;
 
         }
 
         img{
+            animation: zoom 2s ease-in-out infinite;
             width: 250px;
             height: 250px;
             margin-left: 22%;
+        }
+
+        @keyframes zoom{
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+
         }
 
         .Log_in{
@@ -60,12 +67,20 @@
         }
 
         .Log_in a{
-            border-radius: 10px;
-            color: white;
-            font-size: 30px;
-            text-decoration: overline;
-            margin-left: 100px;
-            
+        background-color: rgb(255, 255, 255);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 25px;
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 8px 65px;
+        border-radius: 8px;
+        }
+
+        .Log_in a:hover{
+            background-color: rgb(191, 22, 22);
+            color: aliceblue;
+
         }
 
         
@@ -94,7 +109,7 @@
                     <input type="text" name="email" Id="email" placeholder="Email" required><br>
                     <input type="password" name="password" id="password" placeholder="Contraseña" required><br>
                     <button type="submit">Iniciar Sesión</button>
-                    <a href="/singup">Registrarse</a>
+                   <center> <a href="/singup">Registrarse</a> </center>
                 </form>
             </div>  
         </div>
