@@ -27,7 +27,7 @@ class Ejercicio:
     def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int):
         self.nombre: str = nombre
         self.tipo: str = tipo
-        self.repeticiones_por_serie: int = repeticiones
+        self.repeticiones: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
     
