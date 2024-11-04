@@ -98,6 +98,47 @@ class Database:
             cursor.close()
             return ejercicios
         return []
+    
+    def obtener_nombres_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT nombre FROM ejercicios')  # Selecciona solo la columna de nombres
+            nombres = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            return nombres
+    
+    def obtener_tipo_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT tipo FROM ejercicios')  
+            tipo = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            return tipo
+    
+    def obtener_repeticiones_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT repeticiones FROM ejercicios')
+            repeticiones = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            return repeticiones
+        
+    def obtener_series_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT series FROM ejercicios')
+            series = cursor.fetchall()
+            cursor.close()
+            return series
+    
+    def obtener_descanso_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT descanso_series FROM ejercicios')
+            descanso = cursor.fetchall()
+            cursor.close()
+            return descanso
+        return []
 
 
     def verificar_credenciales(self, email, contraseña):
