@@ -139,8 +139,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/ver_ejercicios')
     def ver_ejercicios():
         db.connect() 
-        ejercicios = db.obtener_todos_ejercicios()  
-        return render_template('DashBoardData.html', Ejer1 = ejercicios[0])
+        ejercicios = db.obtener_todos_ejercicios()
+        return render_template('DashBoardData.html', Ejer1 = ejercicios[0], Ejer2 = ejercicios[1])
 
 
     @app.route('/UsrData')
