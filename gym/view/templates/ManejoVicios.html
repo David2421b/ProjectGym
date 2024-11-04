@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supera tu Vicio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="estilos.css"> <!-- Enlace al archivo CSS -->
 </head>
 <style>
-    /* General */
+/* General */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #000000;
     color: #333;
     line-height: 1.6;
 }
@@ -44,7 +44,7 @@ header p {
     color: #666;
 }
 
-#start-button {
+#boton-inicio {
     display: block;
     width: 100%;
     padding: 15px;
@@ -58,11 +58,11 @@ header p {
     transition: background 0.3s;
 }
 
-#start-button:hover {
+#boton-inicio:hover {
     background-color: #45a049;
 }
 
-#time-counter {
+#contador-tiempo {
     text-align: center;
     font-size: 1.2em;
     margin-top: 10px;
@@ -70,235 +70,14 @@ header p {
     font-weight: bold;
 }
 
-/* Panel de Usuario */
-#user-panel h2, #support-messages h2, #reflection h2, #resources h2, #goals h2, #statistics h2, footer h2 {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-#progress-graph, #personal-tips, #motivational-messages {
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #e7f5e6;
-    border-left: 5px solid #4CAF50;
-    border-radius: 8px;
-}
-
-#achievements ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#achievements li {
-    padding: 8px;
-    background-color: #e0f7fa;
-    color: #00796b;
-    margin-bottom: 5px;
-    border-radius: 8px;
-}
-
-/* Recordatorios y Mensajes de Apoyo */
-#support-messages {
-    background-color: #fafafa;
-}
-
-#schedule-reminder {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #ff9800;
-    color: #fff;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#schedule-reminder:hover {
-    background-color: #e68900;
-}
-
-/* Diario Personal */
-textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    resize: vertical;
-    margin-top: 10px;
-    font-size: 1em;
-}
-
-#help-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #f44336;
-    color: #fff;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#help-button:hover {
-    background-color: #d32f2f;
-}
-
-/* Recursos Adicionales */
-#resources ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#resources li {
-    margin-bottom: 10px;
-}
-
-#resources a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#resources a:hover {
-    text-decoration: underline;
-}
-
-/* Configuración de Objetivos */
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-#goals ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-top: 10px;
-}
-
-#goals li {
-    margin-bottom: 5px;
-}
-
-/* Estadísticas */
-#statistics p {
-    margin-top: 5px;
-    font-size: 1.1em;
-    color: #666;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-}
-
-footer p {
-    margin-top: 10px;
-}
-
-footer a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
 </style>
 <body>
     <!-- Página de Inicio -->
     <header>
-        <h1>¡Bienvenido a tu Camino de Cambio, [Nombre]!</h1>
+        <h1>¡Bienvenido a tu Camino de Cambio, {{Name}}</h1>
         <p>Tu progreso, un día a la vez.</p>
-        <button id="start-button">Comienza tu Seguimiento</button>
-        <div id="time-counter">Llevas 0 días sin recaídas</div>
+        <button id="boton-inicio">Comienza tu Seguimiento</button>
+        <div id="contador-tiempo">Llevas 0 días sin recaídas</div>
     </header>
-
-    <!-- Panel de Usuario -->
-    <section id="user-panel">
-        <h2>Seguimiento de Progreso</h2>
-        <div id="progress-graph">
-            <!-- Aquí podrías insertar un gráfico de progreso -->
-            <p>Gráfica de Progreso (Placeholder)</p>
-        </div>
-        <div id="achievements">
-            <h3>Logros</h3>
-            <ul>
-                <li>Primer día sin recaídas</li>
-                <li>Primera semana sin recaídas</li>
-                <!-- Más logros -->
-            </ul>
-        </div>
-        <div id="personal-tips">
-            <h3>Consejos Personalizados</h3>
-            <p>Sigue así, ¡solo un día a la vez!</p>
-        </div>
-    </section>
-
-    <!-- Recordatorios y Mensajes de Apoyo -->
-    <section id="support-messages">
-        <h2>Recordatorios y Mensajes de Apoyo</h2>
-        <button id="schedule-reminder">Programa un Recordatorio</button>
-        <div id="motivational-messages">
-            <p>Mensaje de motivación: "Estás haciendo un gran trabajo"</p>
-        </div>
-    </section>
-
-    <!-- Sección de Reflexión y Emociones -->
-    <section id="reflection">
-        <h2>Diario Personal</h2>
-        <textarea placeholder="Escribe cómo te sientes hoy..."></textarea>
-        <button id="help-button">Necesito Ayuda</button>
-    </section>
-
-    <!-- Recursos Adicionales -->
-    <section id="resources">
-        <h2>Recursos Adicionales</h2>
-        <ul>
-            <li><a href="#">Lecturas de Apoyo</a></li>
-            <li><a href="#">Videos Motivacionales</a></li>
-            <li><a href="#">Ejercicios de Relajación</a></li>
-        </ul>
-    </section>
-
-    <!-- Configuración de Objetivos y Compromisos -->
-    <section id="goals">
-        <h2>Compromiso Personal</h2>
-        <input type="text" placeholder="Escribe tu compromiso aquí...">
-        <h3>Objetivos</h3>
-        <ul>
-            <li>Reducir el tiempo en redes sociales a 30 minutos por día</li>
-            <li>Eliminar el consumo durante los fines de semana</li>
-        </ul>
-    </section>
-
-    <!-- Estadísticas y Análisis -->
-    <section id="statistics">
-        <h2>Estadísticas de Progreso</h2>
-        <p>Duración sin el vicio: 10 días</p>
-        <p>Número de recaídas: 2</p>
-        <p>Patrones de riesgo identificados: Noche, fines de semana</p>
-    </section>
-
-    <!-- Contacto y Apoyo -->
-    <footer>
-        <h2>Conéctate con Otros</h2>
-        <p>Únete a nuestra <a href="#">comunidad de apoyo</a> y comparte tu progreso.</p>
-        <p>¿Necesitas ayuda profesional? <a href="#">Contacta a un especialista</a>.</p>
-    </footer>
-    
-    <!-- JavaScript para interactividad -->
-    <script src="scripts.js"></script> <!-- Archivo JS -->
 </body>
 </html>
