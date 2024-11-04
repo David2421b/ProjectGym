@@ -105,6 +105,8 @@ class Database:
             cursor.execute('SELECT nombre FROM ejercicios')  # Selecciona solo la columna de nombres
             nombres = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
+            for i in range(len(nombres)):
+                nombres[i] = nombres[i][0]
             return nombres
     
     def obtener_tipo_ejercicios(self):
@@ -113,6 +115,8 @@ class Database:
             cursor.execute('SELECT tipo FROM ejercicios')  
             tipo = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
+            for i in range(len(tipo)):
+                tipo[i] = tipo[i][0]
             return tipo
     
     def obtener_repeticiones_ejercicios(self):
@@ -121,6 +125,8 @@ class Database:
             cursor.execute('SELECT repeticiones FROM ejercicios')
             repeticiones = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
+            for i in range(len(repeticiones)):
+                repeticiones[i] = repeticiones[i][0]
             return repeticiones
         
     def obtener_series_ejercicios(self):
@@ -129,6 +135,8 @@ class Database:
             cursor.execute('SELECT series FROM ejercicios')
             series = cursor.fetchall()
             cursor.close()
+            for i in range(len(series)):
+                series[i] = series[i][0]
             return series
     
     def obtener_descanso_ejercicios(self):
@@ -137,6 +145,8 @@ class Database:
             cursor.execute('SELECT descanso_series FROM ejercicios')
             descanso = cursor.fetchall()
             cursor.close()
+            for i in range(len(descanso)):
+                descanso[i] = descanso[i][0]
             return descanso
         return []
 

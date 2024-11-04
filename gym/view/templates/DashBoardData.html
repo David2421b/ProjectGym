@@ -28,118 +28,113 @@
             padding: 3%;
         }
 
-        #Form input{
-            margin: 1% 0% 5% 0%;
-            font-size: 25px;
-            height: 45px;
-            background-color: black;
-            border-radius: 10px;
-            color: white;
-            text-align: center;
-        }
-
-        .Labels{
-            background-color: black;
-            text-align: center;
-
-        }
-
-        .Labels p{
-            color: white;
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
             font-size: 25px;
         }
 
-        button{
-            margin: 1% 0% 8% 0%;
-            font-size: 30px;
-            border-radius: 10px;
-            height: 45px;
-            width: 308px;
-            background-color: #cb0000;
-            color: white;
-            display: block;
-            cursor: pointer;
+        th {
+            background-color: #f2f2f2; /* Color de fondo para el encabezado */
         }
-
-        button:hover{
-            transform: scale(1.1);
-            transition: 0.3s;
-        }
-
-        a{
-            color: white;
-            text-decoration: none;
-            font-size: 30px;
-            text-align: center;
-            text-decoration: overline;
-        }
-
-        .IMC, .TMB{
-            background-color: black;
-            padding: 5px;
-            text-align: center;
-            color: white;
-            font-size: 25px;
-            margin-bottom: 20%;
-        }
-
-        .FCM{
-            background-color: black;
-            padding: 5px;
-            text-align: center;
-            color: white;
-            font-size: 25px;
-        }
-
     </style>
 </head>
 <body>
     <div class="Body">
         <div class="Container">
-            <div class="Form">
-                <div class="Labels">
-                    <p>{{Ejer1}}</p>
-                </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Repeticiones</th>
+                        <th>Series</th>
+                        <th>Descanso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{Nombre1}}</td>
+                        <td>{{Tipo1}}</td>
+                        <td>{{Repeticiones1}}</td>
+                        <td>{{Series1}}</td>
+                        <td>{{Descanso1}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{Nombre2}}</td>
+                        <td>{{Tipo2}}</td>
+                        <td>{{Repeticiones2}}</td>
+                        <td>{{Series2}}</td>
+                        <td>{{Descanso2}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{Nombre3}}</td>
+                        <td>{{Tipo3}}</td>
+                        <td>{{Repeticiones3}}</td>
+                        <td>{{Series3}}</td>
+                        <td>{{Descanso3}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer2}}</p>
-                </div>
+                    <tr>
+                        <td>{{Nombre4}}</td>
+                        <td>{{Tipo4}}</td>
+                        <td>{{Repeticiones4}}</td>
+                        <td>{{Series4}}</td>
+                        <td>{{Descanso4}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer3}}</p>
-                </div>
+                    <tr>
+                        <td>{{Nombre5}}</td>
+                        <td>{{Tipo5}}</td>
+                        <td>{{Repeticiones5}}</td>
+                        <td>{{Series5}}</td>
+                        <td>{{Descanso5}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer4}}</p>
-                </div>
+                    <tr>
+                        <td>{{Nombre6}}</td>
+                        <td>{{Tipo6}}</td>
+                        <td>{{Repeticiones6}}</td>
+                        <td>{{Series6}}</td>
+                        <td>{{Descanso6}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer5}}</p>
-                </div>
+                    <tr>
+                        <td>{{Nombre7}}</td>
+                        <td>{{Tipo7}}</td>
+                        <td>{{Repeticiones7}}</td>
+                        <td>{{Series7}}</td>
+                        <td>{{Descanso7}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer6}}</p>
-                </div>
+                    <tr>
+                        <td>{{Nombre8}}</td>
+                        <td>{{Tipo8}}</td>
+                        <td>{{Repeticiones8}}</td>
+                        <td>{{Series8}}</td>
+                        <td>{{Descanso8}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer7}}</p>
-                </div>
+                    <tr>
+                        <td>{{Nombre9}}</td>
+                        <td>{{Tipo9}}</td>
+                        <td>{{Repeticiones9}}</td>
+                        <td>{{Series9}}</td>
+                        <td>{{Descanso9}}</td>
+                    </tr>
 
-                <div class="Labels">
-                    <p>{{Ejer8}}</p>
-                </div>
-
-                <div class="Labels">
-                    <p>{{Ejer9}}</p>
-                </div>
-
-                <div class="Labels">
-                    <p>{{Ejer10}}</p>
-                </div>
-                <a href="/Ejercicio">Agregar</a>
-                <a href="/MenuName">DashBoard</a>
-            </div>
+                    <tr>
+                        <td>{{Nombre10}}</td>
+                        <td>{{Tipo10}}</td>
+                        <td>{{Repeticiones10}}</td>
+                        <td>{{Series10}}</td>
+                        <td>{{Descanso10}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    
 </body>
 </html>
