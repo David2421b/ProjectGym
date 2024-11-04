@@ -122,7 +122,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             series = request.form['Series']
             descanso = request.form['Rest']
 
-            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso, Id_Usr)
+            ejercicio = Ejercicio(nombre, tipo, repeticiones, series, descanso)
+            Database.DNIUsr(Id_Usr)
             db.registrar_ejercicio(ejercicio)  #crea instancia y guarda en base de datos 
             return render_template('menu.html')
     

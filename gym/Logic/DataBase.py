@@ -69,6 +69,10 @@ class Database:
             finally:
                 cursor.close()
     
+    def DNIUsr(Id_Usr: int):
+        global Id_usuar
+        Id_usuar: int = Id_usuar
+    
     def registrar_ejercicio(self, ejercicio):
         if self.conexion:
             cursor = self.conexion.cursor()
@@ -76,7 +80,7 @@ class Database:
                 cursor.execute('''
                     INSERT INTO ejercicios (id_persona, nombre, tipo, repeticiones, series, descanso_series)
                     VALUES (?, ?, ?, ?, ?, ?)
-                ''', (ejercicio.id_persona, ejercicio.nombre, ejercicio.tipo, ejercicio.repeticiones, ejercicio.series, ejercicio.descanso_entre_series))
+                ''', (self.Id_Usr, ejercicio.nombre, ejercicio.tipo, ejercicio.repeticiones, ejercicio.series, ejercicio.descanso_entre_series))
                 self.conexion.commit()
 
             except sqlite3.Error as error:
