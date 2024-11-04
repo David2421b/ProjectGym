@@ -173,7 +173,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/Vicios_Name')
     def Vicios_Name():
         global Nombre
-        return render_template('ManejoVicios.html', Name=Nombre)    
+        return render_template('ManejoVicios.html', Name = Nombre)    
         
     
 if __name__ == '__main__':
