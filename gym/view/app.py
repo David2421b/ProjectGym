@@ -51,7 +51,7 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
     def BodyData():
         global Edad, Genero
         return render_template('BodyData.html' , Age = Edad, Gender = Genero)
-    
+
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
     Nombre = ""
@@ -143,27 +143,21 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     
     @app.route('/CalcularData', methods=['GET', 'POST'])
     def CalcularDatas():
-        if request.method == 'POST':   #Cambio en proceso entrada de datos 
+        if request.method == 'POST':
             global Edad, Genero
-            try:
-                peso = int(request.form['Weight'])
-                altura = float(request.form['Height'])
-
-                if peso <= 0 or altura <= 0:
-                    flash("Peso y altura deben ser números positivos.", "error")
-                    return redirect(request.url)
-
-                IMC = Estadistica.calcular_imc(peso, altura)
-                TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
-                FCM = Estadistica.calcular_fcm(Edad)
-
-                return render_template('BodyData.html', Imc=IMC, Tmb=TMB, Fcm=FCM)
+            peso = int(request.form['Weight'])
+            altura = float(request.form['Height'])
+            peso = peso  / 100
+            IMC = Estadistica.calcular_imc(peso, altura)
+            TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
+            FCM = Estadistica.calcular_fcm(Edad)
+            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
         
-            except ValueError:
-                flash("Ingrese valores numéricos válidos para peso y altura.", "error")
-                return redirect(request.url)
+            #except ValueError:
+                #flash("Ingrese valores numéricos válidos para peso y altura.", "error")
+                #return redirect(request.url)
 
         return render_template('BodyData.html')
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
