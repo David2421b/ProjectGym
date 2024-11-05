@@ -23,6 +23,7 @@
 
     /* Contenedores */
     header, section, footer {
+        height: 600px;
         max-width: 800px;
         margin: 20px auto;
         padding: 20px;
@@ -30,6 +31,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border: 1px solid #830909;
+        margin-left: 20px;
     }
 
     /* Encabezado */
@@ -112,6 +114,27 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
+                /* Estilos adicionales para la lista de compromisos */
+                #lista-compromisos {
+            margin-left: 1000px;
+            background-color: #ffebeb;
+            border: 1px solid #ff4d4d;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: -600px;
+            max-width: 400px;
+        }
+
+        #lista-compromisos ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #lista-compromisos ul li {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #b30000;
+        }
 </style>
 
 <body>
@@ -126,9 +149,14 @@
         <form id="form-vicio" method = "post" action = "/ViciosData">
             <input type="text" id="vicio" name="vicio" placeholder="Escribe tu vicio aquí" required><br>
             <input type="date" id="Fecha" name="Fecha" placeholder="Fecha de cuando lo dejaste" required><br>
+            <input type="text" id="compromiso" name="compromiso" placeholder="¿por qué razón quieres dejar este vicio?" required>
             <button id="boton-inicio" type = "submit">Comienza tu Seguimiento</button>
-        <div id="contador-tiempo">Llevas {{Recaidas}} días sin recaídas en {{ElVicio}}</div>
+        <div id="contador-tiempo">{{Recaidas}} </div>
         </form>
+
     </header>
+    <div id="lista-compromisos">
+        <h2>Lo voy a hacer por: {{compromiso}}</h2>
+    </div>
 </body>
 </html>

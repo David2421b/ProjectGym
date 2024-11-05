@@ -18,6 +18,8 @@ app = Flask(__name__)
 db = Database()
 db.connect()
 
+compromisos = []
+
 @dataclass
 class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que manejan las diferentes vistas de la aplicacion
     @app.route('/')   #(@app) Define una ruta o URL específica para acceder a una función.
@@ -270,16 +272,20 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             global Nombre
             vicio = request.form['vicio']
             fecha = request.form['Fecha']
+            compromiso = request.form['compromiso']
             fehca_actual = datetime.now()
             if fecha:
                 año, mes , dia = fecha.split('-')
                 fecha_suceso = datetime(int(año), int(mes), int(dia))
             
             diferencia = fehca_actual - fecha_suceso
-            dias_pasados = diferencia.days
-            return render_template('ManejoVicios.html', Name = Nombre, Recaidas = dias_pasados, ElVicio = vicio)
+            dias_pasados = str(diferencia.days)
+            return render_template('ManejoVicios.html', Name = Nombre, Recaidas = "llevas sin consumir: " + dias_pasados + " dias, " + vicio, ElVicio = vicio, compromiso = compromiso)
         
-    
+
+
+
+  
 if __name__ == '__main__':
     app.run(debug=True)
 
