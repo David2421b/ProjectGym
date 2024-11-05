@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supera tu Vicio</title>
     <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fechaInput = document.getElementById('Fecha');
+            const hoy = new Date().toISOString().split('T')[0];
+            fechaInput.setAttribute('max', hoy);
+        });
+    </script>
 </head>
 <style>
     * {
@@ -122,13 +129,16 @@
             margin-top: -600px;
             max-width: 600px;
         }
-        #boton_volver{
+
+        .volver button{
+            width: 100px;
+            height: 30px;
             background-color: #a02929;
-            color: #ffffff;
-            margin-left: 1400px;
-            margin-top: 500px;
+            color: floralwhite;
+            margin-left: 1380px;
 
         }
+
 
         section {
     max-width: 600px;
@@ -140,7 +150,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #830909;
     margin-left: 879px;
-    margin-top: -500px;
+    margin-top: 50px;
 }
 
 section h2 {
@@ -188,7 +198,7 @@ section button:hover {
 <body>
     <div class="advertencia">
         <p>⚠️ Advertencia: este apartado es un ejercicio de fuerza de voluntad para tratar de dejar un vicio o un mal hábito. Si tu problema está afectando tu vida personal, comunícate de inmediato con un profesional. ⚠️</p>
-        <a href="https://caracol.com.co/radio/2020/05/08/nacional/1588952578_714823.html"><h6>Comunicarse con profesionales: (Linea Amiga(4) 4444448) Dale click para mas información</h6></a>
+        <a href="https://caracol.com.co/radio/2020/05/08/nacional/1588952578_714823.html" target="_blank"><h6>Comunicarse con profesionales: (Linea Amiga(4) 4444448) Dale click para mas información</h6></a>
     </div>
     <!-- Página de Inicio -->
     <header>
@@ -206,9 +216,6 @@ section button:hover {
     <div id="lista-compromisos">
         <h2>Lo voy a hacer por:<br> {{compromiso}}</h2>
     </div>
-    <a href="/menu"><button id="boton_volver" type ="submit">Volver al menu</button></a>
-
-    <div id="muñeco"></div>
 
     <section>
         <h2>Registro de Sentimientos</h2>
@@ -230,6 +237,10 @@ section button:hover {
             <button type="submit">Registrar Sentimiento</button>
         </form>
     </section>
+
+    <div class="volver">
+        <a href="/MenuName"><button id="volver" type = "submit">volver al menu</button></a>
+    </div>
 
 </body>
 </html>
