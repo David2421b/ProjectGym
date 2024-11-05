@@ -8,7 +8,7 @@ class Database:
         self.db_name = os.path.join(os.path.dirname(__file__), 'database', db_name)
         self.conexion = None
 
-    def connect(self):
+    def connect(self): 
         try:
             # Conectar a la base de datos SQLite
             self.conexion = sqlite3.connect(self.db_name, check_same_thread = False)
@@ -18,7 +18,7 @@ class Database:
         except sqlite3.Error as err:
             self.conexion = None
 
-    def crear_tabla_usuarios(self):
+    def crear_tabla_usuarios(self): #comentario
         if self.conexion:
             cursor = self.conexion.cursor()
             cursor.execute('''
@@ -98,6 +98,7 @@ class Database:
             cursor.close()
             return ejercicios
         return []
+    
     
     def obtener_nombres_ejercicios(self):
         if self.conexion:
