@@ -17,7 +17,7 @@ import sqlite3
 
 
 app = Flask(__name__)
-db = Database()
+db = Database()  
 db.connect()
 
 def get_db_connection():
@@ -103,9 +103,9 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/MenuName')
     def MenuName():
         global Nombre
-        if Nombre == "":
-            return render_template('Index.html')
-        return render_template('menu.html', name = Nombre)
+        if Nombre == "":  #verifica si la variable esta vacia 
+            return render_template('Index.html')   #si nombre esta vacio rederige al usuario a la pagina
+        return render_template('menu.html', name = Nombre)  #si el nombre no esta vacio se asume que ya se inicio
 
 
     @app.route('/register', methods=['GET', 'POST'])
@@ -157,6 +157,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             count += 1
 
         if count == 0:
+
             return render_template('NoData.html')
         elif count == 1:
             return render_template('DashBoardData.html', 
@@ -269,31 +270,29 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/Vicios_Name')
     def Vicios_Name():
         global Nombre
-        return render_template('ManejoVicios.html', Name = Nombre)    
-    
+        return render_template('ManejoVicios.html', Name = Nombre)
+     
 
     @app.route('/ViciosData', methods=['GET','POST'])
     def registrar_vicio():
         if request.method == 'POST':
-            id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
-            nombre_vicio = request.form.get('vicio')
-            fecha_dejar = request.form.get('Fecha')
-            compromiso = request.form.get('compromiso')      
-            vicio = Vicio(id_persona, nombre_vicio, fecha_dejar, compromiso)
-            db.registrar_vicio(vicio)
-            return render_template('ManejoVicios.html')  # Redirige a una página de éxito
+            global Nombre, Id_Usr
+            nombre_vicio = request.form['vicio']
+            fecha_dejar = request.form['Fecha']
+            compromiso = request.form['compromiso']
+            vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
+            db.registrar_vicio(vicio, Id_Usr)
+            return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
 
 
-    @app.route('/registrar_sentimiento', methods=['POST'])
+    @app.route('/registrar_sentimiento', methods=['GET', 'POST'])
     def registrar_sentimiento():
-        id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
-        fecha = request.form.get('Fecha')  # Si tiene una fecha, o usa la fecha actual
-        sentimiento = request.form.get('sentimiento')
-        descripcion = request.form.get('descripcion')
-        
-        if id_persona and fecha and sentimiento and descripcion:
-            sentimiento_obj = Sentimiento(id_persona, fecha, sentimiento, descripcion)
-            db.registrar_sentimiento(sentimiento_obj)
+        if request.method == 'POST':
+            global Id_Usr
+            sentimiento = request.form['sentimiento']
+            descripcion = request.form['descripcion']
+            sentimiento_obj = Sentimiento(sentimiento, descripcion)
+            db.registrar_sentimiento(sentimiento_obj, Id_Usr)
             return render_template('ManejoVicios.html')
     
 if __name__ == '__main__':

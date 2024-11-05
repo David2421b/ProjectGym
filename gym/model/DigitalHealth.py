@@ -108,15 +108,12 @@ class Vicios(Usuario):
 
 
 class Vicio:
-    def __init__(self, id_persona, nombre_vicio, fecha_dejar, compromiso):
-        self.id_persona = id_persona
+    def __init__(self, nombre_vicio, fecha_dejar, compromiso):
         self.nombre_vicio = nombre_vicio
         self.fecha_dejar = fecha_dejar
         self.compromiso = compromiso
 
 class Sentimiento:
-    def __init__(self, id_persona, fecha, sentimiento, descripcion):
-        self.id_persona = id_persona
-        self.fecha = fecha
+    def __init__(self, sentimiento, descripcion):
         self.sentimiento = sentimiento
         self.descripcion = descripcion
