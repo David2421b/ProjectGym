@@ -277,7 +277,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             
             diferencia = fehca_actual - fecha_suceso
             dias_pasados = diferencia.days
-            return render_template('ManejoVicios.html', Name = Nombre, Recaidas = dias_pasados)
+            return render_template('ManejoVicios.html', Name = Nombre, Recaidas = dias_pasados, ElVicio = vicio)
         
     
 if __name__ == '__main__':

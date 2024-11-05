@@ -78,10 +78,10 @@ header p {
         <p>Tu progreso, un día a la vez.</p>
 
         <form id="form-vicio" method = "post" action = "/ViciosData">
-            <input type="text" id="vicio" name="vicio" placeholder="Escribe tu vicio aquí"><br>
-            <input type="date" id="Fecha" name="Fecha" placeholder="Fecha de cuando lo dejaste"><br>
+            <input type="text" id="vicio" name="vicio" placeholder="Escribe tu vicio aquí" required><br>
+            <input type="date" id="Fecha" name="Fecha" placeholder="Fecha de cuando lo dejaste" required><br>
             <button id="boton-inicio" type = "submit">Comienza tu Seguimiento</button>
-        <div id="contador-tiempo">Llevas {{Recaidas}} días sin recaídas</div>
+        <div id="contador-tiempo">Llevas {{Recaidas}} días sin recaídas en {{ElVicio}}</div>
         </form>
     </header>
 </body>
