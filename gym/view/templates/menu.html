@@ -14,6 +14,14 @@
             margin: 0;
         }
 
+        .imgvicios {
+            width: 300px;      /* Ajusta el ancho de la imagen */
+            height: auto;      /* Mantiene la relación de aspecto */
+            position: absolute; /* Posicionamiento absoluto */
+            left: 1200px;       /* Distancia desde el lado izquierdo */
+            top: 400px;        /* Distancia desde la parte superior */
+        }
+
         .CountainerNavigate{
             margin: 1.5% 3% 0% 4%;
         }
@@ -63,7 +71,7 @@
             justify-content: center; 
             align-items: flex-start;
             padding-top: 100px;
-            margin-bottom: 2%;
+            margin-bottom: 1%;
         }
 
         .MarqueeBox {
@@ -118,11 +126,13 @@
         <nav class="navigate">
             <a href="/BodyData">Conocete</a>
             <a href="/chat">Couach IA</a>
-            <a href="/Ejercicio">Rutinas</a>
+            <a href="/ver_ejercicios">Rutinas</a>
             <a href="/contact" style="color: red;">Contacto</a>
             <a href="/" style="color: red;">Log out</a>
         </nav>
     </div>
+
+
     
     <center>
         <div class="ContainerMarquee">
@@ -137,5 +147,9 @@
             </div>
         </div>
     </center>
+        <div class="imgvicios">
+            <a href="/Vicios_Name" target="_blank">
+            <img src="{{ url_for('static', filename='VICIO.png') }}" alt="Imagen de Vicio" style="width: 100%; height: auto;">
+        </div>
 </body>
 </html>

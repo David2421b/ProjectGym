@@ -69,14 +69,19 @@ class Database:
             finally:
                 cursor.close()
     
+    def DNIUsr(Id_Usr: int):
+        global Id_usuario
+        Id_usuario = Id_Usr
+    
     def registrar_ejercicio(self, ejercicio):
         if self.conexion:
+            global Id_usuario
             cursor = self.conexion.cursor()
             try:
                 cursor.execute('''
                     INSERT INTO ejercicios (id_persona, nombre, tipo, repeticiones, series, descanso_series)
                     VALUES (?, ?, ?, ?, ?, ?)
-                ''', (ejercicio.id_persona, ejercicio.nombre, ejercicio.tipo, ejercicio.repeticiones, ejercicio.series, ejercicio.descanso_entre_series))
+                ''', (Id_usuario, ejercicio.nombre, ejercicio.tipo, ejercicio.repeticiones, ejercicio.series, ejercicio.descanso_entre_series))
                 self.conexion.commit()
 
             except sqlite3.Error as error:
@@ -84,6 +89,67 @@ class Database:
                 
             finally:
                 cursor.close()
+    
+    def obtener_todos_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM ejercicios')  # Selecciona todos los registros
+            ejercicios = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            return ejercicios
+        return []
+    
+    def obtener_nombres_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT nombre FROM ejercicios')  # Selecciona solo la columna de nombres
+            nombres = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            for i in range(len(nombres)):
+                nombres[i] = nombres[i][0]
+            return nombres
+    
+    def obtener_tipo_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT tipo FROM ejercicios')  
+            tipo = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            for i in range(len(tipo)):
+                tipo[i] = tipo[i][0]
+            return tipo
+    
+    def obtener_repeticiones_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT repeticiones FROM ejercicios')
+            repeticiones = cursor.fetchall()  # Obtiene todos los resultados
+            cursor.close()
+            for i in range(len(repeticiones)):
+                repeticiones[i] = repeticiones[i][0]
+            return repeticiones
+        
+    def obtener_series_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT series FROM ejercicios')
+            series = cursor.fetchall()
+            cursor.close()
+            for i in range(len(series)):
+                series[i] = series[i][0]
+            return series
+    
+    def obtener_descanso_ejercicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT descanso_series FROM ejercicios')
+            descanso = cursor.fetchall()
+            cursor.close()
+            for i in range(len(descanso)):
+                descanso[i] = descanso[i][0]
+            return descanso
+        return []
+
 
     def verificar_credenciales(self, email, contraseña):
         if self.conexion:

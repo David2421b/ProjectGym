@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body</title>
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+
+    <style>
+        body{
+            background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .Body{
+            display: flex;
+        }
+
+        .Container{
+            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
+            border-radius: 30px;
+            justify-content: center;
+            margin-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            font-size: 25px;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo para el encabezado */
+            color: black;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+            text-align: center;
+            margin: 5% 10% 0 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="Body">
+        <div class="Container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Repeticiones</th>
+                        <th>Series</th>
+                        <th>Descanso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{Nombre1}}</td>
+                        <td>{{Tipo1}}</td>
+                        <td>{{Repeticiones1}}</td>
+                        <td>{{Series1}}</td>
+                        <td>{{Descanso1}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{Nombre2}}</td>
+                        <td>{{Tipo2}}</td>
+                        <td>{{Repeticiones2}}</td>
+                        <td>{{Series2}}</td>
+                        <td>{{Descanso2}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{Nombre3}}</td>
+                        <td>{{Tipo3}}</td>
+                        <td>{{Repeticiones3}}</td>
+                        <td>{{Series3}}</td>
+                        <td>{{Descanso3}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre4}}</td>
+                        <td>{{Tipo4}}</td>
+                        <td>{{Repeticiones4}}</td>
+                        <td>{{Series4}}</td>
+                        <td>{{Descanso4}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre5}}</td>
+                        <td>{{Tipo5}}</td>
+                        <td>{{Repeticiones5}}</td>
+                        <td>{{Series5}}</td>
+                        <td>{{Descanso5}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre6}}</td>
+                        <td>{{Tipo6}}</td>
+                        <td>{{Repeticiones6}}</td>
+                        <td>{{Series6}}</td>
+                        <td>{{Descanso6}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre7}}</td>
+                        <td>{{Tipo7}}</td>
+                        <td>{{Repeticiones7}}</td>
+                        <td>{{Series7}}</td>
+                        <td>{{Descanso7}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre8}}</td>
+                        <td>{{Tipo8}}</td>
+                        <td>{{Repeticiones8}}</td>
+                        <td>{{Series8}}</td>
+                        <td>{{Descanso8}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre9}}</td>
+                        <td>{{Tipo9}}</td>
+                        <td>{{Repeticiones9}}</td>
+                        <td>{{Series9}}</td>
+                        <td>{{Descanso9}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{Nombre10}}</td>
+                        <td>{{Tipo10}}</td>
+                        <td>{{Repeticiones10}}</td>
+                        <td>{{Series10}}</td>
+                        <td>{{Descanso10}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/MenuName">DashBoard</a>
+            <a href="/Ejercicio">Agregar</a>
+            <a href="">Eliminar</a>
+        </div>
+    </div>
+</body>
+</html>
