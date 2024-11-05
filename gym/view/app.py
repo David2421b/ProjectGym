@@ -6,6 +6,8 @@ import os
 sys.path.append("GYM")
 from model.DigitalHealth import *
 from Logic.DataBase import Database
+from flask import Flask, render_template, request
+import sqlite3
 
 #   Importatante
 
@@ -18,9 +20,11 @@ app = Flask(__name__)
 db = Database()
 db.connect()
 
-compromisos = []
-sentimientos_data = []
-sentimientos_registrados = []
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
 
 @dataclass
 class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que manejan las diferentes vistas de la aplicacion
@@ -55,20 +59,12 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
     @app.route('/BodyData') 
     def BodyData():
         global Edad, Genero
-        return render_template('BodyData.html' , Age = Edad, Gender = Genero)  
+        return render_template('BodyData.html' , Age = Edad, Gender = Genero)
 
     @app.route('/Vicios')
     def Vicios():
         return render_template('ManejoVicios.html')
     
-    @app.route('/Vicios_Name')
-    def Vicios_Name():
-        global Nombre
-        return render_template('ManejoVicios.html', Name = Nombre)   
-    
-
-
-
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
     Nombre = ""
@@ -241,22 +237,6 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                Series1 = series[0], Series2 = series[1], Series3 = series[2], Series4 = series[3], Series5 = series[4], Series6 = series[5], Series7 = series[6], Series8 = series[7], Series9 = series[8], Series10 = series[9],
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4], Descanso6 = descanso[5], Descanso7 = descanso[6], Descanso8 = descanso[7], Descanso9 = descanso[8], Descanso10 = descanso[9])    
 
-    @app.route('/CrearRutina', methods=['GET', 'POST'])
-    def CrearRutina():
-        pass
-
-    @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
-    def AgregarEjerLista():
-        if request.method == 'POST':  
-            global Nombre, Id_Usr
-
-            nombre_rutina = request.form['Name']
-            ejercicios_seleccionados = request.form.getlist('ejercicio')
-            
-            rutina = Rutinas(nombre_rutina, ejercicios_seleccionados)
-            db.registrar_rutina(rutina, Id_Usr)
-            return render_template('menu.html', name = Nombre)
-        
 
     @app.route('/UsrData')
     def UsrData():
@@ -282,25 +262,15 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             IMC = Estadistica.calcular_imc(peso, altura)
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
-            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM) 
-    
-    @app.route('/ViciosData', methods=['GET', 'POST'])
-    def ViciosData():
-        if request.method == 'POST':
-            global Nombre
-            vicio = request.form['vicio']
-            fecha = request.form['Fecha']
-            compromiso = request.form['compromiso']
-            fehca_actual = datetime.now()
-            if fecha:
-                año, mes , dia = fecha.split('-')
-                fecha_suceso = datetime(int(año), int(mes), int(dia))
-            
-            diferencia = fehca_actual - fecha_suceso
-            dias_pasados = str(diferencia.days)
-            return render_template('ManejoVicios.html', Name = Nombre, Recaidas = "llevas sin consumir: " + dias_pasados + " dias, " + vicio, ElVicio = vicio, compromiso = compromiso)
+            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
+        
 
-  
+    @app.route('/Vicios_Name')
+    def Vicios_Name():
+        global Nombre
+        return render_template('ManejoVicios.html', Name = Nombre)    
+        
+    
 if __name__ == '__main__':
     app.run(debug=True)
 
