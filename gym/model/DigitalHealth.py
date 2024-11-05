@@ -103,4 +103,4 @@ class Vicios(Usuario):
         self.support_messages = support_messages  # Lista de mensajes de apoyo
         self.relapse_count = 0  # Contador de recaídas
         self.last_relapse_date = None  # Fecha de última recaída
-        self.ultimo_mensaje = datetime.now()  # Marca de tiempo del último mensaje        
+        self.ultimo_mensaje = datetime.now()  # Marca de tiempo del último mensaj
