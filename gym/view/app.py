@@ -144,18 +144,20 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     
     @app.route('/ver_ejercicios')
     def ver_ejercicios():
+        global Id_Usr
         db.connect() 
-        ejercicios = db.obtener_todos_ejercicios()
-        nombre = db.obtener_nombres_ejercicios()
-        tipo = db.obtener_tipo_ejercicios()
-        repeticiones = db.obtener_repeticiones_ejercicios()
-        series = db.obtener_series_ejercicios()
-        descanso = db.obtener_descanso_ejercicios()
+        ejercicios = db.obtener_todos_ejercicios(Id_Usr)
+        nombre = db.obtener_nombres_ejercicios(Id_Usr)
+        tipo = db.obtener_tipo_ejercicios(Id_Usr)
+        repeticiones = db.obtener_repeticiones_ejercicios(Id_Usr)
+        series = db.obtener_series_ejercicios(Id_Usr)
+        descanso = db.obtener_descanso_ejercicios(Id_Usr)
         count = 0
         for i in range(len(ejercicios)):
             count += 1
 
         if count == 0:
+
             return render_template('NoData.html')
         elif count == 1:
             return render_template('DashBoardData.html', 
@@ -269,7 +271,31 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def Vicios_Name():
         global Nombre
         return render_template('ManejoVicios.html', Name = Nombre)    
+     
+
+    @app.route('/ViciosData', methods=['GET','POST'])
+    def registrar_vicio():
+        if request.method == 'POST':
+            global Nombre, Id_Usr
+            nombre_vicio = request.form.get('vicio')
+            fecha_dejar = request.form.get('Fecha')
+            compromiso = request.form.get('compromiso')      
+            vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
+            db.registrar_vicio(vicio, Id_Usr)
+            return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
+
+
+    @app.route('/registrar_sentimiento', methods=['POST'])
+    def registrar_sentimiento():
+        id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
+        fecha = request.form.get('Fecha')  # Si tiene una fecha, o usa la fecha actual
+        sentimiento = request.form.get('sentimiento')
+        descripcion = request.form.get('descripcion')
         
+        if id_persona and fecha and sentimiento and descripcion:
+            sentimiento_obj = Sentimiento(id_persona, fecha, sentimiento, descripcion)
+            db.registrar_sentimiento(sentimiento_obj)
+            return render_template('ManejoVicios.html')
     
 if __name__ == '__main__':
     app.run(debug=True)

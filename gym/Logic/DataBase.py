@@ -16,11 +16,14 @@ class Database:
             self.crear_tabla_usuarios()
             self.crear_tabla_ejercicios()
             self.crear_tabla_rutinas()
+            self.crear_tabla_vicios()         # Nueva tabla vicios
+            self.crear_tabla_sentimientos()    # Nueva tabla sentimientos
 
         except sqlite3.Error as err:
             self.conexion = None
 
     def crear_tabla_usuarios(self): 
+
         if self.conexion:  #verificacion de conexion con base de datos
             cursor = self.conexion.cursor() #crea un objeto que permite ejecutar comandos sql
             cursor.execute('''
@@ -123,59 +126,64 @@ class Database:
             finally:
                 cursor.close()
     
-    def obtener_todos_ejercicios(self):  
+    def obtener_todos_ejercicios(self, Id_usuario):  
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT * FROM ejercicios')  #selecciona todos los registros de la tabla ejercicios
+            cursor.execute('SELECT * FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  #selecciona todos los registros de la tabla ejercicios
             ejercicios = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             return ejercicios
         return []
     
+<<<<<<< HEAD
     def obtener_nombres_ejercicios(self):
+=======
+    
+    def obtener_nombres_ejercicios(self, Id_usuario):
+>>>>>>> 105d50d486b0e095e2e3c52efa1e305b3d9cbd12
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT nombre FROM ejercicios')  # Selecciona solo la columna de nombres
+            cursor.execute('SELECT nombre FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  # Selecciona solo la columna de nombres
             nombres = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             for i in range(len(nombres)):  #itera sobre cada elemento de la lista nombres 
                 nombres[i] = nombres[i][0]  #convierte los nombres en una lista de tuplas
             return nombres
     
-    def obtener_tipo_ejercicios(self):
+    def obtener_tipo_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT tipo FROM ejercicios')  
+            cursor.execute('SELECT tipo FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  
             tipo = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             for i in range(len(tipo)):
                 tipo[i] = tipo[i][0]
             return tipo
     
-    def obtener_repeticiones_ejercicios(self):
+    def obtener_repeticiones_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT repeticiones FROM ejercicios')
+            cursor.execute('SELECT repeticiones FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
             repeticiones = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             for i in range(len(repeticiones)):
                 repeticiones[i] = repeticiones[i][0]
             return repeticiones
         
-    def obtener_series_ejercicios(self):
+    def obtener_series_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT series FROM ejercicios')
+            cursor.execute('SELECT series FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
             series = cursor.fetchall()
             cursor.close()
             for i in range(len(series)):
                 series[i] = series[i][0]
             return series
     
-    def obtener_descanso_ejercicios(self):
+    def obtener_descanso_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT descanso_series FROM ejercicios')
+            cursor.execute('SELECT descanso_series FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
             descanso = cursor.fetchall()
             cursor.close()
             for i in range(len(descanso)):
@@ -196,7 +204,97 @@ class Database:
             else:
                 return False, None  # Si no se encuentra coincidencia
         return False, None
+    
+    def crear_tabla_vicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+            CREATE TABLE IF NOT EXISTS vicio (
+            id_vicio INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_persona INTEGER NOT NULL,
+            nombre_vicio TEXT NOT NULL,
+            fecha_dejar DATE NOT NULL,
+            compromiso TEXT NOT NULL,
+                
+            FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+            )
+            ''')
+                
+        self.conexion.commit()
+        cursor.close()
+
+    def crear_tabla_sentimientos(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS sentimiento (
+                id_sentimiento INTEGER PRIMARY KEY AUTOINCREMENT,
+                id_persona INTEGER NOT NULL,
+                fecha DATE NOT NULL,
+                sentimiento TEXT NOT NULL,
+                descripcion TEXT NOT NULL,
+                
+                FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+            )
+        ''')
+        self.conexion.commit()
+        cursor.close()
+
+
+    def registrar_vicio(self, vicio, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO vicio (id_persona, nombre_vicio, fecha_dejar, compromiso)
+                    VALUES (?, ?, ?, ?)
+                ''', (Id_usuario, vicio.nombre_vicio, vicio.fecha_dejar, vicio.compromiso))
+                self.conexion.commit()
+            except sqlite3.Error as error:
+                print(f"Error al registrar vicio: {error}")
+            finally:
+                cursor.close()
+
+
+    def registrar_sentimiento(self, sentimiento):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO sentimiento (id_persona, fecha, sentimiento, descripcion)
+                    VALUES (?, ?, ?, ?)
+                ''', (sentimiento.id_persona, sentimiento.fecha, sentimiento.sentimiento, sentimiento.descripcion))
+                self.conexion.commit()
+            except sqlite3.Error as error:
+                print(f"Error al registrar sentimiento: {error}")
+            finally:
+                cursor.close()            
+    
+
+    def obtener_vicios_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM vicio WHERE id_persona = ?', (id_usuario,))
+            vicios = cursor.fetchall()
+            cursor.close()
+            return vicios
+        return []
+
+    def obtener_sentimientos_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM sentimiento WHERE id_persona = ?', (id_usuario,))
+            sentimientos = cursor.fetchall()
+            cursor.close()
+            return sentimientos
+        return []
+
+
+
+    
+
 
     def close(self):
         if self.conexion:
             self.conexion.close()
+

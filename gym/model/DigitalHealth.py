@@ -103,4 +103,19 @@ class Vicios(Usuario):
         self.support_messages = support_messages  # Lista de mensajes de apoyo
         self.relapse_count = 0  # Contador de recaídas
         self.last_relapse_date = None  # Fecha de última recaída
-        self.ultimo_mensaje = datetime.now()  # Marca de tiempo del último mensaje        
+        self.ultimo_mensaje = datetime.now()  # Marca de tiempo del último mensaje
+
+
+
+class Vicio:
+    def __init__(self, nombre_vicio, fecha_dejar, compromiso):
+        self.nombre_vicio = nombre_vicio
+        self.fecha_dejar = fecha_dejar
+        self.compromiso = compromiso
+
+class Sentimiento:
+    def __init__(self, id_persona, fecha, sentimiento, descripcion):
+        self.id_persona = id_persona
+        self.fecha = fecha
+        self.sentimiento = sentimiento
+        self.descripcion = descripcion
