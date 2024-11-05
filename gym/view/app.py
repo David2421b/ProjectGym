@@ -270,7 +270,31 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def Vicios_Name():
         global Nombre
         return render_template('ManejoVicios.html', Name = Nombre)    
+    
+
+    @app.route('/ViciosData', methods=['GET','POST'])
+    def registrar_vicio():
+        if request.method == 'POST':
+            id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
+            nombre_vicio = request.form.get('vicio')
+            fecha_dejar = request.form.get('Fecha')
+            compromiso = request.form.get('compromiso')      
+            vicio = Vicio(id_persona, nombre_vicio, fecha_dejar, compromiso)
+            db.registrar_vicio(vicio)
+            return render_template('ManejoVicios.html')  # Redirige a una página de éxito
+
+
+    @app.route('/registrar_sentimiento', methods=['POST'])
+    def registrar_sentimiento():
+        id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
+        fecha = request.form.get('Fecha')  # Si tiene una fecha, o usa la fecha actual
+        sentimiento = request.form.get('sentimiento')
+        descripcion = request.form.get('descripcion')
         
+        if id_persona and fecha and sentimiento and descripcion:
+            sentimiento_obj = Sentimiento(id_persona, fecha, sentimiento, descripcion)
+            db.registrar_sentimiento(sentimiento_obj)
+            return render_template('ManejoVicios.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
