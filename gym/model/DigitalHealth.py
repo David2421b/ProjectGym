@@ -21,6 +21,10 @@ class Rutinas:
     def __init__(self, nombre_rutina: str, list_ejercicios: list):
         self.nombre_rutina: str = nombre_rutina
         self.list_ejercicios: list = list_ejercicios
+    
+    def agregar_ejercicio(self, ejercicio):
+        self.list_ejercicios.append(ejercicio)
+        return self.list_ejercicios
 
 
 class Ejercicio:

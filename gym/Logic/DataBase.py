@@ -4,9 +4,14 @@ import os
 
 class Database:
     def __init__(self, db_name='digitalhealth.db'):
+    
         # Aseguramos que la base de datos se crea en la carpeta especificada
         self.db_name = os.path.join(os.path.dirname(__file__), 'database', db_name)
         self.conexion = None
+
+    def DNIUsr(Id_Usr: int):
+        global Id_usuario
+        Id_usuario = Id_Usr
 
     def connect(self):
         try:
@@ -14,6 +19,7 @@ class Database:
             self.conexion = sqlite3.connect(self.db_name, check_same_thread = False)
             self.crear_tabla_usuarios()
             self.crear_tabla_ejercicios()
+            self.crear_tabla_rutinas()
 
         except sqlite3.Error as err:
             self.conexion = None
@@ -52,6 +58,22 @@ class Database:
             ''')
             self.conexion.commit()
             cursor.close()
+    
+    def crear_tabla_rutinas(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS rutinas (
+                    id_rutina INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id_persona INTEGER NOT NULL,
+                    nombre_rutina TEXT NOT NULL,
+                    list_ejercicios TEXT NOT NULL,
+
+                    FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+                )
+            ''')
+            self.conexion.commit()
+            cursor.close()
 
     def registrar_usuario(self, usuario):
         if self.conexion:
@@ -69,10 +91,6 @@ class Database:
             finally:
                 cursor.close()
     
-    def DNIUsr(Id_Usr: int):
-        global Id_usuario
-        Id_usuario = Id_Usr
-    
     def registrar_ejercicio(self, ejercicio):
         if self.conexion:
             global Id_usuario
@@ -87,6 +105,21 @@ class Database:
             except sqlite3.Error as error:
                 error
                 
+            finally:
+                cursor.close()
+
+    def registrar_rutina(self, rutina, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO rutinas (id_persona, nombre_rutina, list_ejercicios)
+                    VALUES (?, ?, ?)
+                ''', (Id_usuario, rutina.nombre_rutina, rutina.ejercicios_seleccionados))
+                self.conexion.commit()
+
+            except sqlite3.Error as error:
+                error
             finally:
                 cursor.close()
     
