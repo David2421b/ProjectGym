@@ -127,7 +127,7 @@ class Database:
     def obtener_todos_ejercicios(self, Id_usuario):  
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT * FROM ejercicios WHERE id_persona = ?', (Id_usuario))  #selecciona todos los registros de la tabla ejercicios
+            cursor.execute('SELECT * FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  #selecciona todos los registros de la tabla ejercicios
             ejercicios = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             return ejercicios
@@ -137,7 +137,7 @@ class Database:
     def obtener_nombres_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT nombre FROM ejercicios WHERE id_persona = ?', (Id_usuario))  # Selecciona solo la columna de nombres
+            cursor.execute('SELECT nombre FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  # Selecciona solo la columna de nombres
             nombres = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             for i in range(len(nombres)):
@@ -147,7 +147,7 @@ class Database:
     def obtener_tipo_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT tipo FROM ejercicios WHERE id_persona = ?', (Id_usuario))  
+            cursor.execute('SELECT tipo FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  
             tipo = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             for i in range(len(tipo)):
@@ -157,7 +157,7 @@ class Database:
     def obtener_repeticiones_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT repeticiones FROM ejercicios WHERE id_persona = ?', (Id_usuario))
+            cursor.execute('SELECT repeticiones FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
             repeticiones = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             for i in range(len(repeticiones)):
@@ -167,7 +167,7 @@ class Database:
     def obtener_series_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT series FROM ejercicios')
+            cursor.execute('SELECT series FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
             series = cursor.fetchall()
             cursor.close()
             for i in range(len(series)):
@@ -177,7 +177,7 @@ class Database:
     def obtener_descanso_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT descanso_series FROM ejercicios')
+            cursor.execute('SELECT descanso_series FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
             descanso = cursor.fetchall()
             cursor.close()
             for i in range(len(descanso)):

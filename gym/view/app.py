@@ -146,12 +146,12 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def ver_ejercicios():
         global Id_Usr
         db.connect() 
-        ejercicios = db.obtener_todos_ejercicios()
-        nombre = db.obtener_nombres_ejercicios()
-        tipo = db.obtener_tipo_ejercicios()
-        repeticiones = db.obtener_repeticiones_ejercicios()
-        series = db.obtener_series_ejercicios()
-        descanso = db.obtener_descanso_ejercicios()
+        ejercicios = db.obtener_todos_ejercicios(Id_Usr)
+        nombre = db.obtener_nombres_ejercicios(Id_Usr)
+        tipo = db.obtener_tipo_ejercicios(Id_Usr)
+        repeticiones = db.obtener_repeticiones_ejercicios(Id_Usr)
+        series = db.obtener_series_ejercicios(Id_Usr)
+        descanso = db.obtener_descanso_ejercicios(Id_Usr)
         count = 0
         for i in range(len(ejercicios)):
             count += 1
