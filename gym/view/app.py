@@ -1,4 +1,5 @@
 from flask import *
+from datetime import *
 import time
 import sys
 import os
@@ -262,6 +263,21 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
             return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM) 
+    
+    @app.route('/ViciosData', methods=['GET', 'POST'])
+    def ViciosData():
+        if request.method == 'POST':
+            global Nombre
+            vicio = request.form['vicio']
+            fecha = request.form['Fecha']
+            fehca_actual = datetime.now()
+            if fecha:
+                año, mes , dia = fecha.split('-')
+                fecha_suceso = datetime(int(año), int(mes), int(dia))
+            
+            diferencia = fehca_actual - fecha_suceso
+            dias_pasados = diferencia.days
+            return render_template('ManejoVicios.html', Name = Nombre, Recaidas = dias_pasados)
         
     
 if __name__ == '__main__':

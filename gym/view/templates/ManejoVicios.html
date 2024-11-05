@@ -76,10 +76,10 @@ header p {
     <header>
         <h1>¡Bienvenido a tu Camino de Cambio, {{Name}}</h1>
         <p>Tu progreso, un día a la vez.</p>
-        <form id="form-vicio">
-            <label for="vicio">Ingresa el nombre de tu vicio:</label>
+
+        <form id="form-vicio" method = "post" action = "/ViciosData">
             <input type="text" id="vicio" name="vicio" placeholder="Escribe tu vicio aquí"><br>
-            <button type="submit">Guardar</button>
+            <input type="date" id="Fecha" name="Fecha" placeholder="Fecha de cuando lo dejaste"><br>
             <button id="boton-inicio" type = "submit">Comienza tu Seguimiento</button>
         <div id="contador-tiempo">Llevas {{Recaidas}} días sin recaídas</div>
         </form>
