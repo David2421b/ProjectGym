@@ -114,8 +114,6 @@ class Vicio:
         self.compromiso = compromiso
 
 class Sentimiento:
-    def __init__(self, id_persona, fecha, sentimiento, descripcion):
-        self.id_persona = id_persona
-        self.fecha = fecha
+    def __init__(self, sentimiento, descripcion):
         self.sentimiento = sentimiento
         self.descripcion = descripcion

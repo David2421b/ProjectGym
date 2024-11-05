@@ -226,7 +226,6 @@ class Database:
                 CREATE TABLE IF NOT EXISTS sentimiento (
                 id_sentimiento INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_persona INTEGER NOT NULL,
-                fecha DATE NOT NULL,
                 sentimiento TEXT NOT NULL,
                 descripcion TEXT NOT NULL,
                 
@@ -252,14 +251,14 @@ class Database:
                 cursor.close()
 
 
-    def registrar_sentimiento(self, sentimiento):
+    def registrar_sentimiento(self, sentimiento, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
             try:
                 cursor.execute('''
-                    INSERT INTO sentimiento (id_persona, fecha, sentimiento, descripcion)
-                    VALUES (?, ?, ?, ?)
-                ''', (sentimiento.id_persona, sentimiento.fecha, sentimiento.sentimiento, sentimiento.descripcion))
+                    INSERT INTO sentimiento (id_persona, sentimiento, descripcion)
+                    VALUES (?, ?, ?)
+                ''', (Id_usuario, sentimiento.sentimiento, sentimiento.descripcion))
                 self.conexion.commit()
             except sqlite3.Error as error:
                 print(f"Error al registrar sentimiento: {error}")
@@ -286,11 +285,11 @@ class Database:
         return []
 
 
-
-    
-
-
     def close(self):
         if self.conexion:
             self.conexion.close()
 
+
+if __name__ == '__main__':
+    db = Database()
+    db.connect()

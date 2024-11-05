@@ -270,31 +270,29 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/Vicios_Name')
     def Vicios_Name():
         global Nombre
-        return render_template('ManejoVicios.html', Name = Nombre)    
+        return render_template('ManejoVicios.html', Name = Nombre)
      
 
     @app.route('/ViciosData', methods=['GET','POST'])
     def registrar_vicio():
         if request.method == 'POST':
             global Nombre, Id_Usr
-            nombre_vicio = request.form.get('vicio')
-            fecha_dejar = request.form.get('Fecha')
-            compromiso = request.form.get('compromiso')      
+            nombre_vicio = request.form['vicio']
+            fecha_dejar = request.form['Fecha']
+            compromiso = request.form['compromiso']
             vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
             db.registrar_vicio(vicio, Id_Usr)
             return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
 
 
-    @app.route('/registrar_sentimiento', methods=['POST'])
+    @app.route('/registrar_sentimiento', methods=['GET', 'POST'])
     def registrar_sentimiento():
-        id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
-        fecha = request.form.get('Fecha')  # Si tiene una fecha, o usa la fecha actual
-        sentimiento = request.form.get('sentimiento')
-        descripcion = request.form.get('descripcion')
-        
-        if id_persona and fecha and sentimiento and descripcion:
-            sentimiento_obj = Sentimiento(id_persona, fecha, sentimiento, descripcion)
-            db.registrar_sentimiento(sentimiento_obj)
+        if request.method == 'POST':
+            global Id_Usr
+            sentimiento = request.form['sentimiento']
+            descripcion = request.form['descripcion']
+            sentimiento_obj = Sentimiento(sentimiento, descripcion)
+            db.registrar_sentimiento(sentimiento_obj, Id_Usr)
             return render_template('ManejoVicios.html')
     
 if __name__ == '__main__':
