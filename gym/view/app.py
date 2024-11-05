@@ -144,6 +144,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     
     @app.route('/ver_ejercicios')
     def ver_ejercicios():
+        global Id_Usr
         db.connect() 
         ejercicios = db.obtener_todos_ejercicios()
         nombre = db.obtener_nombres_ejercicios()
