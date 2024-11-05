@@ -135,12 +135,7 @@ class Database:
             return ejercicios
         return []
     
-<<<<<<< HEAD
     def obtener_nombres_ejercicios(self):
-=======
-    
-    def obtener_nombres_ejercicios(self, Id_usuario):
->>>>>>> 105d50d486b0e095e2e3c52efa1e305b3d9cbd12
         if self.conexion:
             cursor = self.conexion.cursor()
             cursor.execute('SELECT nombre FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  # Selecciona solo la columna de nombres
