@@ -7,71 +7,117 @@
     <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 </head>
 <style>
-/* General */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
+    /* General */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
 
-body {
-    background-color: #000000;
-    color: #333;
-    line-height: 1.6;
-}
+    body {
+        background-color: #000000;
+        color: #333;
+        line-height: 1.6;
+    }
 
-/* Contenedores */
-header, section, footer {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    /* Contenedores */
+    header, section, footer {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffebeb;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #830909;
+    }
 
-/* Encabezado */
-header h1 {
-    font-size: 2.5em;
-    color: #4CAF50;
-    text-align: center;
-    margin-bottom: 10px;
-}
+    /* Encabezado */
+    header h1 {
+        font-size: 2.5em;
+        color: #ff4d4d;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 
-header p {
-    text-align: center;
-    color: #666;
-}
+    header p {
+        text-align: center;
+        color: #666;
+    }
 
-#boton-inicio {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 1.2em;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+    /* Formulario */
+    form input[type="text"],
+    form input[type="date"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ff4d4d;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1em;
+        background-color: #ffffff;
+        color: #333;
+    }
 
-#boton-inicio:hover {
-    background-color: #45a049;
-}
+    /* Botón de inicio */
+    #boton-inicio {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        font-size: 1.2em;
+        background-color: #ff4d4d;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
 
-#contador-tiempo {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 10px;
-    color: #333;
-    font-weight: bold;
-}
+    #boton-inicio:hover {
+        background-color: #e60000;
+    }
 
+    /* Contador de tiempo */
+    #contador-tiempo {
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 20px;
+        color: #ff4d4d;
+        font-weight: bold;
+    }
+
+    /* Placeholder */
+    ::placeholder {
+        color: #999;
+        opacity: 1;
+    }
+
+    /* Enfoque de los campos de entrada */
+    form input[type="text"]:focus,
+    form input[type="date"]:focus {
+        outline: none;
+        border-color: #ff1a1a;
+        box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
+    }
+
+    .advertencia {
+            background-color: #ffe5e5;
+            border: 2px solid #ff4d4d;
+            color: #b30000;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 </style>
+
 <body>
+    <div class="advertencia">
+        <p>⚠️ Advertencia: este apartado es un ejercicio de fuerza de voluntad para tratar de dejar un vicio o un mal hábito. Si tu problema está afectando tu vida personal, comunícate de inmediato con un profesional. ⚠️</p>
+    </div>
     <!-- Página de Inicio -->
     <header>
         <h1>¡Bienvenido a tu Camino de Cambio, {{Name}}</h1>
