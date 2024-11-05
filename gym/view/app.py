@@ -17,7 +17,7 @@ import sqlite3
 
 
 app = Flask(__name__)
-db = Database()
+db = Database()  
 db.connect()
 
 def get_db_connection():
@@ -103,9 +103,9 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/MenuName')
     def MenuName():
         global Nombre
-        if Nombre == "":
-            return render_template('Index.html')
-        return render_template('menu.html', name = Nombre)
+        if Nombre == "":  #verifica si la variable esta vacia 
+            return render_template('Index.html')   #si nombre esta vacio rederige al usuario a la pagina
+        return render_template('menu.html', name = Nombre)  #si el nombre no esta vacio se asume que ya se inicio
 
 
     @app.route('/register', methods=['GET', 'POST'])

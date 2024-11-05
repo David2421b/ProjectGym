@@ -135,15 +135,19 @@ class Database:
             return ejercicios
         return []
     
+<<<<<<< HEAD
+    def obtener_nombres_ejercicios(self):
+=======
     
     def obtener_nombres_ejercicios(self, Id_usuario):
+>>>>>>> 105d50d486b0e095e2e3c52efa1e305b3d9cbd12
         if self.conexion:
             cursor = self.conexion.cursor()
             cursor.execute('SELECT nombre FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  # Selecciona solo la columna de nombres
             nombres = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
-            for i in range(len(nombres)):
-                nombres[i] = nombres[i][0]
+            for i in range(len(nombres)):  #itera sobre cada elemento de la lista nombres 
+                nombres[i] = nombres[i][0]  #convierte los nombres en una lista de tuplas
             return nombres
     
     def obtener_tipo_ejercicios(self, Id_usuario):
@@ -191,8 +195,8 @@ class Database:
     def verificar_credenciales(self, email, contraseña):
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT * FROM usuarios WHERE email = ? AND contraseña = ?', (email, contraseña))
-            usuario = cursor.fetchone()
+            cursor.execute('SELECT * FROM usuarios WHERE email = ? AND contraseña = ?', (email, contraseña)) #buscar un registro en la tabla usuarios donde el email y la contraseña coincidan con los valores proporcionados como argumentos.
+            usuario = cursor.fetchone() #fetchone() devuelve una tupla con los datos del usuario
             cursor.close()
 
             if usuario:
