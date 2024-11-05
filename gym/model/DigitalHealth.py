@@ -18,6 +18,14 @@ class Usuario:
 
 class Rutinas:
 
+<<<<<<< HEAD
+    def __init__(self, nombre: str, descripcion: str, duracion: int, ejercicios: list):
+        self.nombre: str = nombre
+        self.descripcion: str = descripcion
+        self.duracion: int = duracion
+        self.ejercicios: list = ejercicios
+        
+=======
     def __init__(self, nombre_rutina: str, list_ejercicios: list):
         self.nombre_rutina: str = nombre_rutina
         self.list_ejercicios: list = list_ejercicios
@@ -27,6 +35,7 @@ class Rutinas:
         return self.list_ejercicios
 
 
+>>>>>>> 7f544d23d9eed564dde47ab49a4a3cff333edfd5
 class Ejercicio:
     
     def __init__(self, nombre: str, tipo: str, repeticiones: int, series: int, descanso: int):
@@ -53,7 +62,7 @@ class Estadistica:
     tmb: ClassVar[int] = 0    
     fcm: ClassVar[int] = 0
     
-    def calcular_imc(peso: float, altura: float):
+    def calcular_imc(peso: float, altura: float): 
         if altura >= 0:
             imc = peso / (altura ** 2)
 
