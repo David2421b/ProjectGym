@@ -1,4 +1,5 @@
 from flask import *
+from datetime import *
 import time
 import sys
 import os
@@ -59,6 +60,13 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
     def BodyData():
         global Edad, Genero
         return render_template('BodyData.html' , Age = Edad, Gender = Genero)
+
+    @app.route('/Vicios')
+    def Vicios():
+        return render_template('ManejoVicios.html')
+    
+
+
 
 @dataclass
 class Routelogic:  #define las rutas para registrar y autenticar usuarios 
@@ -264,38 +272,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def Vicios_Name():
         global Nombre
         return render_template('ManejoVicios.html', Name = Nombre)    
+        
     
-    @app.route('/CrearRutina', methods=['GET', 'POST'])
-    def crear_rutina():
-        if request.method == 'POST':
-        # Recoger datos del formulario
-            nombre_rutina = request.form['routine_name']
-            descripcion = request.form['description']
-            duracion = int(request.form['duration'])
-
-        # Guardar solo la rutina en la base de datos, sin ejercicios
-            try:
-                conn = get_db_connection()
-                cursor = conn.cursor()
-
-            # Insertar solo la rutina en la tabla 'rutinas'
-                query_rutina = "INSERT INTO rutinas (nombre, descripcion, duracion) VALUES (?, ?, ?)"
-                cursor.execute(query_rutina, (nombre_rutina, descripcion, duracion))
-
-            # Confirmar los cambios en la base de datos
-                conn.commit()
-                return render_template('rutina.html', success="Rutina creada con éxito.")
-
-            except Exception as e:
-                conn.rollback()  # Revertir cambios en caso de error
-                return render_template('rutina.html', error="Error al crear la rutina: " + str(e))
-        
-            finally:
-                conn.close()  # Asegura el cierre de la conexión a la base de datos
-
-    # Si es una solicitud GET, solo muestra el formulario sin ejercicios
-        return render_template('rutina.html')
-        
 if __name__ == '__main__':
     app.run(debug=True)
 
