@@ -50,7 +50,7 @@ class Estadistica:
     tmb: ClassVar[int] = 0    
     fcm: ClassVar[int] = 0
     
-    def calcular_imc(peso: float, altura: float):
+    def calcular_imc(peso: float, altura: float): 
         if altura >= 0:
             imc = peso / (altura ** 2)
 

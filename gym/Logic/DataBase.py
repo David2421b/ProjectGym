@@ -18,9 +18,9 @@ class Database:
         except sqlite3.Error as err:
             self.conexion = None
 
-    def crear_tabla_usuarios(self): #comentario
-        if self.conexion:
-            cursor = self.conexion.cursor()
+    def crear_tabla_usuarios(self): 
+        if self.conexion:  #verificacion de conexion con base de datos
+            cursor = self.conexion.cursor() #crea un objeto que permite ejecutar comandos sql
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS usuarios (
                     id_persona INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +31,7 @@ class Database:
                     genero TEXT NOT NULL
                 )
             ''')
-            self.conexion.commit()
+            self.conexion.commit() #guarda cambios en la base de datos 
             cursor.close()
 
     def crear_tabla_ejercicios(self):
@@ -56,12 +56,12 @@ class Database:
     def registrar_usuario(self, usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
-            try:
-                cursor.execute('''
-                    INSERT INTO usuarios (nombre, edad, email, contraseña, genero)
-                    VALUES (?, ?, ?, ?, ?)
+            try:  #manejo de excepciones
+                cursor.execute(''' 
+                    INSERT INTO usuarios (nombre, edad, email, contraseña, genero)  
+                    VALUES (?, ?, ?, ?, ?) 
                 ''', (usuario.nombre, usuario.edad, usuario.email, usuario.contraseña, usuario.genero))
-                self.conexion.commit()
+                self.conexion.commit()  #valores se pasan como tuplas
 
             except sqlite3.Error as error:
                 error
@@ -70,8 +70,8 @@ class Database:
                 cursor.close()
     
     def DNIUsr(Id_Usr: int):
-        global Id_usuario
-        Id_usuario = Id_Usr
+        global Id_usuario #vairable global se puede acceder y modificar desde cualquier 
+        Id_usuario = Id_Usr #cualquier valor que se pase a DNIUsr se guardará en Id_usuario
     
     def registrar_ejercicio(self, ejercicio):
         if self.conexion:
@@ -90,10 +90,10 @@ class Database:
             finally:
                 cursor.close()
     
-    def obtener_todos_ejercicios(self):
+    def obtener_todos_ejercicios(self):  
         if self.conexion:
             cursor = self.conexion.cursor()
-            cursor.execute('SELECT * FROM ejercicios')  # Selecciona todos los registros
+            cursor.execute('SELECT * FROM ejercicios')  #selecciona todos los registros de la tabla ejercicios
             ejercicios = cursor.fetchall()  # Obtiene todos los resultados
             cursor.close()
             return ejercicios
