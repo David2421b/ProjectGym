@@ -19,6 +19,8 @@ db = Database()
 db.connect()
 
 compromisos = []
+sentimientos_data = []
+sentimientos_registrados = []
 
 @dataclass
 class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que manejan las diferentes vistas de la aplicacion
@@ -281,9 +283,6 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             diferencia = fehca_actual - fecha_suceso
             dias_pasados = str(diferencia.days)
             return render_template('ManejoVicios.html', Name = Nombre, Recaidas = "llevas sin consumir: " + dias_pasados + " dias, " + vicio, ElVicio = vicio, compromiso = compromiso)
-        
-
-
 
   
 if __name__ == '__main__':
