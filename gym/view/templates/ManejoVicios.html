@@ -7,7 +7,6 @@
     <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 </head>
 <style>
-    /* General */
     * {
         margin: 0;
         padding: 0;
@@ -21,7 +20,6 @@
         line-height: 1.6;
     }
 
-    /* Contenedores */
     header, section, footer {
         height: 600px;
         max-width: 800px;
@@ -34,10 +32,9 @@
         margin-left: 20px;
     }
 
-    /* Encabezado */
     header h1 {
         font-size: 2.5em;
-        color: #ff4d4d;
+        color: #a61f1f;
         text-align: center;
         margin-bottom: 10px;
     }
@@ -47,14 +44,13 @@
         color: #666;
     }
 
-    /* Formulario */
     form input[type="text"],
     form input[type="date"] {
         width: 100%;
         padding: 12px;
         margin: 8px 0;
         display: inline-block;
-        border: 1px solid #ff4d4d;
+        border: 1px solid #ae2424;
         border-radius: 4px;
         box-sizing: border-box;
         font-size: 1em;
@@ -62,14 +58,13 @@
         color: #333;
     }
 
-    /* Botón de inicio */
     #boton-inicio {
         display: block;
         width: 100%;
         padding: 15px;
         margin: 10px 0;
         font-size: 1.2em;
-        background-color: #ff4d4d;
+        background-color: #c11b1b;
         color: #fff;
         border: none;
         border-radius: 8px;
@@ -78,35 +73,32 @@
     }
 
     #boton-inicio:hover {
-        background-color: #e60000;
+        background-color: #b51818;
     }
 
-    /* Contador de tiempo */
     #contador-tiempo {
         text-align: center;
         font-size: 1.2em;
         margin-top: 20px;
-        color: #ff4d4d;
+        color: #b72121;
         font-weight: bold;
     }
 
-    /* Placeholder */
     ::placeholder {
         color: #999;
         opacity: 1;
     }
 
-    /* Enfoque de los campos de entrada */
     form input[type="text"]:focus,
     form input[type="date"]:focus {
         outline: none;
-        border-color: #ff1a1a;
+        border-color: #c42020;
         box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
     }
 
     .advertencia {
             background-color: #ffe5e5;
-            border: 2px solid #ff4d4d;
+            border: 2px solid #a02929;
             color: #b30000;
             padding: 15px;
             border-radius: 8px;
@@ -114,32 +106,29 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
-                /* Estilos adicionales para la lista de compromisos */
+
+    .advertencia h6{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+        color: #830909;
+
+    }    
                 #lista-compromisos {
-            margin-left: 1000px;
+            margin-left: 879px;
             background-color: #ffebeb;
-            border: 1px solid #ff4d4d;
-            border-radius: 8px;
+            border: 1px solid #ae1c1c;
+            border-radius: 0px;
             padding: 15px;
             margin-top: -600px;
-            max-width: 400px;
+            max-width: 600px;
         }
 
-        #lista-compromisos ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        #lista-compromisos ul li {
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #b30000;
-        }
 </style>
 
 <body>
     <div class="advertencia">
         <p>⚠️ Advertencia: este apartado es un ejercicio de fuerza de voluntad para tratar de dejar un vicio o un mal hábito. Si tu problema está afectando tu vida personal, comunícate de inmediato con un profesional. ⚠️</p>
+        <a href="https://caracol.com.co/radio/2020/05/08/nacional/1588952578_714823.html"><h6>Comunicarse con profesionales: (Linea Amiga(4) 4444448) Dale click para mas información</h6></a>
     </div>
     <!-- Página de Inicio -->
     <header>
@@ -153,10 +142,10 @@
             <button id="boton-inicio" type = "submit">Comienza tu Seguimiento</button>
         <div id="contador-tiempo">{{Recaidas}} </div>
         </form>
-
     </header>
     <div id="lista-compromisos">
-        <h2>Lo voy a hacer por: {{compromiso}}</h2>
+        <h2>Lo voy a hacer por:<br> {{compromiso}}</h2>
     </div>
+
 </body>
 </html>
