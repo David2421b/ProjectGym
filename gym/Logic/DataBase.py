@@ -21,6 +21,7 @@ class Database:
             self.conexion = None
 
     def crear_tabla_usuarios(self): 
+
         if self.conexion:  #verificacion de conexion con base de datos
             cursor = self.conexion.cursor() #crea un objeto que permite ejecutar comandos sql
             cursor.execute('''
