@@ -16,6 +16,8 @@ class Database:
             self.crear_tabla_usuarios()
             self.crear_tabla_ejercicios()
             self.crear_tabla_rutinas()
+            self.crear_tabla_vicios()         # Nueva tabla vicios
+            self.crear_tabla_sentimientos()    # Nueva tabla sentimientos
 
         except sqlite3.Error as err:
             self.conexion = None
@@ -198,7 +200,97 @@ class Database:
             else:
                 return False, None  # Si no se encuentra coincidencia
         return False, None
+    
+    def crear_tabla_vicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+            CREATE TABLE IF NOT EXISTS vicio (
+            id_vicio INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_persona INTEGER NOT NULL,
+            nombre_vicio TEXT NOT NULL,
+            fecha_dejar DATE NOT NULL,
+            compromiso TEXT NOT NULL,
+                
+            FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+            )
+            ''')
+                
+        self.conexion.commit()
+        cursor.close()
+
+    def crear_tabla_sentimientos(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS sentimiento (
+                id_sentimiento INTEGER PRIMARY KEY AUTOINCREMENT,
+                id_persona INTEGER NOT NULL,
+                fecha DATE NOT NULL,
+                sentimiento TEXT NOT NULL,
+                descripcion TEXT NOT NULL,
+                
+                FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+            )
+        ''')
+        self.conexion.commit()
+        cursor.close()
+
+
+    def registrar_vicio(self, vicio):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO vicio (id_persona, nombre_vicio, fecha_dejar, compromiso)
+                    VALUES (?, ?, ?, ?)
+                ''', (vicio.id_persona, vicio.nombre_vicio, vicio.fecha_dejar, vicio.compromiso))
+                self.conexion.commit()
+            except sqlite3.Error as error:
+                print(f"Error al registrar vicio: {error}")
+            finally:
+                cursor.close()
+
+
+    def registrar_sentimiento(self, sentimiento):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO sentimiento (id_persona, fecha, sentimiento, descripcion)
+                    VALUES (?, ?, ?, ?)
+                ''', (sentimiento.id_persona, sentimiento.fecha, sentimiento.sentimiento, sentimiento.descripcion))
+                self.conexion.commit()
+            except sqlite3.Error as error:
+                print(f"Error al registrar sentimiento: {error}")
+            finally:
+                cursor.close()            
+    
+
+    def obtener_vicios_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM vicio WHERE id_persona = ?', (id_usuario,))
+            vicios = cursor.fetchall()
+            cursor.close()
+            return vicios
+        return []
+
+    def obtener_sentimientos_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM sentimiento WHERE id_persona = ?', (id_usuario,))
+            sentimientos = cursor.fetchall()
+            cursor.close()
+            return sentimientos
+        return []
+
+
+
+    
+
 
     def close(self):
         if self.conexion:
             self.conexion.close()
+
