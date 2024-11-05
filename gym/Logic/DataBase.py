@@ -237,14 +237,14 @@ class Database:
         cursor.close()
 
 
-    def registrar_vicio(self, vicio):
+    def registrar_vicio(self, vicio, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
             try:
                 cursor.execute('''
                     INSERT INTO vicio (id_persona, nombre_vicio, fecha_dejar, compromiso)
                     VALUES (?, ?, ?, ?)
-                ''', (vicio.id_persona, vicio.nombre_vicio, vicio.fecha_dejar, vicio.compromiso))
+                ''', (Id_usuario, vicio.nombre_vicio, vicio.fecha_dejar, vicio.compromiso))
                 self.conexion.commit()
             except sqlite3.Error as error:
                 print(f"Error al registrar vicio: {error}")

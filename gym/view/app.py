@@ -157,6 +157,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             count += 1
 
         if count == 0:
+
             return render_template('NoData.html')
         elif count == 1:
             return render_template('DashBoardData.html', 
@@ -275,13 +276,13 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/ViciosData', methods=['GET','POST'])
     def registrar_vicio():
         if request.method == 'POST':
-            id_persona = request.form.get('id_persona')  # o asocia con el usuario actual
+            global Nombre, Id_Usr
             nombre_vicio = request.form.get('vicio')
             fecha_dejar = request.form.get('Fecha')
             compromiso = request.form.get('compromiso')      
-            vicio = Vicio(id_persona, nombre_vicio, fecha_dejar, compromiso)
-            db.registrar_vicio(vicio)
-            return render_template('ManejoVicios.html')  # Redirige a una página de éxito
+            vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
+            db.registrar_vicio(vicio, Id_Usr)
+            return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
 
 
     @app.route('/registrar_sentimiento', methods=['POST'])
