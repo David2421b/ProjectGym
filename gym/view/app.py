@@ -237,6 +237,17 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                Series1 = series[0], Series2 = series[1], Series3 = series[2], Series4 = series[3], Series5 = series[4], Series6 = series[5], Series7 = series[6], Series8 = series[7], Series9 = series[8], Series10 = series[9],
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4], Descanso6 = descanso[5], Descanso7 = descanso[6], Descanso8 = descanso[7], Descanso9 = descanso[8], Descanso10 = descanso[9])    
 
+    @app.route('/CrearRutina', methods=['GET', 'POST'])
+    def CrearRutina():
+        pass
+
+    @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
+    def AgregarEjerLista():
+        if request.method == 'POST':
+            global Nombre
+            ejercicios_seleccionados = request.form.getlist('ejercicio')
+            return render_template('menu.html', name = Nombre)
+        
 
     @app.route('/UsrData')
     def UsrData():
