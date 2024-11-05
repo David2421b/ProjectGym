@@ -115,7 +115,7 @@ class Database:
                 cursor.execute('''
                     INSERT INTO rutinas (id_persona, nombre_rutina, list_ejercicios)
                     VALUES (?, ?, ?)
-                ''', (Id_usuario, rutina.nombre_rutina, rutina.list_ejercicios))
+                ''', (Id_usuario, rutina.nombre_rutina, rutina.ejercicios_seleccionados))
                 self.conexion.commit()
 
             except sqlite3.Error as error:
