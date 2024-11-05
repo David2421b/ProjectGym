@@ -4,9 +4,14 @@ import os
 
 class Database:
     def __init__(self, db_name='digitalhealth.db'):
+    
         # Aseguramos que la base de datos se crea en la carpeta especificada
         self.db_name = os.path.join(os.path.dirname(__file__), 'database', db_name)
         self.conexion = None
+
+    def DNIUsr(Id_Usr: int):
+        global Id_usuario
+        Id_usuario = Id_Usr
 
     def connect(self):
         try:
@@ -103,9 +108,8 @@ class Database:
             finally:
                 cursor.close()
 
-    def registrar_rutina(self, rutina):
+    def registrar_rutina(self, rutina, Id_usuario):
         if self.conexion:
-            global Id_usuario
             cursor = self.conexion.cursor()
             try:
                 cursor.execute('''
@@ -118,10 +122,6 @@ class Database:
                 error
             finally:
                 cursor.close()
-    
-    def DNIUsr(Id_Usr: int):
-        global Id_usuario
-        Id_usuario = Id_Usr
     
     def obtener_todos_ejercicios(self):
         if self.conexion:

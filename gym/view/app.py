@@ -245,9 +245,14 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
     @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
     def AgregarEjerLista():
-        if request.method == 'POST':
-            global Nombre
+        if request.method == 'POST':  
+            global Nombre, Id_Usr
+
+            nombre_rutina = request.form['Name']
             ejercicios_seleccionados = request.form.getlist('ejercicio')
+            
+            rutina = Rutinas(nombre_rutina, ejercicios_seleccionados)
+            db.registrar_rutina(rutina, Id_Usr)
             return render_template('menu.html', name = Nombre)
         
 
