@@ -79,7 +79,7 @@ class Database:
             cursor = self.conexion.cursor()
             try:  #manejo de excepciones
                 cursor.execute(''' 
-                    INSERT INTO usuarios (nombre, edad, email, contraseña, genero)  
+                    INSERT INTO usuarios (nombre, edad, email, contraseña, genero)
                     VALUES (?, ?, ?, ?, ?) 
                 ''', (usuario.nombre, usuario.edad, usuario.email, usuario.contraseña, usuario.genero))
                 self.conexion.commit()  #valores se pasan como tuplas
@@ -135,7 +135,7 @@ class Database:
             return ejercicios
         return []
     
-    def obtener_nombres_ejercicios(self):
+    def obtener_nombres_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
             cursor.execute('SELECT nombre FROM ejercicios WHERE id_persona = ?', (Id_usuario,))  # Selecciona solo la columna de nombres
