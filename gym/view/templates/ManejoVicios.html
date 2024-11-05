@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supera tu Vicio</title>
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 </head>
 <style>
 /* General */
@@ -75,11 +76,13 @@ header p {
     <header>
         <h1>¡Bienvenido a tu Camino de Cambio, {{Name}}</h1>
         <p>Tu progreso, un día a la vez.</p>
-        <label for="vicio">Ingresa el nombre de tu vicio:</label>
-        <input type="text" id="vicio" name="vicio" placeholder="Escribe tu vicio aquí"><br>
-        <button type="submit">Guardar</button>
-        <button id="boton-inicio">Comienza tu Seguimiento</button>
-        <div id="contador-tiempo">Llevas 0 días sin recaídas</div>
+        <form id="form-vicio">
+            <label for="vicio">Ingresa el nombre de tu vicio:</label>
+            <input type="text" id="vicio" name="vicio" placeholder="Escribe tu vicio aquí"><br>
+            <button type="submit">Guardar</button>
+            <button id="boton-inicio" type = "submit">Comienza tu Seguimiento</button>
+        <div id="contador-tiempo">Llevas {{Recaidas}} días sin recaídas</div>
+        </form>
     </header>
 </body>
 </html>
