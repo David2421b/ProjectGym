@@ -32,13 +32,6 @@ class Ejercicio:
         self.repeticiones: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
-    
-    def modificar_ejercicio(self, repeticiones: int, series: int, descanso: int, duracion: int):
-        pass
-
-    def eliminar_ejericio(self, nombre: str, id_ejercicio: str):
-        pass
-   
 
 class Notificacion:
 
