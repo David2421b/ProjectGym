@@ -21,6 +21,13 @@ class Database:
 
         except sqlite3.Error as err:
             self.conexion = None
+    
+        
+    def DNIUsr(Id_Usr: int):
+        global Id_usuario #vairable global se puede acceder y modificar desde cualquier 
+        Id_usuario = Id_Usr #cualquier valor que se pase a DNIUsr se guardará en Id_usuario
+
+#----------------------Creacion de tablas--------------------------------
 
     def crear_tabla_usuarios(self): 
 
@@ -77,6 +84,45 @@ class Database:
             ''')
             self.conexion.commit()
             cursor.close()
+    
+    def crear_tabla_vicios(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+            CREATE TABLE IF NOT EXISTS vicio (
+            id_vicio INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_persona INTEGER NOT NULL,
+            nombre_vicio TEXT NOT NULL,
+            fecha_dejar DATE NOT NULL,
+            compromiso TEXT NOT NULL,
+                
+            FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+            )
+            ''')
+                
+        self.conexion.commit()
+        cursor.close()
+
+    def crear_tabla_sentimientos(self):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS sentimiento (
+                id_sentimiento INTEGER PRIMARY KEY AUTOINCREMENT,
+                id_persona INTEGER NOT NULL,
+                sentimiento TEXT NOT NULL,
+                descripcion TEXT NOT NULL,
+                
+                FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
+            )
+        ''')
+        self.conexion.commit()
+        cursor.close()
+
+#----------------------Creacion de tablas Finaliza--------------------------------
+
+
+#----------------------Ingresar datos a las tablas--------------------------------
 
     def registrar_usuario(self, usuario):
         if self.conexion:
@@ -93,10 +139,6 @@ class Database:
                 
             finally:
                 cursor.close()
-    
-    def DNIUsr(Id_Usr: int):
-        global Id_usuario #vairable global se puede acceder y modificar desde cualquier 
-        Id_usuario = Id_Usr #cualquier valor que se pase a DNIUsr se guardará en Id_usuario
     
     def registrar_ejercicio(self, ejercicio):
         if self.conexion:
@@ -131,6 +173,40 @@ class Database:
             finally:
                 cursor.close()
     
+    def registrar_vicio(self, vicio, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO vicio (id_persona, nombre_vicio, fecha_dejar, compromiso)
+                    VALUES (?, ?, ?, ?)
+                ''', (Id_usuario, vicio.nombre_vicio, vicio.fecha_dejar, vicio.compromiso))
+                self.conexion.commit()
+            except sqlite3.Error as error:
+                print(f"Error al registrar vicio: {error}")
+            finally:
+                cursor.close()
+
+    def registrar_sentimiento(self, sentimiento, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO sentimiento (id_persona, sentimiento, descripcion)
+                    VALUES (?, ?, ?)
+                ''', (Id_usuario, sentimiento.sentimiento, sentimiento.descripcion))
+                self.conexion.commit()
+            except sqlite3.Error as error:
+                print(f"Error al registrar sentimiento: {error}")
+            finally:
+                cursor.close()    
+    
+#----------------------Ingresar datos a las tablas Finaliza--------------------------------
+
+
+
+#----------------------Obtener datos de las tablas--------------------------------
+
     def obtener_todos_ejercicios(self, Id_usuario):  
         if self.conexion:
             cursor = self.conexion.cursor()
@@ -139,7 +215,7 @@ class Database:
             cursor.close()
             return ejercicios
         return []
-    
+
     def obtener_nombres_ejercicios(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
@@ -272,8 +348,6 @@ class Database:
                 ejercicio5[i] = ejercicio5[i][0]
             return ejercicio5
 
-
-
     def verificar_credenciales(self, email, contraseña):
         if self.conexion:
             cursor = self.conexion.cursor()
@@ -285,72 +359,7 @@ class Database:
                 return True, usuario  # Devuelve True y el registro del usuario
             else:
                 return False, None  # Si no se encuentra coincidencia
-        return False, None
-    
-    def crear_tabla_vicios(self):
-        if self.conexion:
-            cursor = self.conexion.cursor()
-            cursor.execute('''
-            CREATE TABLE IF NOT EXISTS vicio (
-            id_vicio INTEGER PRIMARY KEY AUTOINCREMENT,
-            id_persona INTEGER NOT NULL,
-            nombre_vicio TEXT NOT NULL,
-            fecha_dejar DATE NOT NULL,
-            compromiso TEXT NOT NULL,
-                
-            FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
-            )
-            ''')
-                
-        self.conexion.commit()
-        cursor.close()
-
-    def crear_tabla_sentimientos(self):
-        if self.conexion:
-            cursor = self.conexion.cursor()
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS sentimiento (
-                id_sentimiento INTEGER PRIMARY KEY AUTOINCREMENT,
-                id_persona INTEGER NOT NULL,
-                sentimiento TEXT NOT NULL,
-                descripcion TEXT NOT NULL,
-                
-                FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
-            )
-        ''')
-        self.conexion.commit()
-        cursor.close()
-
-
-    def registrar_vicio(self, vicio, Id_usuario):
-        if self.conexion:
-            cursor = self.conexion.cursor()
-            try:
-                cursor.execute('''
-                    INSERT INTO vicio (id_persona, nombre_vicio, fecha_dejar, compromiso)
-                    VALUES (?, ?, ?, ?)
-                ''', (Id_usuario, vicio.nombre_vicio, vicio.fecha_dejar, vicio.compromiso))
-                self.conexion.commit()
-            except sqlite3.Error as error:
-                print(f"Error al registrar vicio: {error}")
-            finally:
-                cursor.close()
-
-
-    def registrar_sentimiento(self, sentimiento, Id_usuario):
-        if self.conexion:
-            cursor = self.conexion.cursor()
-            try:
-                cursor.execute('''
-                    INSERT INTO sentimiento (id_persona, sentimiento, descripcion)
-                    VALUES (?, ?, ?)
-                ''', (Id_usuario, sentimiento.sentimiento, sentimiento.descripcion))
-                self.conexion.commit()
-            except sqlite3.Error as error:
-                print(f"Error al registrar sentimiento: {error}")
-            finally:
-                cursor.close()            
-    
+        return False, None    
 
     def obtener_vicios_usuario(self, id_usuario):
         if self.conexion:
@@ -370,6 +379,7 @@ class Database:
             return sentimientos
         return []
 
+# ----------------------Obtener datos de las tablas Finaliza--------------------------------
 
     def close(self):
         if self.conexion:
@@ -384,4 +394,4 @@ if __name__ == '__main__':
     db.crear_tabla_usuarios()
     db.crear_tabla_vicios()
     db.crear_tabla_sentimientos()
-    
+
