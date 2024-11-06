@@ -120,13 +120,14 @@ class Database:
             cursor = self.conexion.cursor()
             try:
                 cursor.execute('''
-                    INSERT INTO rutinas (id_persona, nombre_rutina, list_ejercicios)
-                    VALUES (?, ?, ?)
-                ''', (Id_usuario, rutina.nombre_rutina, rutina.ejercicios_seleccionados))
+                    INSERT INTO rutinas (id_persona, nombre_rutina, Ejercicio1, Ejercicio2, Ejercicio3, Ejercicio4, Ejercicio5)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', (Id_usuario, rutina.nombre_rutina, rutina.Ejercicio1, rutina.Ejercicio2, rutina.Ejercicio3, rutina.Ejercicio4, rutina.Ejercicio5))
                 self.conexion.commit()
 
             except sqlite3.Error as error:
                 error
+                
             finally:
                 cursor.close()
     
