@@ -11,7 +11,8 @@
             background-image: url('{{url_for("static", filename="Fondo4.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif; /* Cambiado a Roboto */
+            color: #333; /* Color de texto neutro */
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,70 +23,77 @@
 
         /* Estilo del contenedor de contacto */
         .back_contact {
-            background: linear-gradient(to right, rgba(108, 106, 106, 0.8), rgba(255, 255, 255, 0.8)); 
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.1)); 
             width: 450px;
-            height: 500px;
-            border-radius: 20px;
+            height: 550px;
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            padding: 40px;
             text-align: center;
+        }
+
+        /* Estilo del texto */
+        p {
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            color: #f5f5f5; /* Color de texto más suave */
+            margin-bottom: 15px;
         }
 
         /* Estilo de los iconos de redes sociales */
         .Contact img {
-            width: 120px;
-            height: 120px;
-            margin: 15px;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
             border-radius: 50%;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
         }
 
         .Contact img:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         /* Estilo del enlace de dashboard */
         #dashboard {
-            background-color: #b81818;
-            color: white;
-            font-size: 24px;
-            padding: 15px 25px;
-            border-radius: 10px;
+            background-color: #ff1818; /* Color más suave */
+            color: #fff;
+            font-size: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
             text-decoration: none;
-            margin-top: 20px;
+            margin-top: 25px;
             display: inline-block;
-            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         #dashboard:hover {
-            background-color: #ba2121;
+            background-color: #a71515;
+            transform: scale(1.05);
         }
-        p{
-            font-size: 20px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            color: black;
-        }
-
     </style>
 
 </head>
 <body>
-    
+    <center>
     <div class="back_contact">
-        <p>CORREO: digitalgym10@gmail.com </p>
+        <p><strong>CORREO:</strong> digitalgym10@gmail.com</p>
         <div class="Contact">
             <a href="https://www.instagram.com/davidhernandez0951/" target="_blank">
                 <img src="{{url_for('static', filename='ig.webp')}}" alt="Instagram">
-            </a><br>
+            </a>
             <a href="https://chat.whatsapp.com/I3g8U22vFQi7d2ufdSTftp" target="_blank">
-                <img src="{{url_for('static', filename='Wh.webp')}}" alt="WhatsApp">
-            </a><br><br>
+                <img src="{{url_for('static', filename='Wh.webp')}}" alt="WhatsApp"><br>
+            </a>
             <a id="dashboard" href="/MenuName">Volver</a>
         </div>
     </div>
+</center>
 </body>
 </html>
+
