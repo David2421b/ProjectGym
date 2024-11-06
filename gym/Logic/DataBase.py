@@ -66,7 +66,11 @@ class Database:
                     id_rutina INTEGER PRIMARY KEY AUTOINCREMENT,
                     id_persona INTEGER NOT NULL,
                     nombre_rutina TEXT NOT NULL,
-                    list_ejercicios TEXT NOT NULL,
+                    Ejercicio1 TEXT,
+                    Ejercicio2 TEXT,
+                    Ejercicio3 TEXT,
+                    Ejercicio4 TEXT,
+                    Ejercicio5 TEXT,
 
                     FOREIGN KEY (id_persona) REFERENCES usuarios(id_persona)
                 )
@@ -184,6 +188,17 @@ class Database:
             for i in range(len(descanso)):
                 descanso[i] = descanso[i][0]
             return descanso
+        return []
+    
+    def obtener_id_ejercicios(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT id_ejercicio FROM ejercicios WHERE id_persona = ?', (Id_usuario,))
+            id_ejercicio = cursor.fetchall()
+            cursor.close()
+            for i in range(len(id_ejercicio)):
+                id_ejercicio[i] = id_ejercicio[i][0]
+            return id_ejercicio
         return []
 
 
