@@ -535,7 +535,42 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     
     @app.route('/ProgresoVicios')
     def ProgresoVicios():
-        return render_template('Progreso.html')
+        global Id_Usr
+        vicios = db.obtener_vicios_usuario(Id_Usr)
+        vicio = db.obtener_vicio_usuario(Id_Usr)
+        fecha_dejar = db.obtener_fecha_dejar_vicios_usuario(Id_Usr)
+        compromiso = db.obtener_compromiso_vicios_usuario(Id_Usr)
+        count = len(vicio)
+        count = 0
+        for i in range(len(vicios)):
+            count += 1
+
+        if count == 0:
+            return render_template('Progreso.html', Vicio1 = "No hay vicios registrados")
+        elif count == 1:
+            return render_template('Progreso.html', Vicio1=vicio[0], Fecha1=fecha_dejar[0], Compromiso1=compromiso[0])
+        elif count == 2:
+            return render_template('Progreso.html', Vicio1=vicio[0], Fecha1=fecha_dejar[0], Compromiso1=compromiso[0],
+                                Vicio2=vicio[1], Fecha2=fecha_dejar[1], Compromiso2=compromiso[1])
+        elif count == 3:
+            return render_template('Progreso.html', Vicio1=vicio[0], Fecha1=fecha_dejar[0], Compromiso1=compromiso[0],
+                                Vicio2=vicio[1], Fecha2=fecha_dejar[1], Compromiso2=compromiso[1],
+                                Vicio3=vicio[2], Fecha3=fecha_dejar[2], Compromiso3=compromiso[2])
+        elif count == 4:
+            return render_template('Progreso.html', Vicio1=vicio[0], Fecha1=fecha_dejar[0], Compromiso1=compromiso[0],
+                                Vicio2=vicio[1], Fecha2=fecha_dejar[1], Compromiso2=compromiso[1],
+                                Vicio3=vicio[2], Fecha3=fecha_dejar[2], Compromiso3=compromiso[2],
+                                Vicio4=vicio[3], Fecha4=fecha_dejar[3], Compromiso4=compromiso[3])
+        elif count == 5:
+            return render_template('Progreso.html', Vicio1=vicio[0], Fecha1=fecha_dejar[0], Compromiso1=compromiso[0],
+                                Vicio2=vicio[1], Fecha2=fecha_dejar[1], Compromiso2=compromiso[1],
+                                Vicio3=vicio[2], Fecha3=fecha_dejar[2], Compromiso3=compromiso[2],
+                                Vicio4=vicio[3], Fecha4=fecha_dejar[3], Compromiso4=compromiso[3],
+                                Vicio5=vicio[4], Fecha5=fecha_dejar[4], Compromiso5=compromiso[4])
+        else:
+            return render_template('Progreso.html', mensaje="Demasiados vicios registrados para mostrar.")
+
+
 #-----------------Rutas de la aplicacion para mostrar informacion finaliza----------------#
 
 

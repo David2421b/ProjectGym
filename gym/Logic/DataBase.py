@@ -379,6 +379,36 @@ class Database:
             cursor.close()
             return vicios
         return []
+    
+    def obtener_vicio_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT nombre_vicio FROM vicio WHERE id_persona = ?', (id_usuario,))
+            vicio = cursor.fetchall()
+            cursor.close()
+            for i in range(len(vicio)):
+                vicio[i] = vicio[i][0]
+            return vicio
+
+    def obtener_fecha_dejar_vicios_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT fecha_dejar FROM vicio WHERE id_persona = ?', (id_usuario,))
+            fecha_dejar = cursor.fetchall()
+            cursor.close()
+            for i in range(len(fecha_dejar)):
+                fecha_dejar[i] = fecha_dejar[i][0]
+            return fecha_dejar
+    
+    def obtener_compromiso_vicios_usuario(self, id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT compromiso FROM vicio WHERE id_persona = ?', (id_usuario,))
+            compromiso = cursor.fetchall()
+            cursor.close()
+            for i in range(len(compromiso)):
+                compromiso[i] = compromiso[i][0]
+            return compromiso
 
     def obtener_sentimientos_usuario(self, id_usuario):
         if self.conexion:
