@@ -279,14 +279,9 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             id3 = request.form['Id_Vicio3']
             id4 = request.form['Id_Vicio4']
             id5 = request.form['Id_Vicio5']
-<<<<<<< HEAD
-            db.agregar_ejercicio_lista(id, Id_Usr) #guarda los ejercicios en una lista asociada con el usuario
-            return render_template('DashBoardData.html')
-=======
             rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
             db.registrar_rutina(rutina, Id_Usr)
             return render_template('Menu.html' , Name = Nombre)
->>>>>>> 894c4350521a32f9b6d7a927175e09bc2032a95b
 
     @app.route('/UsrData')
     def UsrData():
