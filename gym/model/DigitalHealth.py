@@ -95,8 +95,6 @@ class Vicios(Usuario):
         self.last_relapse_date = None  # Fecha de última recaída
         self.ultimo_mensaje = datetime.now()  # Marca de tiempo del último mensaje
 
-
-
 class Vicio:
     def __init__(self, nombre_vicio, fecha_dejar, compromiso):
         self.nombre_vicio = nombre_vicio
