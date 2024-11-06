@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tus Rutinas</title>
+    <title>Eliminar Ejercicios</title>
     <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
@@ -47,73 +47,78 @@
             text-decoration: none;
             font-size: 25px;
             text-align: center;
-            margin: 5% 10% 0 5%;
+            margin: 5% 2% 0 5%;
         }
     </style>
 </head>
 <body>
     <div class="Body">
         <div class="Container">
+            
+            <h1>Selecciona los ejercicios que deseas eliminar de tu lista</h1>
             <table>
                     <thead>
                         <tr>
-                            <th>Nombre Rutina</th>
-                            <th>Ejercicio1</th>
-                            <th>Ejercicio2</th>
-                            <th>Ejercicio3</th>
-                            <th>Ejercicio4</th>
-                            <th>Ejercicio5</th>
+                            <th>ID</th>
+                            <th>Nombre</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>{{ID1}}</td>
                             <td>{{Nombre1}}</td>
-                            <td>{{Ejer1a}}</td>
-                            <td>{{Ejer1b}}</td>
-                            <td>{{Ejer1c}}</td>
-                            <td>{{Ejer1d}}</td>
-                            <td>{{Ejer1e}}</td>
                         </tr>
                         <tr>
+                            <td>{{ID2}}</td>
                             <td>{{Nombre2}}</td>
-                            <td>{{Ejer2a}}</td>
-                            <td>{{Ejer2b}}</td>
-                            <td>{{Ejer2c}}</td>
-                            <td>{{Ejer2d}}</td>
-                            <td>{{Ejer2e}}</td>
                         </tr>
                         <tr>
+                            <td>{{ID3}}</td>
                             <td>{{Nombre3}}</td>
-                            <td>{{Ejer3a}}</td>
-                            <td>{{Ejer3b}}</td>
-                            <td>{{Ejer3c}}</td>
-                            <td>{{Ejer3d}}</td>
-                            <td>{{Ejer3e}}</td>
                         </tr>
 
                         <tr>
+                            <td>{{ID4}}</td>
                             <td>{{Nombre4}}</td>
-                            <td>{{Ejer4a}}</td>
-                            <td>{{Ejer4b}}</td>
-                            <td>{{Ejer4c}}</td>
-                            <td>{{Ejer4d}}</td>
-                            <td>{{Ejer4e}}</td>
                         </tr>
 
                         <tr>
+                            <td>{{ID5}}</td>
                             <td>{{Nombre5}}</td>
-                            <td>{{Ejer5a}}</td>
-                            <td>{{Ejer5b}}</td>
-                            <td>{{Ejer5c}}</td>
-                            <td>{{Ejer5d}}</td>
-                            <td>{{Ejer5e}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID6}}</td>
+                            <td>{{Nombre6}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID7}}</td>
+                            <td>{{Nombre7}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID8}}</td>
+                            <td>{{Nombre8}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID9}}</td>
+                            <td>{{Nombre9}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID10}}</td>
+                            <td>{{Nombre10}}</td>
                         </tr>
                     </tbody>
             </table>
-            <a href="/MenuName">DashBoard</a>
-            <a href="/Ejercicio">Crear Ejercicio</a>
-            <a href="/ver_ejercicios">Crear Rutina</a>
-            <a href="/PagEliminarEjercicio">Eliminar</a>
+            <form action="/EliminarEjercicio" method="post">
+                <label for="ID">ID del ejercicio a eliminar:</label><br>
+                <input type="number" name="ID" id = "ID" placeholder = "ID" required><br>
+                <button type="submit">Eliminar</button>
+            </form>
+            <a href="/Rutinas">Volver</a>
         </div>
     </div>
 </body>

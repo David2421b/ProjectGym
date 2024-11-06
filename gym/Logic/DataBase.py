@@ -379,7 +379,17 @@ class Database:
             return sentimientos
         return []
 
-# ----------------------Obtener datos de las tablas Finaliza--------------------------------
+# ----------------------Obtener datos de las tablas Finaliza-------------------------------
+
+
+# ----------------------Eliminar datos de las tablas--------------------------------
+
+    def eliminar_ejercicio(self, id_ejercicio):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('DELETE FROM ejercicios WHERE id_ejercicio = ?', (id_ejercicio,))
+            self.conexion.commit()
+            cursor.close()
 
     def close(self):
         if self.conexion:

@@ -371,6 +371,38 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                 Ejer5e = Ejercicio5[4])
        
 
+    @app.route('/PagEliminarEjercicio')
+    def PagEliminarEjercicio():
+        db.connect()
+        ejercicios = db.obtener_todos_ejercicios(Id_Usr)
+        id = db.obtener_id_ejercicios(Id_Usr)
+        nombre = db.obtener_nombres_ejercicios(Id_Usr)    
+        count = 0
+        for i in range(len(ejercicios)):
+            count += 1
+        if count == 0:
+            return render_template('DashBoardEliminarEjercicio.html')
+        elif count == 1:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0])
+        elif count == 2:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1])
+        elif count == 3:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2])
+        elif count == 4:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3])
+        elif count == 5:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4])
+        elif count == 6:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4], ID6 = id[5], Nombre6 = nombre[5])
+        elif count == 7:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4], ID6 = id[5], Nombre6 = nombre[5], ID7 = id[6], Nombre7 = nombre[6])
+        elif count == 8:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4], ID6 = id[5], Nombre6 = nombre[5], ID7 = id[6], Nombre7 = nombre[6], ID8 = id[7], Nombre8 = nombre[7])
+        elif count == 9:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4], ID6 = id[5], Nombre6 = nombre[5], ID7 = id[6], Nombre7 = nombre[6], ID8 = id[7], Nombre8 = nombre[7], ID9 = id[8], Nombre9 = nombre[8])
+        elif count == 10:
+            return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4], ID6 = id[5], Nombre6 = nombre[5], ID7 = id[6], Nombre7 = nombre[6], ID8 = id[7], Nombre8 = nombre[7], ID9 = id[8], Nombre9 = nombre[8], ID10 = id[9], Nombre10 = nombre[9])
+
     @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
     def AgregarEjerLista():
         if request.method == 'POST':
@@ -439,8 +471,15 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             sentimiento_obj = Sentimiento(sentimiento, descripcion)
             db.registrar_sentimiento(sentimiento_obj, Id_Usr)
             return render_template('ManejoVicios.html')
-
+    
+    @app.route('/EliminarEjercicio', methods=['GET', 'POST'])
+    def EliminarEjercicio():
+        if request.method == 'POST':
+            global Nombre
+            id = request.form['ID']
+            db.eliminar_ejercicio(id)
+            return render_template('Menu.html')
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
 
