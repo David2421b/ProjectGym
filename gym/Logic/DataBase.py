@@ -298,6 +298,16 @@ class Database:
                 nombre_rutina[i] = nombre_rutina[i][0]
             return nombre_rutina
     
+    def obtener_id_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT id_rutina FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            id_rutina = cursor.fetchall()
+            cursor.close()
+            for i in range(len(id_rutina)):
+                id_rutina[i] = id_rutina[i][0]
+            return id_rutina
+    
     def obtener_ejercicio1_rutina(self, Id_usuario):
         if self.conexion:
             cursor = self.conexion.cursor()
@@ -390,6 +400,15 @@ class Database:
             cursor.execute('DELETE FROM ejercicios WHERE id_ejercicio = ?', (id_ejercicio,))
             self.conexion.commit()
             cursor.close()
+    
+    def eliminar_rutina(self, id_rutina):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('DELETE FROM rutinas WHERE id_rutina = ?', (id_rutina,))
+            self.conexion.commit()
+            cursor.close()
+
+# ----------------------Eliminar datos de las tablas Finaliza--------------------------------
 
     def close(self):
         if self.conexion:

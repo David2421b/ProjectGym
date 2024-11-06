@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Rutina</title>
+    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+
+    <style>
+        body{
+            background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .Body{
+            display: flex;
+        }
+
+        .Container{
+            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
+            border-radius: 30px;
+            justify-content: center;
+            margin-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            font-size: 25px;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo para el encabezado */
+            color: black;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+            text-align: center;
+            margin: 5% 2% 0 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="Body">
+        <div class="Container">
+                <h1>Selecciona el ID de la Rutina que deseas eliminar</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ID1}}</td>
+                            <td>{{Nombre1}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ID2}}</td>
+                            <td>{{Nombre2}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ID3}}</td>
+                            <td>{{Nombre3}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID4}}</td>
+                            <td>{{Nombre4}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ID5}}</td>
+                            <td>{{Nombre5}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <form action="/EliminarRutina" method="post">
+                <label for="ID">ID de la Rutina</label><br>
+                <input type="text" name="ID" id = "ID" placeholder = "ID de la Rutina" required><br>
+                <button type="submit">Eliminar</button>
+            </form>
+            <a href="/Rutinas">Volver</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -75,6 +75,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     Contraseña = ""
     Genero = ""
 
+# -------------------Rutas de la aplicacion para autenticar informacion-------------------#
+
     @app.route('/login', methods=['GET', 'POST']) #GET obtiene datos del servidor y POST envia datos al servidor 
     def login():
         if request.method == 'POST':
@@ -98,10 +100,34 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             else:
                 error_message = 'Usuario o contraseña incorrectos'
                 return render_template('Index.html', error = error_message)
-            
-
         return render_template('Index.html')  # Si no es un POST, muestra el formulario
+
+    @app.route('/OllamaChat', methods=['GET', 'POST'])
+    def chat():
+        if request.method == 'POST':  #propiedad de Flask que indica el método HTTP utilizado para acceder a la ruta 
+            mensaje = request.form['message'] #Accedemos al diccionario que contiene los datos
+            respuesta = Chat_Ollama.chat(mensaje)
+            return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
+        
     
+    @app.route('/CalcularData', methods=['GET', 'POST'])
+    def CalcularDatas():
+        if request.method == 'POST':
+            global Edad, Genero
+            peso = int(request.form['Weight'])
+            altura = int(request.form['Height'])
+            altura = altura  / 100
+            IMC = Estadistica.calcular_imc(peso, altura)
+            TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
+            FCM = Estadistica.calcular_fcm(Edad)
+            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
+
+# -------------------Rutas de la aplicacion para autenticar informacion finaliza-------------------#
+
+
+
+# -------------------Rutas de la aplicacion para mostrar informacion-------------------#
+
     @app.route('/MenuName')
     def MenuName():
         global Nombre
@@ -109,9 +135,24 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             return render_template('Index.html')   #si nombre esta vacio rederige al usuario a la pagina
         return render_template('menu.html', name = Nombre)  #si el nombre no esta vacio se asume que ya se inicio
 
+    @app.route('/UsrData')
+    def UsrData():
+        global Nombre, Edad, Email, Contraseña, Genero
+        return render_template('Usuario.html', Name = Nombre, Age = Edad, Email = Email, Password = Contraseña)
+    
+    @app.route('/Vicios_Name')
+    def Vicios_Name():
+        global Nombre
+        return render_template('ManejoVicios.html', Name = Nombre)
+    
+# -------------------Rutas de la aplicacion para mostrar informacion finaliza-------------------#
+
+     
+
+# -------------------Rutas de la aplicacion para registrar informacion-------------------#
 
     @app.route('/register', methods=['GET', 'POST'])
-    def register():
+    def Registrar_Usuario():
         if request.method == 'POST':   #Capturan los datos del usuario 
             nombre = request.form['Name']
             edad = request.form['Age']
@@ -123,11 +164,10 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             usuario = Usuario(nombre, edad, email, contraseña, genero, Dni)  #se crea la instancia usuario 
             db.registrar_usuario(usuario)    #Guardamos informacion en base de datos 
             return render_template('Index.html')
-    
-        return render_template('Registrarse.html')
-    
+        return render_template('Registrarse.html')    
+
     @app.route('/EjercicioRegister', methods=['GET', 'POST'])
-    def EjercicioRegister():
+    def EjRegistrar_Ejercicio():
         global Nombre, Edad, Email, Contraseña, Genero, Id_Usr
 
         if request.method == 'POST':        #Captura informacion de los ejercicios 
@@ -141,9 +181,72 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             Database.DNIUsr(Id_Usr)
             db.registrar_ejercicio(ejercicio)  #crea instancia y guarda en base de datos 
             return render_template('menu.html')
-    
         return render_template('RegisEjercicio.html')
+
+    @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
+    def Registrar_Rutina():
+        if request.method == 'POST':
+            global Id_Usr, Nombre
+            RutinaName = request.form['Name']
+            id1 = request.form['Ejercicio1']
+            id2 = request.form['Ejercicio2']
+            id3 = request.form['Ejercicio3']
+            id4 = request.form['Ejercicio4']
+            id5 = request.form['Ejercicio5']
+            rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
+            db.registrar_rutina(rutina, Id_Usr)
+            return render_template('Menu.html' , Name = Nombre)
+
+    @app.route('/ViciosData', methods=['GET','POST'])
+    def registrar_vicio():
+        if request.method == 'POST':
+            global Nombre, Id_Usr
+            nombre_vicio = request.form['vicio']
+            fecha_dejar = request.form['Fecha']
+            compromiso = request.form['compromiso']
+            vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
+            db.registrar_vicio(vicio, Id_Usr)
+            return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
+
+
+    @app.route('/registrar_sentimiento', methods=['GET', 'POST'])
+    def registrar_sentimiento():
+        if request.method == 'POST':
+            global Id_Usr
+            sentimiento = request.form['sentimiento']
+            descripcion = request.form['descripcion']
+            sentimiento_obj = Sentimiento(sentimiento, descripcion)
+            db.registrar_sentimiento(sentimiento_obj, Id_Usr)
+            return render_template('ManejoVicios.html')
+        
+# -------------------Rutas de la aplicacion para registrar informacion finaliza-------------------#
+
+
+
+# -------------------Rutas de la aplicacion para eliminar informacion-------------------#
     
+    @app.route('/EliminarEjercicio', methods=['GET', 'POST'])
+    def EliminarEjercicio():
+        if request.method == 'POST':
+            global Nombre
+            id = request.form['ID']
+            db.eliminar_ejercicio(id)
+            return render_template('Menu.html', name = Nombre)
+    
+    @app.route('/EliminarRutina', methods=['GET', 'POST'])
+    def EliminarRutina():
+        if request.method == 'POST':
+            global Nombre
+            id = request.form['ID']
+            db.eliminar_rutina(id)
+            return render_template('Menu.html', name = Nombre)
+
+#-----------------Rutas de la aplicacion para eliminar informacion finaliza----------------#
+
+
+
+#-------------------Rutas de la aplicacion para mostrar informacion-------------------#
+
     @app.route('/ver_ejercicios')
     def ver_ejercicios():
 
@@ -403,83 +506,31 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         elif count == 10:
             return render_template('DashBoardEliminarEjercicio.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4], ID6 = id[5], Nombre6 = nombre[5], ID7 = id[6], Nombre7 = nombre[6], ID8 = id[7], Nombre8 = nombre[7], ID9 = id[8], Nombre9 = nombre[8], ID10 = id[9], Nombre10 = nombre[9])
 
-    @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
-    def AgregarEjerLista():
-        if request.method == 'POST':
-            global Id_Usr, Nombre
-            RutinaName = request.form['Name']
-            id1 = request.form['Ejercicio1']
-            id2 = request.form['Ejercicio2']
-            id3 = request.form['Ejercicio3']
-            id4 = request.form['Ejercicio4']
-            id5 = request.form['Ejercicio5']
-            rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
-            db.registrar_rutina(rutina, Id_Usr)
-            return render_template('Menu.html' , Name = Nombre)
-
-    @app.route('/UsrData')
-    def UsrData():
-        global Nombre, Edad, Email, Contraseña, Genero
-        return render_template('Usuario.html', Name = Nombre, Age = Edad, Email = Email, Password = Contraseña)
-
-
-    @app.route('/OllamaChat', methods=['GET', 'POST'])
-    def chat():
-        if request.method == 'POST':  #propiedad de Flask que indica el método HTTP utilizado para acceder a la ruta 
-            mensaje = request.form['message'] #Accedemos al diccionario que contiene los datos
-            respuesta = Chat_Ollama.chat(mensaje)
-            return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
+    @app.route('/PagEliminarRutina')
+    def PagEliminarRutina():
+        db.connect()
+        rutinas = db.obtener_todas_rutinas(Id_Usr)
+        id = db.obtener_id_rutina(Id_Usr)
+        nombre = db.obtener_nombre_rutina(Id_Usr)
+        count = 0
+        for i in range(len(rutinas)):
+            count += 1
+        if count == 0:
+            return render_template('DashBoardEliminarRutina.html')
+        elif count == 1:
+            return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0])
+        elif count == 2:
+            return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1])
+        elif count == 3:
+            return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2])
+        elif count == 4:
+            return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3])
+        elif count == 5:
+            return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4])
         
-    
-    @app.route('/CalcularData', methods=['GET', 'POST'])
-    def CalcularDatas():
-        if request.method == 'POST':
-            global Edad, Genero
-            peso = int(request.form['Weight'])
-            altura = int(request.form['Height'])
-            altura = altura  / 100
-            IMC = Estadistica.calcular_imc(peso, altura)
-            TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
-            FCM = Estadistica.calcular_fcm(Edad)
-            return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
-         
-
-    @app.route('/Vicios_Name')
-    def Vicios_Name():
-        global Nombre
-        return render_template('ManejoVicios.html', Name = Nombre)
-     
-
-    @app.route('/ViciosData', methods=['GET','POST'])
-    def registrar_vicio():
-        if request.method == 'POST':
-            global Nombre, Id_Usr
-            nombre_vicio = request.form['vicio']
-            fecha_dejar = request.form['Fecha']
-            compromiso = request.form['compromiso']
-            vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
-            db.registrar_vicio(vicio, Id_Usr)
-            return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
+#-----------------Rutas de la aplicacion para mostrar informacion finaliza----------------#
 
 
-    @app.route('/registrar_sentimiento', methods=['GET', 'POST'])
-    def registrar_sentimiento():
-        if request.method == 'POST':
-            global Id_Usr
-            sentimiento = request.form['sentimiento']
-            descripcion = request.form['descripcion']
-            sentimiento_obj = Sentimiento(sentimiento, descripcion)
-            db.registrar_sentimiento(sentimiento_obj, Id_Usr)
-            return render_template('ManejoVicios.html')
-    
-    @app.route('/EliminarEjercicio', methods=['GET', 'POST'])
-    def EliminarEjercicio():
-        if request.method == 'POST':
-            global Nombre
-            id = request.form['ID']
-            db.eliminar_ejercicio(id)
-            return render_template('Menu.html')
-    
 if __name__ == '__main__':
     app.run(debug=True) 
 
