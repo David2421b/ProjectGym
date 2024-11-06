@@ -265,7 +265,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
             return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
-         
+        
 
     @app.route('/Vicios_Name')
     def Vicios_Name():
