@@ -256,12 +256,12 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         if request.method == 'POST':
             global Id_Usr
             RutinaName = request.form['Name']
-            id1 = request.form['Id_Vicio1']
+            id1 = request.form['Id_Vicio1'] #las variables id recibe los identificadores de los ejercicios 
             id2 = request.form['Id_Vicio2']
             id3 = request.form['Id_Vicio3']
             id4 = request.form['Id_Vicio4']
             id5 = request.form['Id_Vicio5']
-            db.agregar_ejercicio_lista(id, Id_Usr)
+            db.agregar_ejercicio_lista(id, Id_Usr) #guarda los ejercicios en una lista asociada con el usuario
             return render_template('DashBoardData.html')
 
     @app.route('/UsrData')
