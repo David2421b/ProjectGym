@@ -3,56 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Digital Health</title>
-    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename='Logo.png')}}" type="image/png">
 
     <style>
-        body{
-            background-image: url('{{url_for("static", filename = "Fondo4.jpg")}}');
+        /* Estilo global de la página */
+        body {
+            background-image: url('{{url_for("static", filename="Fondo4.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
-        }
-
-        .back_contact{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.704));
-            margin: 10% 60% 0% 10%;
-            border-radius: 15%;
-            width: 500px;
-            height: 500px;
-
-        }
-
-        .Contact{
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 80px;
+            height: 100vh;
         }
 
-        .Contact img{
-            width: 150px;
-            height: 150px;
-            margin: 10px;
+        /* Estilo del contenedor de contacto */
+        .back_contact {
+            background: linear-gradient(to right, rgba(108, 106, 106, 0.8), rgba(255, 255, 255, 0.8)); 
+            width: 450px;
+            height: 500px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
         }
 
-        #dashboard{
-            border-radius: 10px;
+        /* Estilo de los iconos de redes sociales */
+        .Contact img {
+            width: 120px;
+            height: 120px;
+            margin: 15px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .Contact img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilo del enlace de dashboard */
+        #dashboard {
+            background-color: #b81818;
             color: white;
-            font-size: 30px;
+            font-size: 24px;
+            padding: 15px 25px;
+            border-radius: 10px;
             text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
         }
+
+        #dashboard:hover {
+            background-color: #ba2121;
+        }
+        p{
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: black;
+        }
+
     </style>
 
-    <script>
-    </script>
-
-    <body>
-        <div class="back_contact">
-            <center>
-                <div class="Contact">
-                    <a href="https://www.instagram.com/davidhernandez0951/" target="_blank"><img src="{{ url_for('static', filename = 'FondoIg.png')}}"></a><br>
-                    <a href="https://chat.whatsapp.com/I3g8U22vFQi7d2ufdSTftp" target="_blank"><img src="{{url_for('static', filename = 'FondoWa.png')}}"></a><br><br>
-                    <a id = "dashboard" href="/MenuName">Dashboard</a>
-                </div>
-            </center>  
+</head>
+<body>
+    
+    <div class="back_contact">
+        <p>CORREO: digitalgym10@gmail.com </p>
+        <div class="Contact">
+            <a href="https://www.instagram.com/davidhernandez0951/" target="_blank">
+                <img src="{{url_for('static', filename='ig.webp')}}" alt="Instagram">
+            </a><br>
+            <a href="https://chat.whatsapp.com/I3g8U22vFQi7d2ufdSTftp" target="_blank">
+                <img src="{{url_for('static', filename='Wh.webp')}}" alt="WhatsApp">
+            </a><br><br>
+            <a id="dashboard" href="/MenuName">Volver</a>
         </div>
-    </body>
+    </div>
+</body>
 </html>
