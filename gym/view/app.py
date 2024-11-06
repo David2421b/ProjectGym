@@ -436,8 +436,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         if request.method == 'POST':
             global Edad, Genero
             peso = int(request.form['Weight'])
-            altura = float(request.form['Height'])
-            peso = peso  / 100
+            altura = int(request.form['Height'])
+            altura = altura  / 100
             IMC = Estadistica.calcular_imc(peso, altura)
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)

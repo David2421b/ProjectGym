@@ -44,21 +44,20 @@ class Estadistica:
     fcm: ClassVar[int] = 0
     
     def calcular_imc(peso: float, altura: float): 
-        if altura >= 0:
-            imc = peso / (altura ** 2)
+        imc = peso / (altura ** 2)
 
-            if imc < 18.5:
-                return f"Tu IMC es: {imc:.1f} y te encuentras en infrapeso"
-            elif imc >= 18.5 and imc < 24.9:
-                return f"Tu IMC es: {imc:.1f} y te encuentras en un peso normal"
-            elif imc >= 25 and imc < 29.9:
-                return f"Tu IMC es: {imc:.1f} y te encuentras en sobrepeso"
-            elif imc >= 30 and imc < 34.9:
-                return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado I"
-            elif imc >= 35 and imc < 39.9:
-                return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado II"
-            elif imc >= 40:
-                return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado III"
+        if imc < 18.5:
+            return f"Tu IMC es: {imc:.1f} y te encuentras en infrapeso"
+        elif imc >= 18.5 and imc < 24.9:
+            return f"Tu IMC es: {imc:.1f} y te encuentras en un peso normal"
+        elif imc >= 25 and imc < 29.9:
+            return f"Tu IMC es: {imc:.1f} y te encuentras en sobrepeso"
+        elif imc >= 30 and imc < 34.9:
+            return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado I"
+        elif imc >= 35 and imc < 39.9:
+            return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado II"
+        elif imc >= 40:
+            return f"Tu IMC es: {imc:.1f} y te encuentras en obesidad grado III"
         return imc
 
     def calcular_tmb(genero: str, edad: int, peso: float, altura: float):
