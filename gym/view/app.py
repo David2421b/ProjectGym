@@ -43,7 +43,7 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
         return render_template("Registrarse.html")
 
     @app.route('/contact')
-    def contact():
+    def contact(): 
         return render_template("Contact.html")
     
     @app.route('/chat')
@@ -253,16 +253,134 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                Series1 = series[0], Series2 = series[1], Series3 = series[2], Series4 = series[3], Series5 = series[4], Series6 = series[5], Series7 = series[6], Series8 = series[7], Series9 = series[8], Series10 = series[9],
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4], Descanso6 = descanso[5], Descanso7 = descanso[6], Descanso8 = descanso[7], Descanso9 = descanso[8], Descanso10 = descanso[9])    
 
+    @app.route('/Rutinas')
+    def Rutinas():
+        global Nombre, Id_Usr
+
+        db.connect()
+        Nombre_Rutnia = db.obtener_nombre_rutina(Id_Usr)
+        Ejercicio1 = db.obtener_ejercicio1_rutina(Id_Usr)
+        Ejercicio2 = db.obtener_ejercicio2_rutina(Id_Usr)
+        Ejercicio3 = db.obtener_ejercicio3_rutina(Id_Usr)
+        Ejercicio4 = db.obtener_ejercicio4_rutina(Id_Usr)
+        Ejercicio5 = db.obtener_ejercicio5_rutina(Id_Usr)
+        count = 0
+        for i in range(len(Nombre_Rutnia)):
+            count += 1
+        if count == 0:
+            return render_template('NoData.html')
+        elif count == 1:
+            return render_template('DashBoardRutinas.html', 
+                                Nombre1 = Nombre_Rutnia[0], 
+                                Ejer1a = Ejercicio1[0], 
+                                Ejer1b = Ejercicio2[0], 
+                                Ejer1c = Ejercicio3[0], 
+                                Ejer1d = Ejercicio4[0], 
+                                Ejer1e = Ejercicio5[0],)
+        elif count == 2:
+            return render_template('DashBoardRutinas.html', 
+                                Nombre1 = Nombre_Rutnia[0], 
+                                Ejer1a = Ejercicio1[0], 
+                                Ejer1b = Ejercicio2[0], 
+                                Ejer1c = Ejercicio3[0], 
+                                Ejer1d = Ejercicio4[0], 
+                                Ejer1e = Ejercicio5[0],
+                                Nombre2 = Nombre_Rutnia[1], 
+                                Ejer2a = Ejercicio1[1], 
+                                Ejer2b = Ejercicio2[1], 
+                                Ejer2c = Ejercicio3[1], 
+                                Ejer2d = Ejercicio4[1], 
+                                Ejer2e = Ejercicio5[1])
+        elif count == 3:
+            return render_template('DashBoardRutinas.html', 
+                                Nombre1 = Nombre_Rutnia[0], 
+                                Ejer1a = Ejercicio1[0], 
+                                Ejer1b = Ejercicio2[0], 
+                                Ejer1c = Ejercicio3[0], 
+                                Ejer1d = Ejercicio4[0], 
+                                Ejer1e = Ejercicio5[0],
+                                Nombre2 = Nombre_Rutnia[1], 
+                                Ejer2a = Ejercicio1[1], 
+                                Ejer2b = Ejercicio2[1], 
+                                Ejer2c = Ejercicio3[1], 
+                                Ejer2d = Ejercicio4[1], 
+                                Ejer2e = Ejercicio5[1],
+                                Nombre3 = Nombre_Rutnia[2], 
+                                Ejer3a = Ejercicio1[2], 
+                                Ejer3b = Ejercicio2[2], 
+                                Ejer3c = Ejercicio3[2], 
+                                Ejer3d = Ejercicio4[2], 
+                                Ejer3e = Ejercicio5[2])
+        elif count == 4:
+            return render_template('DashBoardRutinas.html', 
+                                Nombre1 = Nombre_Rutnia[0], 
+                                Ejer1a = Ejercicio1[0], 
+                                Ejer1b = Ejercicio2[0], 
+                                Ejer1c = Ejercicio3[0], 
+                                Ejer1d = Ejercicio4[0], 
+                                Ejer1e = Ejercicio5[0],
+                                Nombre2 = Nombre_Rutnia[1], 
+                                Ejer2a = Ejercicio1[1], 
+                                Ejer2b = Ejercicio2[1], 
+                                Ejer2c = Ejercicio3[1], 
+                                Ejer2d = Ejercicio4[1], 
+                                Ejer2e = Ejercicio5[1],
+                                Nombre3 = Nombre_Rutnia[2], 
+                                Ejer3a = Ejercicio1[2], 
+                                Ejer3b = Ejercicio2[2], 
+                                Ejer3c = Ejercicio3[2], 
+                                Ejer3d = Ejercicio4[2], 
+                                Ejer3e = Ejercicio5[2],
+                                Nombre4 = Nombre_Rutnia[3], 
+                                Ejer4a = Ejercicio1[3], 
+                                Ejer4b = Ejercicio2[3], 
+                                Ejer4c = Ejercicio3[3], 
+                                Ejer4d = Ejercicio4[3], 
+                                Ejer4e = Ejercicio5[3])
+        elif count == 5:
+            return render_template('DashBoardRutinas.html', 
+                                Nombre1 = Nombre_Rutnia[0], 
+                                Ejer1a = Ejercicio1[0], 
+                                Ejer1b = Ejercicio2[0], 
+                                Ejer1c = Ejercicio3[0], 
+                                Ejer1d = Ejercicio4[0], 
+                                Ejer1e = Ejercicio5[0],
+                                Nombre2 = Nombre_Rutnia[1], 
+                                Ejer2a = Ejercicio1[1], 
+                                Ejer2b = Ejercicio2[1], 
+                                Ejer2c = Ejercicio3[1], 
+                                Ejer2d = Ejercicio4[1], 
+                                Ejer2e = Ejercicio5[1],
+                                Nombre3 = Nombre_Rutnia[2], 
+                                Ejer3a = Ejercicio1[2], 
+                                Ejer3b = Ejercicio2[2], 
+                                Ejer3c = Ejercicio3[2], 
+                                Ejer3d = Ejercicio4[2], 
+                                Ejer3e = Ejercicio5[2],
+                                Nombre4 = Nombre_Rutnia[3], 
+                                Ejer4a = Ejercicio1[3], 
+                                Ejer4b = Ejercicio2[3], 
+                                Ejer4c = Ejercicio3[3], 
+                                Ejer4d = Ejercicio4[3], 
+                                Ejer4e = Ejercicio5[3],
+                                Nombre5 = Nombre_Rutnia[4], 
+                                Ejer5a = Ejercicio1[4], 
+                                Ejer5b = Ejercicio2[4], 
+                                Ejer5c = Ejercicio3[4], 
+                                Ejer5d = Ejercicio4[4], 
+                                Ejer5e = Ejercicio5[4])
+       
+
     @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
     def AgregarEjerLista():
         if request.method == 'POST':
             global Id_Usr, Nombre
             RutinaName = request.form['Name']
-            id1 = request.form['Id_Vicio1']
-            id2 = request.form['Id_Vicio2']
-            id3 = request.form['Id_Vicio3']
-            id4 = request.form['Id_Vicio4']
-            id5 = request.form['Id_Vicio5']
+            id1 = request.form['Ejercicio1']
+            id2 = request.form['Ejercicio2']
+            id3 = request.form['Ejercicio3']
+            id4 = request.form['Ejercicio4']
+            id5 = request.form['Ejercicio5']
             rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
             db.registrar_rutina(rutina, Id_Usr)
             return render_template('Menu.html' , Name = Nombre)
