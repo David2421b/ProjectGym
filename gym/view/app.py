@@ -43,7 +43,7 @@ class Routeapp:     #Esta clase lo que contiene son las diferentes rutas que man
         return render_template("Registrarse.html")
 
     @app.route('/contact')
-    def contact():
+    def contact(): 
         return render_template("Contact.html")
     
     @app.route('/chat')
