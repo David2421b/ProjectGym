@@ -8,7 +8,7 @@ from model.DigitalHealth import *
 from Logic.DataBase import Database
 from flask import Flask, render_template, request
 import sqlite3
-
+ 
 #   Importatante
 
 #   ANTES DE USAR LA APP RECUERDA QUE DEBES INICIARLA DESDE FLASK Y NO DESDE EL PUERTO 5500 QUE ES CON LIVE SERVER
