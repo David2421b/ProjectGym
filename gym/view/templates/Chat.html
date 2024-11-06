@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat con IA</title>
     <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
@@ -12,104 +12,137 @@
             background-size: cover;
             background-attachment: fixed;
             margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
         }
 
-        .ContainerChat{
+        .ContainerChat {
             position: absolute;
             top: 5%;
-            width: 1420px;
-            height: 600px;
             left: 2%;
-            background-color: rgba(0, 0, 0, 0.782);
+            width: 80%;
+            height: 75%;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 2%;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .Chat{
+        .MesaggeContainer {
+            overflow-y: auto;
+            max-height: 85%;
+            margin-bottom: 20px;
+        }
+
+        #ContP1 {
+            background-color: rgba(220, 26, 26, 0.8);
+            border-radius: 20px;
+            margin: 15px 0;
+            padding: 15px;
+            width: fit-content;
+            max-width: 80%;
+            align-self: flex-end;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #p1 {
+            margin: 0;
+            text-align: right;
+            font-size: 18px;
+            word-wrap: break-word;
+        }
+
+        #ContP2 {
+            background-color: rgba(75, 75, 75, 0.8);
+            border-radius: 20px;
+            margin: 15px 0;
+            padding: 15px;
+            width: fit-content;
+            max-width: 80%;
+            align-self: flex-start;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #p2 {
+            margin: 0;
+            text-align: left;
+            font-size: 18px;
+            word-wrap: break-word;
+            font-weight: 500;
+        }
+
+        .Chat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: fixed;
-            height: 55px;
+            width: 80%;
+            bottom: 10%;
+            left: 10%;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .Chat input {
+            width: 85%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 20px;
+            border: 2px solid #aaa;
+            background-color: #333;
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .Chat input:focus {
+            border-color: #ce1717;
+            box-shadow: 0 0 10px #960e0e;
+        }
+
+        .Chat button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ce1717;
+            color: white;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .Chat button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .Chat a {
+            margin-left: 1000px;
+            font-size: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgb(86, 86, 86);
-            border-radius: 20px;
-            margin-top: 0%;
-        }
-
-        .Chat input{
-            color: white;
-            background-color: rgb(60, 60, 60);
-            font-size: 35px;
-            width: 1300px;
-            height: 30px;
-            border-radius: 10px;
-            border: none;
-            padding: 10px;
-        }
-
-        .Chat button{
-            font-size: 40px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgb(60, 60, 60);
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .Chat a{
-            font-size: 40px;
-            width: 60px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: rgb(60, 60, 60);
-            color: white;
-            border: none;
-            cursor: pointer;
             text-decoration: none;
         }
 
-        .MesaggeContainer{
-            overflow-y: auto;
-            max-height: 520px;
+        /* Animaciones */
+        .Chat a:hover, .Chat button:hover {
+            background-color: #a11d1d;
         }
 
-        #ContP1{
-            background-color: rgb(60, 60, 60);
-            height: auto;
-            border-radius: 20px;
-            margin: 2% 1% 2% 40%;
-        }
-
-        #p1{
-            margin: 0 2% 0 0;
-            color: white;
-            right: 0;
-            text-align: right;
-            font-size: 40px;
-        }
-
-        #ContP2{
-            background-color: rgba(60, 60, 60, 0.559);
-            height: auto;
-            border-radius: 20px;
-            margin: 2% 35% 2% 0;
-        }
-
-        #p2{
-            margin: 0 0 0 2%;
-            color: white;
-            left: 0;
-            text-align: left;
-            font-size: 40px;
-            font-weight: bold;
-        }
     </style>
     
 </head>
-
-
 <body>
 
     <div class="ContainerChat">
@@ -128,10 +161,10 @@
         </div>
 
         <div class="Chat">
-            <form method = "POST" action="/OllamaChat">
+            <form method="POST" action="/OllamaChat">
                 <a href="/MenuName">⇐</a>
-                <input type="text" name="message" placeholder="Envia un mensaje a tu Coach IA">
-                <button type = "sumbit">⇧</button>
+                <input type="text" name="message" placeholder="Envia un mensaje a tu Coach IA" required>
+                <button type="submit">⇧</button>
             </form>
         </div>
     </div>
