@@ -255,6 +255,18 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
     @app.route('/Rutinas')
     def Rutinas():
+        global Nombre, Id_Usr
+
+        db.connect()
+        Nombre_Rutnia = db.obtener_nombre_rutina(Id_Usr)
+        Ejercicio1 = db.obtener_ejercicio1_rutina(Id_Usr)
+        Ejercicio2 = db.obtener_ejercicio2_rutina(Id_Usr)
+        Ejercicio3 = db.obtener_ejercicio3_rutina(Id_Usr)
+        Ejercicio4 = db.obtener_ejercicio4_rutina(Id_Usr)
+        Ejercicio5 = db.obtener_ejercicio5_rutina(Id_Usr)
+        count = 0
+        for i in range(len(Nombre_Rutnia)):
+            count += 1
         return render_template('DashBoardRutinas.html')
 
     @app.route('/AgregarEjerLista', methods=['GET', 'POST'])

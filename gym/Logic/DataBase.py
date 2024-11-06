@@ -201,6 +201,77 @@ class Database:
                 id_ejercicio[i] = id_ejercicio[i][0]
             return id_ejercicio
         return []
+    
+
+    def obtener_todas_rutinas(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT * FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            rutinas = cursor.fetchall()
+            cursor.close()
+            return rutinas
+        return []
+
+    def obtener_nombre_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT nombre_rutina FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            nombre_rutina = cursor.fetchall()
+            cursor.close()
+            for i in range(len(nombre_rutina)):
+                nombre_rutina[i] = nombre_rutina[i][0]
+            return nombre_rutina
+    
+    def obtener_ejercicio1_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT Ejercicio1 FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            ejercicio1 = cursor.fetchall()
+            cursor.close()
+            for i in range(len(ejercicio1)):
+                ejercicio1[i] = ejercicio1[i][0]
+            return ejercicio1
+        
+    def obtener_ejercicio2_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT Ejercicio2 FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            ejercicio2 = cursor.fetchall()
+            cursor.close()
+            for i in range(len(ejercicio2)):
+                ejercicio2[i] = ejercicio2[i][0]
+            return ejercicio2
+    
+    def obtener_ejercicio3_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT Ejercicio3 FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            ejercicio3 = cursor.fetchall()
+            cursor.close()
+            for i in range(len(ejercicio3)):
+                ejercicio3[i] = ejercicio3[i][0]
+            return ejercicio3
+    
+    def obtener_ejercicio4_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT Ejercicio4 FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            ejercicio4 = cursor.fetchall()
+            cursor.close()
+            for i in range(len(ejercicio4)):
+                ejercicio4[i] = ejercicio4[i][0]
+            return ejercicio4
+    
+    def obtener_ejercicio5_rutina(self, Id_usuario):
+        if self.conexion:
+            cursor = self.conexion.cursor()
+            cursor.execute('SELECT Ejercicio5 FROM rutinas WHERE id_persona = ?', (Id_usuario,))
+            ejercicio5 = cursor.fetchall()
+            cursor.close()
+            for i in range(len(ejercicio5)):
+                ejercicio5[i] = ejercicio5[i][0]
+            return ejercicio5
+
 
 
     def verificar_credenciales(self, email, contraseña):
@@ -308,3 +379,9 @@ class Database:
 if __name__ == '__main__':
     db = Database()
     db.connect()
+    db.crear_tabla_rutinas()
+    db.crear_tabla_ejercicios()
+    db.crear_tabla_usuarios()
+    db.crear_tabla_vicios()
+    db.crear_tabla_sentimientos()
+    

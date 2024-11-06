@@ -56,11 +56,11 @@
         <div class="Container">
             <form action="/AgregarEjerLista" method="post">
                 <h1>Selecciona los ejercicios que deseas agregar a tu lista</h1>
-                <input type="text" name="Name" id = "Name" placeholder = "Nombre de la Rutina"><br>
+                <input type="text" name="Name" id = "Name" placeholder = "Nombre de la Rutina" required><br>
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
+
                             <th>Nombre</th>
                             <th>Tipo</th>
                             <th>Repeticiones</th>
@@ -70,7 +70,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{Id1}}</td>
                             <td>{{Nombre1}}</td>
                             <td>{{Tipo1}}</td>
                             <td>{{Repeticiones1}}</td>
@@ -78,7 +77,6 @@
                             <td>{{Descanso1}}</td>
                         </tr>
                         <tr>
-                            <td>{{Id2}}</td>
                             <td>{{Nombre2}}</td>
                             <td>{{Tipo2}}</td>
                             <td>{{Repeticiones2}}</td>
@@ -86,7 +84,6 @@
                             <td>{{Descanso2}}</td>
                         </tr>
                         <tr>
-                            <td>{{Id3}}</td>
                             <td>{{Nombre3}}</td>
                             <td>{{Tipo3}}</td>
                             <td>{{Repeticiones3}}</td>
@@ -95,7 +92,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id4}}</td>
                             <td>{{Nombre4}}</td>
                             <td>{{Tipo4}}</td>
                             <td>{{Repeticiones4}}</td>
@@ -104,7 +100,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id5}}</td>
                             <td>{{Nombre5}}</td>
                             <td>{{Tipo5}}</td>
                             <td>{{Repeticiones5}}</td>
@@ -113,7 +108,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id6}}</td>
                             <td>{{Nombre6}}</td>
                             <td>{{Tipo6}}</td>
                             <td>{{Repeticiones6}}</td>
@@ -122,7 +116,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id7}}</td>
                             <td>{{Nombre7}}</td>
                             <td>{{Tipo7}}</td>
                             <td>{{Repeticiones7}}</td>
@@ -131,7 +124,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id8}}</td>
                             <td>{{Nombre8}}</td>
                             <td>{{Tipo8}}</td>
                             <td>{{Repeticiones8}}</td>
@@ -140,7 +132,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id9}}</td>
                             <td>{{Nombre9}}</td>
                             <td>{{Tipo9}}</td>
                             <td>{{Repeticiones9}}</td>
@@ -149,7 +140,6 @@
                         </tr>
 
                         <tr>
-                            <td>{{Id10}}</td>
                             <td>{{Nombre10}}</td>
                             <td>{{Tipo10}}</td>
                             <td>{{Repeticiones10}}</td>
@@ -158,12 +148,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <label >Ingrese el ID del Vicio (maximo 5 por rutina)</label><br>
-                <input type="number" name="Id_Vicio1" id="Id_Vicio1" placeholder = "ID 1" min = "0"><br>
-                <input type="number" name="Id_Vicio2" id="Id_Vicio2" placeholder = "ID 2" min = "0"><br>
-                <input type="number" name="Id_Vicio3" id="Id_Vicio3" placeholder = "ID 3" min = "0"><br>
-                <input type="number" name="Id_Vicio4" id="Id_Vicio4" placeholder = "ID 4" min = "0"><br>
-                <input type="number" name="Id_Vicio5" id="Id_Vicio5" placeholder = "ID 5" min = "0"><br>
+                <label >Ingrese el Nombre del Vicio (maximo 5 por rutina)</label><br>
+                <input type="text" name="Id_Vicio1" id="Id_Vicio1" placeholder = "Nombre 1"><br>
+                <input type="text" name="Id_Vicio2" id="Id_Vicio2" placeholder = "Nombre 2"><br>
+                <input type="text" name="Id_Vicio3" id="Id_Vicio3" placeholder = "Nombre 3"><br>
+                <input type="text" name="Id_Vicio4" id="Id_Vicio4" placeholder = "Nombre 4"><br>
+                <input type="text" name="Id_Vicio5" id="Id_Vicio5" placeholder = "Nombre 5"><br>
                 <button type="submit">Seleccionar</button>
             </form>
             <a href="/MenuName">DashBoard</a>
