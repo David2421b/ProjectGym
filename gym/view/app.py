@@ -146,7 +146,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def ver_ejercicios():
         global Id_Usr
         db.connect() 
-        ejercicios = db.obtener_todos_ejercicios(Id_Usr)
+        ejercicios = db.obtener_todos_ejercicios(Id_Usr) 
         nombre = db.obtener_nombres_ejercicios(Id_Usr)
         tipo = db.obtener_tipo_ejercicios(Id_Usr)
         repeticiones = db.obtener_repeticiones_ejercicios(Id_Usr)
@@ -265,7 +265,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
             return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
-         
+        
 
     @app.route('/Vicios_Name')
     def Vicios_Name():
