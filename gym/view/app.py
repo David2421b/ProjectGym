@@ -8,7 +8,7 @@ from model.DigitalHealth import *
 from Logic.DataBase import Database
 from flask import Flask, render_template, request
 import sqlite3
-
+ 
 #   Importatante
 
 #   ANTES DE USAR LA APP RECUERDA QUE DEBES INICIARLA DESDE FLASK Y NO DESDE EL PUERTO 5500 QUE ES CON LIVE SERVER
@@ -146,7 +146,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     def ver_ejercicios():
         global Id_Usr
         db.connect() 
-        ejercicios = db.obtener_todos_ejercicios(Id_Usr) 
+        ejercicios = db.obtener_todos_ejercicios(Id_Usr)
         nombre = db.obtener_nombres_ejercicios(Id_Usr)
         tipo = db.obtener_tipo_ejercicios(Id_Usr)
         repeticiones = db.obtener_repeticiones_ejercicios(Id_Usr)
@@ -249,7 +249,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/OllamaChat', methods=['GET', 'POST'])
     def chat():
         if request.method == 'POST':  #propiedad de Flask que indica el método HTTP utilizado para acceder a la ruta 
-            mensaje = request.form['message']
+            mensaje = request.form['message'] #Accedemos al diccionario que contiene los datos
             respuesta = Chat_Ollama.chat(mensaje)
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
         
@@ -265,7 +265,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
             return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
-        
+         
 
     @app.route('/Vicios_Name')
     def Vicios_Name():
