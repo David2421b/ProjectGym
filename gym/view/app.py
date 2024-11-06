@@ -279,7 +279,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             id3 = request.form['Id_Vicio3']
             id4 = request.form['Id_Vicio4']
             id5 = request.form['Id_Vicio5']
-            rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
+            rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5) 
             db.registrar_rutina(rutina, Id_Usr)
             return render_template('Menu.html' , Name = Nombre)
 
