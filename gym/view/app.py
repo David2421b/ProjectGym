@@ -204,9 +204,14 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             nombre_vicio = request.form['vicio']
             fecha_dejar = request.form['Fecha']
             compromiso = request.form['compromiso']
+
             vicio = Vicio(nombre_vicio, fecha_dejar, compromiso)
             db.registrar_vicio(vicio, Id_Usr)
-            return render_template('ManejoVicios.html', Name = Nombre)  # Redirige a una página de éxito
+
+            fecha_dejar_dt = datetime.strptime(fecha_dejar, "%Y-%m-%d")
+            dias_sin_consumir = str((datetime.now() - fecha_dejar_dt).days)
+
+            return render_template('ManejoVicios.html', Name = Nombre, compromiso = compromiso, Recaidas = "llevas sin cosumir: " + dias_sin_consumir + " dias " + nombre_vicio)  # Redirige a una página de éxito
 
 
     @app.route('/registrar_sentimiento', methods=['GET', 'POST'])
@@ -527,7 +532,10 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3])
         elif count == 5:
             return render_template('DashBoardEliminarRutina.html', ID1 = id[0], Nombre1 = nombre[0], ID2 = id[1], Nombre2 = nombre[1], ID3 = id[2], Nombre3 = nombre[2], ID4 = id[3], Nombre4 = nombre[3], ID5 = id[4], Nombre5 = nombre[4])
-        
+    
+    @app.route('/ProgresoVicios')
+    def ProgresoVicios():
+        return render_template('Progreso.html')
 #-----------------Rutas de la aplicacion para mostrar informacion finaliza----------------#
 
 
