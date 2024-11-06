@@ -4,113 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tus Rutinas</title>
-    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
-
+    <link rel="icon" href="{{url_for('static', filename = 'Logo.png')}}" type="image/png">
     <style>
-        body{
+        /* Estilos generales */
+        body {
             background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
-        }
-
-        .Body{
+            font-family: Arial, sans-serif;
+            color: #333;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
-        .Container{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
-            border-radius: 30px;
-            justify-content: center;
-            margin-top: 2%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 3%;
+        /* Contenedor principal */
+        .Container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            padding: 30px;
+            margin: 2%;
+            text-align: center;
+        }
+
+        /* Estilos de tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-            font-size: 25px;
-            color: white;
-            background-color: black;
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-size: 18px;
+            color: #333;
             text-align: center;
         }
 
         th {
-            background-color: #f2f2f2; /* Color de fondo para el encabezado */
-            color: black;
+            background-color: #c02823; /* Rojo oscuro para el encabezado */
+            color: white;
         }
 
-        a{
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Fondo claro para filas pares */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #eaeaea; /* Fondo ligeramente oscuro para filas impares */
+        }
+
+        /* Estilos de enlaces */
+        .links {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .links a {
+            background-color: #c02823; /* Rojo */
             color: white;
             text-decoration: none;
-            font-size: 25px;
-            text-align: center;
-            margin: 5% 10% 0 5%;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .links a:hover {
+            background-color: #c02823; /* Rojo más oscuro al hacer hover */
         }
     </style>
 </head>
 <body>
-    <div class="Body">
-        <div class="Container">
-            <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre Rutina</th>
-                            <th>Ejercicio1</th>
-                            <th>Ejercicio2</th>
-                            <th>Ejercicio3</th>
-                            <th>Ejercicio4</th>
-                            <th>Ejercicio5</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{Nombre1}}</td>
-                            <td>{{Ejer1a}}</td>
-                            <td>{{Ejer1b}}</td>
-                            <td>{{Ejer1c}}</td>
-                            <td>{{Ejer1d}}</td>
-                            <td>{{Ejer1e}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Nombre2}}</td>
-                            <td>{{Ejer2a}}</td>
-                            <td>{{Ejer2b}}</td>
-                            <td>{{Ejer2c}}</td>
-                            <td>{{Ejer2d}}</td>
-                            <td>{{Ejer2e}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Nombre3}}</td>
-                            <td>{{Ejer3a}}</td>
-                            <td>{{Ejer3b}}</td>
-                            <td>{{Ejer3c}}</td>
-                            <td>{{Ejer3d}}</td>
-                            <td>{{Ejer3e}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Nombre4}}</td>
-                            <td>{{Ejer4a}}</td>
-                            <td>{{Ejer4b}}</td>
-                            <td>{{Ejer4c}}</td>
-                            <td>{{Ejer4d}}</td>
-                            <td>{{Ejer4e}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Nombre5}}</td>
-                            <td>{{Ejer5a}}</td>
-                            <td>{{Ejer5b}}</td>
-                            <td>{{Ejer5c}}</td>
-                            <td>{{Ejer5d}}</td>
-                            <td>{{Ejer5e}}</td>
-                        </tr>
-                    </tbody>
-            </table>
-            <a href="/MenuName">DashBoard</a>
+    <div class="Container">
+        <h2>Mis Rutinas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre Rutina</th>
+                    <th>Ejercicio1</th>
+                    <th>Ejercicio2</th>
+                    <th>Ejercicio3</th>
+                    <th>Ejercicio4</th>
+                    <th>Ejercicio5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{Nombre1}}</td>
+                    <td>{{Ejer1a}}</td>
+                    <td>{{Ejer1b}}</td>
+                    <td>{{Ejer1c}}</td>
+                    <td>{{Ejer1d}}</td>
+                    <td>{{Ejer1e}}</td>
+                </tr>
+                <tr>
+                    <td>{{Nombre2}}</td>
+                    <td>{{Ejer2a}}</td>
+                    <td>{{Ejer2b}}</td>
+                    <td>{{Ejer2c}}</td>
+                    <td>{{Ejer2d}}</td>
+                    <td>{{Ejer2e}}</td>
+                </tr>
+                <tr>
+                    <td>{{Nombre3}}</td>
+                    <td>{{Ejer3a}}</td>
+                    <td>{{Ejer3b}}</td>
+                    <td>{{Ejer3c}}</td>
+                    <td>{{Ejer3d}}</td>
+                    <td>{{Ejer3e}}</td>
+                </tr>
+                <tr>
+                    <td>{{Nombre4}}</td>
+                    <td>{{Ejer4a}}</td>
+                    <td>{{Ejer4b}}</td>
+                    <td>{{Ejer4c}}</td>
+                    <td>{{Ejer4d}}</td>
+                    <td>{{Ejer4e}}</td>
+                </tr>
+                <tr>
+                    <td>{{Nombre5}}</td>
+                    <td>{{Ejer5a}}</td>
+                    <td>{{Ejer5b}}</td>
+                    <td>{{Ejer5c}}</td>
+                    <td>{{Ejer5d}}</td>
+                    <td>{{Ejer5e}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="links">
+            <a href="/MenuName">Volver</a>
             <a href="/Ejercicio">Crear Ejercicio</a>
             <a href="/ver_ejercicios">Crear Rutina</a>
         </div>

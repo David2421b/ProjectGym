@@ -4,79 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
-    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
-
+    <link rel="icon" href="{{url_for('static', filename = 'Logo.png')}}" type="image/png">
+    
     <style>
-        body{
-            background-image: url('{{url_for("static", filename= "Fondo2.jpg")}}');
+    
+        body {
+            background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
-        }
-
-        h1{
-            font-size: 40px;
-            margin: 1% 5% 0% 59%;
-            color: white;
-        }
-
-        #Block{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
-            border-radius: 30px;
+            font-family: Arial, sans-serif;
+            color: #333;
             display: flex;
             justify-content: center;
-            margin: 4% 5% 0% 55%;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
-        .SingUp{
-            margin: 5% 0% 5% 0%;
-            }
-
-        .SingUp input{
-            background-color: black;
+     
+        h1 {
+            font-size: 40px;
             color: white;
-            margin: 4% 0% 4% 0%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #Block {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .SingUp input {
+            background-color: #f9f9f9;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .SingUp button {
+            background-color: #d9534f; 
+            color: white;
             font-size: 20px;
+            border: none;
             border-radius: 10px;
-            height: 40px;
-            width: 300px;
-        }
-
-        .SingUp button{
-            margin: 1% 0% 2% 0%;
-            font-size: 30px;
-            border-radius: 10px;
-            height: 45px;
-            width: 308px;
-            background-color: #cb0000;
-            color: white;
-            display: block;
+            padding: 12px;
+            margin-top: 20px;
+            width: 100%;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .SingUp a{  
-            color: white;
+        .SingUp button:hover {
+            background-color: #c9302c; 
+        }
+
+       
+        .SingUp a {
+            color: #d9534f;
             text-decoration: none;
-            font-size: 30px;
-            margin-left: 90px;
-            text-decoration: overline;
+            font-size: 18px;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .SingUp a:hover {
+            color: #c9302c;
+            text-decoration: underline;
         }
     </style>
-
-    <script>
-    </script>
 </head>
 <body>
-    <form id="Block" method="post" action="/EjercicioRegister">
-        <div class="SingUp">
-            <input type="text" name="Name" id="Name" placeholder="Nombre" required><br>
-            <input type="text" name="Type" id="Type" placeholder="Tipo" required><br>
-            <input type="text" name="Reps" id="Reps" placeholder="Repeticiones" required><br>
-            <input type="number" name="Series" id="Series" placeholder="Series" min = "0" required><br>
-            <input type="number" name="Rest" id="Rest" placeholder="Descanso entre series" min = "0" required><br>
-            <button type="submit">Guardar Ejercicio</button><br>
-            <a href="/PagEliminarEjercicio">Eliminar Ejercicio</a>
-            <a href="/Rutinas">Volver</a>
-        </div>        
-    </form>
+    <div>
+        <h1>Registro de Ejercicio</h1>
+        <form id="Block" method="post" action="/EjercicioRegister">
+            <div class="SingUp">
+                <input type="text" name="Name" id="Name" placeholder="Nombre" required>
+                <input type="text" name="Type" id="Type" placeholder="Tipo" required>
+                <input type="text" name="Reps" id="Reps" placeholder="Repeticiones" required>
+                <input type="number" name="Series" id="Series" placeholder="Series" min="0" required>
+                <input type="number" name="Rest" id="Rest" placeholder="Descanso entre series" min="0" required>
+                <button type="submit">Guardar Ejercicio</button>
+                <a href="/PagEliminarEjercicio">Eliminar Ejercicio</a>
+                <a href="/Rutinas">Volver</a>
+            </div>        
+        </form>
+    </div>
 </body>
 </html>

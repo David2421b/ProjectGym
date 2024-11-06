@@ -4,161 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tus Ejercicios</title>
-    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename = 'Logo.png')}}" type="image/png">
 
     <style>
-        body{
+
+        body {
             background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
-        }
-
-        .Body{
+            font-family: Arial, sans-serif;
+            color: #333;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
-        .Container{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
-            border-radius: 30px;
-            justify-content: center;
-            margin-top: 2%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 3%;
+        .Container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+     
+        h1 {
+            font-size: 24px;
+            color: #d9534f; 
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-            font-size: 25px;
-            color: white;
-            background-color: black;
+            border: 1px solid #ccc;
+            padding: 12px;
+            font-size: 18px;
             text-align: center;
         }
 
         th {
-            background-color: #f2f2f2; /* Color de fondo para el encabezado */
-            color: black;
+            background-color: #d9534f; 
+            color: white;
         }
 
-        a{
-            color: white;
-            text-decoration: none;
-            font-size: 25px;
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #eaeaea;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
             text-align: center;
-            margin: 5% 2% 0 5%;
+        }
+
+        label {
+            font-size: 18px;
+            color: #333;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+     
+        button {
+            background-color: #d9534f; 
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            width: 80%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #c9302c; 
+        }
+
+      
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #d9534f;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c9302c;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="Body">
-        <div class="Container">
-            <form action="/AgregarEjerLista" method="post">
-                <h1>Selecciona los ejercicios que deseas agregar a tu lista</h1>
-                <input type="text" name="Name" id = "Name" placeholder = "Nombre de la Rutina" required><br>
-                <table>
-                    <thead>
-                        <tr>
+    <div class="Container">
+        <form action="/AgregarEjerLista" method="post">
+            <h1>Selecciona los ejercicios que deseas agregar a tu lista</h1>
+            <input type="text" name="Name" id="Name" placeholder="Nombre de la Rutina" required><br>
 
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Repeticiones</th>
-                            <th>Series</th>
-                            <th>Descanso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{Nombre1}}</td>
-                            <td>{{Tipo1}}</td>
-                            <td>{{Repeticiones1}}</td>
-                            <td>{{Series1}}</td>
-                            <td>{{Descanso1}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Nombre2}}</td>
-                            <td>{{Tipo2}}</td>
-                            <td>{{Repeticiones2}}</td>
-                            <td>{{Series2}}</td>
-                            <td>{{Descanso2}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Nombre3}}</td>
-                            <td>{{Tipo3}}</td>
-                            <td>{{Repeticiones3}}</td>
-                            <td>{{Series3}}</td>
-                            <td>{{Descanso3}}</td>
-                        </tr>
 
-                        <tr>
-                            <td>{{Nombre4}}</td>
-                            <td>{{Tipo4}}</td>
-                            <td>{{Repeticiones4}}</td>
-                            <td>{{Series4}}</td>
-                            <td>{{Descanso4}}</td>
-                        </tr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Repeticiones</th>
+                        <th>Series</th>
+                        <th>Descanso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>{{Nombre1}}</td><td>{{Tipo1}}</td><td>{{Repeticiones1}}</td><td>{{Series1}}</td><td>{{Descanso1}}</td></tr>
+                    <tr><td>{{Nombre2}}</td><td>{{Tipo2}}</td><td>{{Repeticiones2}}</td><td>{{Series2}}</td><td>{{Descanso2}}</td></tr>
+                    <tr><td>{{Nombre3}}</td><td>{{Tipo3}}</td><td>{{Repeticiones3}}</td><td>{{Series3}}</td><td>{{Descanso3}}</td></tr>
+                    <tr><td>{{Nombre4}}</td><td>{{Tipo4}}</td><td>{{Repeticiones4}}</td><td>{{Series4}}</td><td>{{Descanso4}}</td></tr>
+                    <tr><td>{{Nombre5}}</td><td>{{Tipo5}}</td><td>{{Repeticiones5}}</td><td>{{Series5}}</td><td>{{Descanso5}}</td></tr>
+                    <tr><td>{{Nombre6}}</td><td>{{Tipo6}}</td><td>{{Repeticiones6}}</td><td>{{Series6}}</td><td>{{Descanso6}}</td></tr>
+                    <tr><td>{{Nombre7}}</td><td>{{Tipo7}}</td><td>{{Repeticiones7}}</td><td>{{Series7}}</td><td>{{Descanso7}}</td></tr>
+                    <tr><td>{{Nombre8}}</td><td>{{Tipo8}}</td><td>{{Repeticiones8}}</td><td>{{Series8}}</td><td>{{Descanso8}}</td></tr>
+                    <tr><td>{{Nombre9}}</td><td>{{Tipo9}}</td><td>{{Repeticiones9}}</td><td>{{Series9}}</td><td>{{Descanso9}}</td></tr>
+                    <tr><td>{{Nombre10}}</td><td>{{Tipo10}}</td><td>{{Repeticiones10}}</td><td>{{Series10}}</td><td>{{Descanso10}}</td></tr>
+                </tbody>
+            </table>
 
-                        <tr>
-                            <td>{{Nombre5}}</td>
-                            <td>{{Tipo5}}</td>
-                            <td>{{Repeticiones5}}</td>
-                            <td>{{Series5}}</td>
-                            <td>{{Descanso5}}</td>
-                        </tr>
+            <label>Ingrese el Nombre del Ejercicio (máximo 5 por rutina)</label><br>
+            <input type="text" name="Ejercicio1" id="Ejercicio1" placeholder="Nombre 1"><br>
+            <input type="text" name="Ejercicio2" id="Ejercicio2" placeholder="Nombre 2"><br>
+            <input type="text" name="Ejercicio3" id="Ejercicio3" placeholder="Nombre 3"><br>
+            <input type="text" name="Ejercicio4" id="Ejercicio4" placeholder="Nombre 4"><br>
+            <input type="text" name="Ejercicio5" id="Ejercicio5" placeholder="Nombre 5"><br>
+            <button type="submit">Seleccionar</button>
+        </form>
 
-                        <tr>
-                            <td>{{Nombre6}}</td>
-                            <td>{{Tipo6}}</td>
-                            <td>{{Repeticiones6}}</td>
-                            <td>{{Series6}}</td>
-                            <td>{{Descanso6}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Nombre7}}</td>
-                            <td>{{Tipo7}}</td>
-                            <td>{{Repeticiones7}}</td>
-                            <td>{{Series7}}</td>
-                            <td>{{Descanso7}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Nombre8}}</td>
-                            <td>{{Tipo8}}</td>
-                            <td>{{Repeticiones8}}</td>
-                            <td>{{Series8}}</td>
-                            <td>{{Descanso8}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Nombre9}}</td>
-                            <td>{{Tipo9}}</td>
-                            <td>{{Repeticiones9}}</td>
-                            <td>{{Series9}}</td>
-                            <td>{{Descanso9}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Nombre10}}</td>
-                            <td>{{Tipo10}}</td>
-                            <td>{{Repeticiones10}}</td>
-                            <td>{{Series10}}</td>
-                            <td>{{Descanso10}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <label >Ingrese el Nombre del Ejercicio (maximo 5 por rutina)</label><br>
-                <input type="text" name="Ejercicio1" id="Ejercicio1" placeholder = "Nombre 1"><br>
-                <input type="text" name="Ejercicio2" id="Ejercicio2" placeholder = "Nombre 2"><br>
-                <input type="text" name="Ejercicio3" id="Ejercicio3" placeholder = "Nombre 3"><br>
-                <input type="text" name="Ejercicio4" id="Ejercicio4" placeholder = "Nombre 4"><br>
-                <input type="text" name="Ejercicio5" id="Ejercicio5" placeholder = "Nombre 5"><br>
-                <button type="submit">Seleccionar</button>
-            </form>
-            <a href="/Rutinas">Volver</a>
-            <a href="/PagEliminarRutina">Eliminar Rutina</a>
-        </div>
+        
+        <a href="/Rutinas">Volver</a> |
+        <a href="/PagEliminarRutina">Eliminar Rutina</a>
     </div>
 </body>
 </html>
