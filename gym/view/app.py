@@ -8,6 +8,7 @@ from model.DigitalHealth import *
 from Logic.DataBase import Database
 from flask import Flask, render_template, request
 import sqlite3
+
  
 #   Importatante
 
@@ -19,6 +20,7 @@ import sqlite3
 app = Flask(__name__)
 db = Database()  
 db.connect()
+
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -294,6 +296,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             sentimiento_obj = Sentimiento(sentimiento, descripcion)
             db.registrar_sentimiento(sentimiento_obj, Id_Usr)
             return render_template('ManejoVicios.html')
+
     
 if __name__ == '__main__':
     app.run(debug=True)
