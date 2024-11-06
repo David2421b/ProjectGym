@@ -571,7 +571,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                 Vicio5=vicio[4], Fecha5=fecha_dejar[4], Compromiso5=compromiso[4])
         else:
             return render_template('Progreso.html', Vicio1="Demasiados vicios registrados para mostrar.")
-
+  
 
 #-----------------Rutas de la aplicacion para mostrar informacion finaliza----------------#
 
