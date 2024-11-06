@@ -408,6 +408,8 @@ class Database:
             self.conexion.commit()
             cursor.close()
 
+# ----------------------Eliminar datos de las tablas Finaliza--------------------------------
+
     def close(self):
         if self.conexion:
             self.conexion.close()
