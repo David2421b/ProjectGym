@@ -45,7 +45,7 @@ class Estadistica:
     
     def calcular_imc(peso: float, altura: float): 
         imc = peso / (altura ** 2)
-
+ 
         if imc < 18.5:
             return f"Tu IMC es: {imc:.1f} y te encuentras en infrapeso"
         elif imc >= 18.5 and imc < 24.9:
