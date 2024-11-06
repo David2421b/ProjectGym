@@ -18,14 +18,14 @@ class Usuario:
 
 class Rutinas:
 
-    def __init__(self, nombre_rutina: str, list_ejercicios: list):
+    def __init__(self, nombre_rutina: str, Ejercicio1: str = None, Ejercicio2: str = None, Ejercicio3: str = None, Ejercicio4: str = None, Ejercicio5: str = None):
         self.nombre_rutina: str = nombre_rutina
-        self.list_ejercicios: list = list_ejercicios
-    
-    def agregar_ejercicio(self, ejercicio):
-        self.list_ejercicios.append(ejercicio)
-        return self.list_ejercicios
-
+        self.Ejercicio1: str = Ejercicio1
+        self.Ejercicio2: str = Ejercicio2
+        self.Ejercicio3: str = Ejercicio3
+        self.Ejercicio4: str = Ejercicio4
+        self.Ejercicio5: str = Ejercicio5
+        
 
 class Ejercicio:
     
@@ -35,16 +35,6 @@ class Ejercicio:
         self.repeticiones: int = repeticiones
         self.series: int = series
         self.descanso_entre_series: int = descanso
-
-class Notificacion:
-
-    def __init__(self, tipo: str, mensaje: str, fecha_hora: datetime):
-        self.tipo: str = tipo
-        self.mensaje: str = mensaje
-        self.fecha_hora: datetime = fecha_hora
-
-    def __str__(self) -> str:
-        return f'{self.tipo}: {self.mensaje} - {self.fecha_hora}'
 
 @dataclass
 class Estadistica:
