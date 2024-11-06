@@ -4,96 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Rutina</title>
-    <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename = 'Logo.png')}}" type="image/png">
 
     <style>
-        body{
-            background-image: url('{{url_for("static", filename = "Fondo3.jpg")}}');
-            background-size: cover;
-            background-attachment: fixed;
-        }
 
-        .Body{
+        body {
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            color: #f5f5f5;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
 
-        .Container{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
-            border-radius: 30px;
-            justify-content: center;
-            margin-top: 2%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 3%;
+        .container {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid #000000;
+            border-radius: 12px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-            font-size: 25px;
-            color: white;
-            background-color: black;
+            padding: 12px;
+            border: 1px solid #000000;
             text-align: center;
+            font-size: 18px;
         }
 
         th {
-            background-color: #f2f2f2; /* Color de fondo para el encabezado */
-            color: black;
+            background: #cc0000;
+            color: #fff;
+            font-weight: bold;
         }
 
-        a{
-            color: white;
+        td {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ddd;
+        }
+
+        .back-link {
+            display: inline-block;
             text-decoration: none;
-            font-size: 25px;
+            color: #fff;
+            background-color: #cc0000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: background 0.3s ease;
             text-align: center;
-            margin: 5% 2% 0 5%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .back-link:hover {
+            background-color: #a30000;
         }
     </style>
 </head>
 <body>
-    <div class="Body">
-        <div class="Container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Vicio</th>
-                            <th>Fecha</th>
-                            <th>Compromiso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{Vicio1}}</td>
-                            <td>{{Fecha1}}</td>
-                            <td>{{Compromiso1}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Vicio2}}</td>
-                            <td>{{Fecha2}}</td>
-                            <td>{{Compromiso2}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Vicio3}}</td>
-                            <td>{{Fecha3}}</td>
-                            <td>{{Compromiso3}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Vicio4}}</td>
-                            <td>{{Fecha4}}</td>
-                            <td>{{Compromiso4}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>{{Vicio5}}</td>
-                            <td>{{Fecha5}}</td>
-                            <td>{{Compromiso5}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <a href="/Vicios_Name">Volver</a>
-        </div>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Vicio</th>
+                    <th>Fecha</th>
+                    <th>Compromiso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{Vicio1}}</td>
+                    <td>{{Fecha1}}</td>
+                    <td>{{Compromiso1}}</td>
+                </tr>
+                <tr>
+                    <td>{{Vicio2}}</td>
+                    <td>{{Fecha2}}</td>
+                    <td>{{Compromiso2}}</td>
+                </tr>
+                <tr>
+                    <td>{{Vicio3}}</td>
+                    <td>{{Fecha3}}</td>
+                    <td>{{Compromiso3}}</td>
+                </tr>
+                <tr>
+                    <td>{{Vicio4}}</td>
+                    <td>{{Fecha4}}</td>
+                    <td>{{Compromiso4}}</td>
+                </tr>
+                <tr>
+                    <td>{{Vicio5}}</td>
+                    <td>{{Fecha5}}</td>
+                    <td>{{Compromiso5}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/Vicios_Name" class="back-link">Volver</a>
     </div>
 </body>
 </html>
