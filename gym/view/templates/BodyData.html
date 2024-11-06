@@ -7,99 +7,153 @@
     <link rel="icon" href="{{url_for("static", filename = "Logo.png")}}" type="image/png">
 
     <style>
-        body{
-            background-image: url('{{url_for("static", filename = "Fondo4.jpg")}}');
+            
+        body {
+            background-image: url('{{url_for("static", filename = "Fondo5.jpg")}}');
             background-size: cover;
             background-attachment: fixed;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
         }
 
-        .Body{
-            display: flex;
-        }
-
-        .Container{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
-            border-radius: 30px;
+        .Body {
             display: flex;
             justify-content: center;
-            margin-top: 5%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 3%;
+            align-items: center;
+            height: 100vh;
         }
 
-        .Container2{
-            background: linear-gradient(to right, rgba(97, 0, 0, 0.704), rgba(0, 0, 88, 0.542));
-            border-radius: 30px;
+        .Container {
+            background-color: #2c3e50;
+            border-radius: 0px;
+            padding: 30px;
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+            height: 425px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            margin-top: 5%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 3%;
         }
 
-        #Form input{
-            margin: 1% 0% 5% 0%;
-            font-size: 25px;
+        .Container2 {
+            background-color: #2c3e50;
+            border-radius: 0px;
+            padding: 30px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+            margin-left: 30px;
+        }
+
+        #Form input {
+            margin: 10px 0;
+            font-size: 18px;
             height: 45px;
-            background-color: black;
-            border-radius: 10px;
+            width: 80%;
+            background-color: #333;
+            border-radius: 15px;
             color: white;
+            text-align: center;
+            border: 2px solid #444;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #Form input:focus {
+            border-color: #c92424;
+            box-shadow: 0 0 10px #c92424;
+        }
+
+        .Labels {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            width: 100%;
             text-align: center;
         }
 
-        .Labels{
-            background-color: black;
-            text-align: center;
-
+        .Labels p {
+            font-size: 20px;
+            margin: 10px 0;
         }
 
-        .Labels p{
-            color: white;
-            font-size: 25px;
-        }
-
-        button{
-            margin: 1% 0% 8% 0%;
-            font-size: 30px;
-            border-radius: 10px;
-            height: 45px;
-            width: 308px;
+        button {
+            margin: 20px 0;
+            font-size: 22px;
+            border-radius: 15px;
+            height: 50px;
+            width: 70%;
             background-color: #cb0000;
             color: white;
-            display: block;
+            border: none;
             cursor: pointer;
+            transition: all 0.3s ease-in-out;
         }
 
-        button:hover{
+        button:hover {
             transform: scale(1.1);
-            transition: 0.3s;
+            background-color: #e60000;
         }
 
-        a{
+        a {
             color: white;
             text-decoration: none;
-            font-size: 30px;
-            margin-left: 90px;
-            text-decoration: overline;
+            font-size: 22px;
+            text-decoration: underline;
+            margin-top: 20px;
         }
 
-        .IMC, .TMB{
-            background-color: black;
-            padding: 5px;
+        a:hover {
+            color: #e60000;
+        }
+
+        .IMC, .TMB, .FCM {
+            background-color: #333;
+            padding: 20px;
             text-align: center;
             color: white;
             font-size: 25px;
-            margin-bottom: 20%;
+            margin-bottom: 20px;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .FCM{
-            background-color: black;
-            padding: 5px;
-            text-align: center;
-            color: white;
-            font-size: 25px;
+        @media (max-width: 768px) {
+            .Container, .Container2 {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .IMC, .TMB, .FCM {
+                font-size: 22px;
+            }
+
+            button {
+                width: 80%;
+            }
+
+            a {
+                font-size: 20px;
+            }
         }
+
+        .description {
+            font-size: 18px;
+            color: #dcdcdc;
+            margin-top: 10px;
+            font-weight: normal;
+            text-align: center;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
 
     </style> 
 </head>
@@ -113,8 +167,8 @@
                     <p>Tu edad es: {{Age}}</p>
                     <p>{{Gender}}</p>
                 </div>
-                <button type="submit">Calcular</button>
-                <a href="/MenuName">DashBoard</a>
+                <button type="submit">Calcular</button><br>
+                <a href="/MenuName">Volver al Menu</a>
             </form>
         </div>
 
@@ -132,5 +186,20 @@
             </div>
         </div>
     </div>
+
+    <!-- Descripción de IMC -->
+        <div class="IMC">
+            <p class="description">El IMC (Índice de Masa Corporal) es un indicador utilizado para evaluar si tienes un peso saludable en relación a tu altura.</p>
+        </div>
+
+        <!-- Descripción de TMB -->
+        <div class="TMB">
+            <p class="description">El TMB (Tasa Metabólica Basal) mide la cantidad de calorías que tu cuerpo necesita en reposo para realizar funciones vitales.</p>
+        </div>
+
+        <!-- Descripción de FCM -->
+        <div class="FCM">
+            <p class="description">El FCM (Frecuencia Cardíaca Máxima) es la mayor cantidad de latidos por minuto que tu corazón puede alcanzar de manera segura durante el ejercicio.</p>
+        </div>
 </body>
 </html>
