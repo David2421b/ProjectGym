@@ -270,7 +270,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
         if count == 0:
 
-            return render_template('NoData.html')
+            return render_template('DashBoardData.html')
         elif count == 1:
             return render_template('DashBoardData.html',
                                Id1 = id[0],
