@@ -146,9 +146,11 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     
     @app.route('/ver_ejercicios')
     def ver_ejercicios():
+
         global Id_Usr
         db.connect() 
-        ejercicios = db.obtener_todos_ejercicios(Id_Usr) 
+        ejercicios = db.obtener_todos_ejercicios(Id_Usr)
+        id = db.obtener_id_ejercicios(Id_Usr)
         nombre = db.obtener_nombres_ejercicios(Id_Usr)
         tipo = db.obtener_tipo_ejercicios(Id_Usr)
         repeticiones = db.obtener_repeticiones_ejercicios(Id_Usr)
@@ -162,7 +164,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
             return render_template('NoData.html')
         elif count == 1:
-            return render_template('DashBoardData.html', 
+            return render_template('DashBoardData.html',
+                               Id1 = id[0],
                                Nombre1 = nombre[0],
                                Tipo1 = tipo[0],
                                Repeticiones1 = repeticiones[0],
@@ -171,6 +174,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         
         elif count == 2:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1],
                                Nombre1 = nombre[0], Nombre2 = nombre[1],
                                Tipo1 = tipo[0], Tipo2 = tipo[1],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1],
@@ -179,6 +183,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         
         elif count == 3:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2],
@@ -187,6 +192,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         
         elif count == 4:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3],
@@ -195,6 +201,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
         elif count == 5:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3], Id5 = id[4],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3], Nombre5 = nombre[4],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3], Tipo5 = tipo[4],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3], Repeticiones5 = repeticiones[4],
@@ -202,7 +209,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4])
 
         elif count == 6:
-            return render_template('DashBoardData.html', 
+            return render_template('DashBoardData.html',
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3], Id5 = id[4], Id6 = id[5],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3], Nombre5 = nombre[4], Nombre6 = nombre[5],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3], Tipo5 = tipo[4], Tipo6 = tipo[5],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3], Repeticiones5 = repeticiones[4], Repeticiones6 = repeticiones[5],
@@ -211,6 +219,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
         elif count == 7:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3], Id5 = id[4], Id6 = id[5], Id7 = id[6],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3], Nombre5 = nombre[4], Nombre6 = nombre[5], Nombre7 = nombre[6],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3], Tipo5 = tipo[4], Tipo6 = tipo[5], Tipo7 = tipo[6],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3], Repeticiones5 = repeticiones[4], Repeticiones6 = repeticiones[5], Repeticiones7 = repeticiones[6],
@@ -219,6 +228,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
         elif count == 8:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3], Id5 = id[4], Id6 = id[5], Id7 = id[6], Id8 = id[7],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3], Nombre5 = nombre[4], Nombre6 = nombre[5], Nombre7 = nombre[6], Nombre8 = nombre[7],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3], Tipo5 = tipo[4], Tipo6 = tipo[5], Tipo7 = tipo[6], Tipo8 = tipo[7],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3], Repeticiones5 = repeticiones[4], Repeticiones6 = repeticiones[5], Repeticiones7 = repeticiones[6], Repeticiones8 = repeticiones[7],
@@ -226,7 +236,8 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4], Descanso6 = descanso[5], Descanso7 = descanso[6], Descanso8 = descanso[7])
 
         elif count == 9:
-            return render_template('DashBoardData.html', 
+            return render_template('DashBoardData.html',
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3], Id5 = id[4], Id6 = id[5], Id7 = id[6], Id8 = id[7], Id9 = id[8], 
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3], Nombre5 = nombre[4], Nombre6 = nombre[5], Nombre7 = nombre[6], Nombre8 = nombre[7], Nombre9 = nombre[8],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3], Tipo5 = tipo[4], Tipo6 = tipo[5], Tipo7 = tipo[6], Tipo8 = tipo[7], Tipo9 = tipo[8],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3], Repeticiones5 = repeticiones[4], Repeticiones6 = repeticiones[5], Repeticiones7 = repeticiones[6], Repeticiones8 = repeticiones[7], Repeticiones9 = repeticiones[8],
@@ -235,12 +246,26 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
 
         elif count == 10:
             return render_template('DashBoardData.html', 
+                               Id1 = id[0], Id2 = id[1], Id3 = id[2], Id4 = id[3], Id5 = id[4], Id6 = id[5], Id7 = id[6], Id8 = id[7], Id9 = id[8], Id10 = id[9],
                                Nombre1 = nombre[0], Nombre2 = nombre[1], Nombre3 = nombre[2], Nombre4 = nombre[3], Nombre5 = nombre[4], Nombre6 = nombre[5], Nombre7 = nombre[6], Nombre8 = nombre[7], Nombre9 = nombre[8], Nombre10 = nombre[9],
                                Tipo1 = tipo[0], Tipo2 = tipo[1], Tipo3 = tipo[2], Tipo4 = tipo[3], Tipo5 = tipo[4], Tipo6 = tipo[5], Tipo7 = tipo[6], Tipo8 = tipo[7], Tipo9 = tipo[8], Tipo10 = tipo[9],
                                Repeticiones1 = repeticiones[0], Repeticiones2 = repeticiones[1], Repeticiones3 = repeticiones[2], Repeticiones4 = repeticiones[3], Repeticiones5 = repeticiones[4], Repeticiones6 = repeticiones[5], Repeticiones7 = repeticiones[6], Repeticiones8 = repeticiones[7], Repeticiones9 = repeticiones[8], Repeticiones10 = repeticiones[9],
                                Series1 = series[0], Series2 = series[1], Series3 = series[2], Series4 = series[3], Series5 = series[4], Series6 = series[5], Series7 = series[6], Series8 = series[7], Series9 = series[8], Series10 = series[9],
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4], Descanso6 = descanso[5], Descanso7 = descanso[6], Descanso8 = descanso[7], Descanso9 = descanso[8], Descanso10 = descanso[9])    
 
+    @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
+    def AgregarEjerLista():
+        if request.method == 'POST':
+            global Id_Usr, Nombre
+            RutinaName = request.form['Name']
+            id1 = request.form['Id_Vicio1']
+            id2 = request.form['Id_Vicio2']
+            id3 = request.form['Id_Vicio3']
+            id4 = request.form['Id_Vicio4']
+            id5 = request.form['Id_Vicio5']
+            rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
+            db.registrar_rutina(rutina, Id_Usr)
+            return render_template('Menu.html' , Name = Nombre)
 
     @app.route('/UsrData')
     def UsrData():
@@ -251,7 +276,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/OllamaChat', methods=['GET', 'POST'])
     def chat():
         if request.method == 'POST':  #propiedad de Flask que indica el método HTTP utilizado para acceder a la ruta 
-            mensaje = request.form['message']
+            mensaje = request.form['message'] #Accedemos al diccionario que contiene los datos
             respuesta = Chat_Ollama.chat(mensaje)
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
         
@@ -267,7 +292,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             TMB = Estadistica.calcular_tmb(Genero, Edad, peso, altura)
             FCM = Estadistica.calcular_fcm(Edad)
             return render_template('BodyData.html', Imc = IMC, Tmb = TMB, Fcm = FCM)
-        
+         
 
     @app.route('/Vicios_Name')
     def Vicios_Name():
