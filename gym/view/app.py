@@ -249,7 +249,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
     @app.route('/OllamaChat', methods=['GET', 'POST'])
     def chat():
         if request.method == 'POST':  #propiedad de Flask que indica el método HTTP utilizado para acceder a la ruta 
-            mensaje = request.form['message']
+            mensaje = request.form['message'] #Accedemos al diccionario que contiene los datos
             respuesta = Chat_Ollama.chat(mensaje)
             return render_template('Chat.html', mensaje = mensaje, respuesta = respuesta)
         
