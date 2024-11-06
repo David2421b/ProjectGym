@@ -268,7 +268,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
         for i in range(len(Nombre_Rutnia)):
             count += 1
         if count == 0:
-            return render_template('NoData.html')
+            return render_template('DashBoardRutinas.html')
         elif count == 1:
             return render_template('DashBoardRutinas.html', 
                                 Nombre1 = Nombre_Rutnia[0], 
