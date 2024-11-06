@@ -8,6 +8,7 @@ from model.DigitalHealth import *
 from Logic.DataBase import Database
 from flask import Flask, render_template, request
 import sqlite3
+
  
 #   Importatante
 
@@ -19,6 +20,7 @@ import sqlite3
 app = Flask(__name__)
 db = Database()  
 db.connect()
+
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -251,18 +253,40 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
                                Series1 = series[0], Series2 = series[1], Series3 = series[2], Series4 = series[3], Series5 = series[4], Series6 = series[5], Series7 = series[6], Series8 = series[7], Series9 = series[8], Series10 = series[9],
                                Descanso1 = descanso[0], Descanso2 = descanso[1], Descanso3 = descanso[2], Descanso4 = descanso[3], Descanso5 = descanso[4], Descanso6 = descanso[5], Descanso7 = descanso[6], Descanso8 = descanso[7], Descanso9 = descanso[8], Descanso10 = descanso[9])    
 
+    @app.route('/Rutinas')
+    def Rutinas():
+        global Nombre, Id_Usr
+
+        db.connect()
+        Nombre_Rutnia = db.obtener_nombre_rutina(Id_Usr)
+        Ejercicio1 = db.obtener_ejercicio1_rutina(Id_Usr)
+        Ejercicio2 = db.obtener_ejercicio2_rutina(Id_Usr)
+        Ejercicio3 = db.obtener_ejercicio3_rutina(Id_Usr)
+        Ejercicio4 = db.obtener_ejercicio4_rutina(Id_Usr)
+        Ejercicio5 = db.obtener_ejercicio5_rutina(Id_Usr)
+        count = 0
+        for i in range(len(Nombre_Rutnia)):
+            count += 1
+        return render_template('DashBoardRutinas.html')
+
     @app.route('/AgregarEjerLista', methods=['GET', 'POST'])
     def AgregarEjerLista():
         if request.method == 'POST':
-            global Id_Usr
+            global Id_Usr, Nombre
             RutinaName = request.form['Name']
             id1 = request.form['Id_Vicio1'] #las variables id recibe los identificadores de los ejercicios 
             id2 = request.form['Id_Vicio2']
             id3 = request.form['Id_Vicio3']
             id4 = request.form['Id_Vicio4']
             id5 = request.form['Id_Vicio5']
+<<<<<<< HEAD
             db.agregar_ejercicio_lista(id, Id_Usr) #guarda los ejercicios en una lista asociada con el usuario
             return render_template('DashBoardData.html')
+=======
+            rutina = Rutinas(RutinaName, id1, id2, id3, id4, id5)
+            db.registrar_rutina(rutina, Id_Usr)
+            return render_template('Menu.html' , Name = Nombre)
+>>>>>>> 894c4350521a32f9b6d7a927175e09bc2032a95b
 
     @app.route('/UsrData')
     def UsrData():
@@ -318,6 +342,7 @@ class Routelogic:  #define las rutas para registrar y autenticar usuarios
             sentimiento_obj = Sentimiento(sentimiento, descripcion)
             db.registrar_sentimiento(sentimiento_obj, Id_Usr)
             return render_template('ManejoVicios.html')
+
     
 if __name__ == '__main__':
     app.run(debug=True)
