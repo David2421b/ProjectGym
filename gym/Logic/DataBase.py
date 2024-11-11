@@ -357,7 +357,7 @@ class Database:
             for i in range(len(ejercicio5)):
                 ejercicio5[i] = ejercicio5[i][0]
             return ejercicio5
-
+ 
     def verificar_credenciales(self, email, contraseña):
         if self.conexion:
             cursor = self.conexion.cursor()
